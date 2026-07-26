@@ -94,8 +94,8 @@ fun SocialTrainingScreen(
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onBack) { Icon(Icons.Rounded.ArrowBack, "رجوع") }
                 Column(Modifier.weight(1f)) {
-                    Text("فن التعامل", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-                    Text("تدريبات يومية لتفهم الناس، تكسب الود، تحفظ احترامك، وتتصرف بذكاء في المواقف الاجتماعية.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("الذكاء الاجتماعي", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+                    Text("افهم الناس، اكسب الود، ابنِ احترامك، وتصرّف بثقة ولباقة.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         }

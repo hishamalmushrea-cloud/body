@@ -49,7 +49,7 @@ fun TrainingScreen(state: TrainingUiState, onCategory: (String) -> Unit, onConte
         LazyRow(contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 20.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             item { OutlinedButton(onClick = onDrills) { Text("تمارين متخصصة") } }
             item { OutlinedButton(onClick = onSituations) { Text("مواقف واقعية") } }
-            item { OutlinedButton(onClick = onSocial) { Text("فن التعامل") } }
+            item { OutlinedButton(onClick = onSocial) { Text("الذكاء الاجتماعي") } }
         }
         FilterRow(categories, state.category, onCategory)
         FilterRow(contexts, state.context, onContext)
