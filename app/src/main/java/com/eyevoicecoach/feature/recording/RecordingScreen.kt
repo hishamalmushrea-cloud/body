@@ -29,6 +29,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.FilterChip
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,6 +48,7 @@ import com.eyevoicecoach.core.util.toArabicDate
 import com.eyevoicecoach.core.util.toArabicDuration
 import com.eyevoicecoach.core.util.toArabicPlaybackDuration
 import com.eyevoicecoach.domain.model.Recording
+import com.eyevoicecoach.domain.model.TensionLevel
 
 /** Provides microphone permission, live waveform recording and complete local playback controls. */
 @Composable
@@ -61,6 +64,9 @@ fun RecordingScreen(
     onSeekBy: (Long) -> Unit,
     onSeekTo: (Long) -> Unit,
     onDelete: (Recording) -> Unit,
+    pendingAssessment: PendingAssessment?,
+    onSaveAssessment: (Int, Int, Int, Int, TensionLevel, String) -> Unit,
+    onDismissAssessment: () -> Unit,
     onBack: (() -> Unit)?,
 ) {
     var isRecording by rememberSaveable { mutableStateOf(amplitudes.isNotEmpty()) }
@@ -116,6 +122,9 @@ fun RecordingScreen(
     permissionMessage?.let { message ->
         AlertDialog(onDismissRequest = { permissionMessage = null }, confirmButton = { Button(onClick = { permissionMessage = null }) { Text("حسناً") } }, title = { Text("إذن الميكروفون") }, text = { Text(message) })
     }
+    pendingAssessment?.let { pending ->
+        SelfAssessmentDialog(pending, onSaveAssessment, onDismissAssessment)
+    }
     pendingDeletion?.let { recording ->
         AlertDialog(
             onDismissRequest = { pendingDeletion = null },
@@ -156,6 +165,53 @@ private fun RecordingCard(
                 IconButton(onClick = { onTogglePlayback(recording) }) { Icon(if (active && playback.isPlaying) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, if (active && playback.isPlaying) "إيقاف مؤقت" else "تشغيل") }
                 IconButton(onClick = { onSeekBy(10_000) }, enabled = active) { Icon(Icons.Rounded.Forward10, "تقديم ١٠ ثوانٍ") }
             }
+        }
+    }
+}
+
+
+/** Collects a calm, private self-review immediately after a recording is saved. */
+@Composable
+private fun SelfAssessmentDialog(
+    pending: PendingAssessment,
+    onSave: (Int, Int, Int, Int, TensionLevel, String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var clarity by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var pace by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var confidence by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var pauses by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var tension by rememberSaveable(pending.recordingId) { mutableStateOf(TensionLevel.MEDIUM) }
+    var note by rememberSaveable(pending.recordingId) { mutableStateOf("") }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(if (pending.programId == null) "تقييم جلستك" else "أكمل تقييم اليوم التدريبي") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
+                Text("قيّم تجربتك لنفسك فقط؛ لا يغادر هذا التقييم جهازك.", style = MaterialTheme.typography.bodySmall)
+                RatingRow("وضوح الصوت", clarity) { clarity = it }
+                RatingRow("سرعة الكلام", pace) { pace = it }
+                RatingRow("الثقة", confidence) { confidence = it }
+                RatingRow("استخدام الوقفات", pauses) { pauses = it }
+                Text("التوتر", style = MaterialTheme.typography.labelLarge)
+                Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+                    TensionLevel.entries.forEach { level -> FilterChip(selected = tension == level, onClick = { tension = level }, label = { Text(level.label) }) }
+                }
+                OutlinedTextField(value = note, onValueChange = { note = it }, label = { Text("ما الذي أريد تحسينه غداً؟") }, modifier = Modifier.fillMaxWidth(), minLines = 2)
+            }
+        },
+        confirmButton = { Button(onClick = { onSave(clarity, pace, confidence, pauses, tension, note) }) { Text("حفظ التقييم") } },
+        dismissButton = { OutlinedButton(onClick = onDismiss) { Text("لاحقاً") } },
+    )
+}
+
+/** Five-value self-rating selector used by the private review dialog. */
+@Composable
+private fun RatingRow(label: String, selected: Int, onSelect: (Int) -> Unit) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+        Text(label, style = MaterialTheme.typography.labelLarge)
+        Row(horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+            (1..5).forEach { value -> FilterChip(selected = selected == value, onClick = { onSelect(value) }, label = { Text(value.toString().replace('1', '١').replace('2', '٢').replace('3', '٣').replace('4', '٤').replace('5', '٥')) }) }
         }
     }
 }

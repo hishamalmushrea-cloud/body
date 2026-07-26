@@ -64,13 +64,15 @@ private class InMemoryTips(private val available: MutableList<Tip>) : TipReposit
     override suspend fun toggleFavorite(tipId: Int) = Unit
     override fun observeFavorite(tipId: Int): Flow<Boolean> = MutableStateFlow(false)
     override suspend fun resetHistory() = Unit
+    override suspend fun clearUserActivity() = Unit
     override fun observeStats(): Flow<ProgressStats> = MutableStateFlow(ProgressStats(0, 0, 0, 0, emptyMap()))
 }
 
 private class InMemoryRecordings : RecordingRepository {
     var cleanupAt: Long? = null
     override fun observeRecordings(): Flow<List<Recording>> = emptyFlow()
-    override suspend fun addRecording(uri: String, tipId: Int, durationSeconds: Int) = Unit
+    override suspend fun addRecording(uri: String, tipId: Int, durationSeconds: Int): Long = 1L
     override suspend fun deleteRecording(recording: Recording) = Unit
     override suspend fun deleteExpiredRecordings(nowMillis: Long) { cleanupAt = nowMillis }
+    override suspend fun deleteAllRecordings() = Unit
 }

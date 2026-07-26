@@ -84,6 +84,11 @@ class TipRepositoryImpl @Inject constructor(
 
     override suspend fun resetHistory() = tips.clearHistory()
 
+    override suspend fun clearUserActivity() {
+        tips.clearHistory()
+        tips.clearFavorites()
+    }
+
     override fun observeStats(): Flow<ProgressStats> = combine(
         tips.observeViewedCount(),
         tips.observeTipCount(),

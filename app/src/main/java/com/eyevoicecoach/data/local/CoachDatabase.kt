@@ -6,7 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.RoomDatabase
-import androidx.room.Transaction
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 
 /** Data access operations for bundled exercises, history and favorites. */
@@ -64,9 +65,17 @@ interface TipDao {
     @Query("DELETE FROM favorites WHERE tip_id = :tipId")
     suspend fun removeFavorite(tipId: Int)
 
+    /** Deletes all favorites as part of an explicit privacy reset. */
+    @Query("DELETE FROM favorites")
+    suspend fun clearFavorites()
+
     /** Clears the daily rotation history only. */
     @Query("DELETE FROM history")
     suspend fun clearHistory()
+
+    /** Streams shown timestamps for local streak calculations. */
+    @Query("SELECT date_shown FROM history ORDER BY date_shown DESC")
+    fun observeShownDates(): Flow<List<Long>>
 
     /** Counts viewed history rows. */
     @Query("SELECT COUNT(*) FROM history")
@@ -97,7 +106,7 @@ interface RecordingDao {
 
     /** Inserts recording metadata after the private file has been completed. */
     @Insert
-    suspend fun insert(recording: RecordingEntity)
+    suspend fun insert(recording: RecordingEntity): Long
 
     /** Gets recordings older than [cutoffMillis]. */
     @Query("SELECT * FROM recordings WHERE date_recorded < :cutoffMillis")
@@ -106,14 +115,90 @@ interface RecordingDao {
     /** Removes the metadata row after file deletion. */
     @Query("DELETE FROM recordings WHERE id = :id")
     suspend fun deleteById(id: Long)
+
+    /** Deletes all private recording metadata rows. */
+    @Query("DELETE FROM recordings")
+    suspend fun deleteAll()
+}
+
+/** Data access operations for self-assessments. */
+@Dao
+interface AssessmentDao {
+    /** Saves one recording review, replacing an earlier review of the same recording. */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsert(assessment: SelfAssessmentEntity)
+
+    /** Reads a private review by its recording identifier. */
+    @Query("SELECT * FROM self_assessments WHERE recording_id = :recordingId")
+    suspend fun find(recordingId: Long): SelfAssessmentEntity?
+
+    /** Deletes every review during a privacy reset. */
+    @Query("DELETE FROM self_assessments")
+    suspend fun deleteAll()
+}
+
+/** Data access operations for ready-made program completion. */
+@Dao
+interface ProgramProgressDao {
+    /** Streams program progress joined with all program-day completions. */
+    @Query("SELECT * FROM program_progress")
+    fun observeProgress(): Flow<List<ProgramProgressEntity>>
+
+    /** Streams all completed program days. */
+    @Query("SELECT * FROM program_day_completions")
+    fun observeCompletions(): Flow<List<ProgramDayCompletionEntity>>
+
+    /** Creates a program progress record when it is started. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun start(progress: ProgramProgressEntity)
+
+    /** Saves a completed day once, retaining the first reviewed recording. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun completeDay(completion: ProgramDayCompletionEntity)
+
+    /** Counts program day completions. */
+    @Query("SELECT COUNT(*) FROM program_day_completions WHERE program_id = :programId")
+    suspend fun completedDayCount(programId: String): Int
+
+    /** Marks one program as completely finished. */
+    @Query("UPDATE program_progress SET completed_at = :completedAt WHERE program_id = :programId")
+    suspend fun markCompleted(programId: String, completedAt: Long)
+
+    /** Clears all program history during a privacy reset. */
+    @Query("DELETE FROM program_day_completions")
+    suspend fun clearCompletions()
+
+    /** Clears all program progress during a privacy reset. */
+    @Query("DELETE FROM program_progress")
+    suspend fun clearProgress()
 }
 
 /** Private Room database; no user data is exported or backed up. */
-@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class], version = 1, exportSchema = true)
+@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class], version = 2, exportSchema = true)
 abstract class CoachDatabase : RoomDatabase() {
     /** Provides exercise data access. */
     abstract fun tipDao(): TipDao
 
     /** Provides recording data access. */
     abstract fun recordingDao(): RecordingDao
+
+    /** Provides private assessment data access. */
+    abstract fun assessmentDao(): AssessmentDao
+
+    /** Provides ready-made program progress data access. */
+    abstract fun programProgressDao(): ProgramProgressDao
+}
+
+/** Explicit non-destructive database migrations for locally retained user data. */
+object CoachDatabaseMigrations {
+    /** Adds programs, day completions and encrypted-device-only self-reviews. */
+    val MIGRATION_1_2 = object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS program_progress (program_id TEXT NOT NULL, started_at INTEGER NOT NULL, completed_at INTEGER, PRIMARY KEY(program_id))")
+            database.execSQL("CREATE TABLE IF NOT EXISTS program_day_completions (program_id TEXT NOT NULL, day_number INTEGER NOT NULL, completed_at INTEGER NOT NULL, recording_id INTEGER NOT NULL, PRIMARY KEY(program_id, day_number))")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_program_day_completions_recording_id ON program_day_completions(recording_id)")
+            database.execSQL("CREATE TABLE IF NOT EXISTS self_assessments (recording_id INTEGER NOT NULL, clarity INTEGER NOT NULL, pace INTEGER NOT NULL, confidence INTEGER NOT NULL, pauses INTEGER NOT NULL, tension TEXT NOT NULL, note TEXT NOT NULL, created_at INTEGER NOT NULL, PRIMARY KEY(recording_id), FOREIGN KEY(recording_id) REFERENCES recordings(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_self_assessments_recording_id ON self_assessments(recording_id)")
+        }
+    }
 }

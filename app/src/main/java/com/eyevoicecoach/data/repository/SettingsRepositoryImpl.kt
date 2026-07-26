@@ -36,6 +36,8 @@ class SettingsRepositoryImpl @Inject constructor(
 
     override suspend fun setTheme(themeKey: String) = store.putString(THEME, themeKey)
 
+    override suspend fun clearAll() = store.clear()
+
     override suspend fun setReminder(enabled: Boolean, hour: Int, minute: Int) {
         store.putString(REMINDERS, enabled.toString())
         store.putString(REMINDER_HOUR, hour.coerceIn(0, 23).toString())

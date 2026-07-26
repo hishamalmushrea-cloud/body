@@ -49,6 +49,7 @@ private class HomeFakeTips : TipRepository {
     override suspend fun toggleFavorite(tipId: Int) = Unit
     override fun observeFavorite(tipId: Int): Flow<Boolean> = MutableStateFlow(false)
     override suspend fun resetHistory() = Unit
+    override suspend fun clearUserActivity() = Unit
     override fun observeStats(): Flow<ProgressStats> = emptyFlow()
 }
 
@@ -58,4 +59,5 @@ private class HomeFakeSettings : SettingsRepository {
     override suspend fun setContext(context: String) = Unit
     override suspend fun setTheme(themeKey: String) = Unit
     override suspend fun setReminder(enabled: Boolean, hour: Int, minute: Int) = Unit
+    override suspend fun clearAll() = Unit
 }

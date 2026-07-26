@@ -38,6 +38,11 @@ class EncryptedPreferenceDataStore(private val context: Context) {
             .map { preferences -> preferences[stringPreferencesKey(name)]?.let(crypto::decrypt) ?: default }
             .catch { emit(default) }
 
+    /** Removes every encrypted setting from the private DataStore. */
+    suspend fun clear() {
+        context.securePreferencesDataStore.edit { preferences -> preferences.clear() }
+    }
+
     /** Encrypts and persists one setting in the private DataStore. */
     suspend fun putString(name: String, value: String) {
         context.securePreferencesDataStore.edit { preferences ->

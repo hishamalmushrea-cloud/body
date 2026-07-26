@@ -53,3 +53,41 @@ data class RecordingEntity(
     @ColumnInfo(name = "tip_id") val tipId: Int,
     @ColumnInfo(name = "duration_seconds") val durationSeconds: Int,
 )
+
+/** Room row recording a user's progress through a built-in program. */
+@Entity(tableName = "program_progress")
+data class ProgramProgressEntity(
+    @PrimaryKey @ColumnInfo(name = "program_id") val programId: String,
+    @ColumnInfo(name = "started_at") val startedAt: Long,
+    @ColumnInfo(name = "completed_at") val completedAt: Long? = null,
+)
+
+/** Room row linking one program day to the reviewed private recording that completed it. */
+@Entity(
+    tableName = "program_day_completions",
+    primaryKeys = ["program_id", "day_number"],
+    indices = [Index("recording_id")],
+)
+data class ProgramDayCompletionEntity(
+    @ColumnInfo(name = "program_id") val programId: String,
+    @ColumnInfo(name = "day_number") val dayNumber: Int,
+    @ColumnInfo(name = "completed_at") val completedAt: Long,
+    @ColumnInfo(name = "recording_id") val recordingId: Long,
+)
+
+/** Room row containing the private subjective review of one voice recording. */
+@Entity(
+    tableName = "self_assessments",
+    foreignKeys = [ForeignKey(entity = RecordingEntity::class, parentColumns = ["id"], childColumns = ["recording_id"], onDelete = ForeignKey.CASCADE)],
+    indices = [Index("recording_id")],
+)
+data class SelfAssessmentEntity(
+    @PrimaryKey @ColumnInfo(name = "recording_id") val recordingId: Long,
+    val clarity: Int,
+    val pace: Int,
+    val confidence: Int,
+    val pauses: Int,
+    val tension: String,
+    val note: String,
+    @ColumnInfo(name = "created_at") val createdAt: Long,
+)

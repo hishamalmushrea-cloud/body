@@ -50,6 +50,7 @@ fun SettingsScreen(
     onTheme: (String) -> Unit,
     onReminder: (Boolean, Int, Int) -> Unit,
     onAbout: () -> Unit,
+    onPrivacy: () -> Unit,
 ) {
     val context = LocalContext.current
     val notificationPermission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -120,6 +121,7 @@ fun SettingsScreen(
             CoachCard {
                 Text("الخصوصية", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 Text("لا نستخدم الإنترنت ولا حسابات سحابية. التسجيلات في التخزين الداخلي الخاص بالتطبيق، وتُحذف تلقائياً بعد ٧ أيام.", modifier = Modifier.padding(top = 7.dp))
+                OutlinedButton(onClick = onPrivacy, modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) { Text("خصوصيتك وإدارة البيانات") }
             }
         }
         item { OutlinedButton(onClick = onAbout, modifier = Modifier.fillMaxWidth()) { Text("حول التطبيق") } }
@@ -137,7 +139,7 @@ fun AboutScreen(onBack: () -> Unit) {
         Text("حول التطبيق", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
         CoachCard {
             Text("مدرب العين والجسد والصوت", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-            Text("إصدار ١.٠.٠", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("إصدار ١.١.٠", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text("أداة تدريب شخصية عربية تعمل دون اتصال لمساعدتك على بناء حضور هادئ وواثق.", modifier = Modifier.padding(top = 16.dp))
         }
         CoachCard {

@@ -53,3 +53,52 @@ data class UserSettings(
     val reminderHour: Int = 20,
     val reminderMinute: Int = 0,
 )
+
+/** A structured self-review saved privately after a voice recording. */
+data class SelfAssessment(
+    val recordingId: Long,
+    val clarity: Int,
+    val pace: Int,
+    val confidence: Int,
+    val pauses: Int,
+    val tension: TensionLevel,
+    val note: String,
+    val createdAt: Long,
+)
+
+/** Self-reported tension levels used in a recording review. */
+enum class TensionLevel(val label: String) {
+    LOW("منخفض"),
+    MEDIUM("متوسط"),
+    HIGH("عالٍ");
+
+    companion object {
+        /** Restores a persisted tension value, safely defaulting to medium. */
+        fun fromName(value: String): TensionLevel = entries.firstOrNull { it.name == value } ?: MEDIUM
+    }
+}
+
+/** Completion state for one ready-made coaching program. */
+data class ProgramProgress(
+    val programId: String,
+    val completedDays: Set<Int> = emptySet(),
+    val startedAt: Long? = null,
+    val completedAt: Long? = null,
+) {
+    /** Returns the first unfinished day between one and [totalDays]. */
+    fun nextDay(totalDays: Int): Int = (1..totalDays).firstOrNull { it !in completedDays } ?: totalDays
+
+    /** Returns the numeric completion percentage. */
+    fun percentage(totalDays: Int): Int = if (totalDays == 0) 0 else (completedDays.size * 100 / totalDays).coerceAtMost(100)
+}
+
+/** A refined, earned milestone presented in the achievements section. */
+data class Achievement(
+    val id: String,
+    val title: String,
+    val description: String,
+    val symbol: String,
+    val isUnlocked: Boolean,
+    val progress: Int,
+    val target: Int,
+)

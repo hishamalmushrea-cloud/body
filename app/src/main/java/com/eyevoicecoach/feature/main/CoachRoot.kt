@@ -35,6 +35,19 @@ import androidx.navigation.navArgument
 import androidx.navigation.NavType
 import com.eyevoicecoach.core.ui.EmptyState
 import com.eyevoicecoach.feature.home.HomeScreen
+import com.eyevoicecoach.domain.catalog.TrainingCatalog
+import com.eyevoicecoach.feature.library.SituationDetailScreen
+import com.eyevoicecoach.feature.library.SituationsScreen
+import com.eyevoicecoach.feature.library.SpecializedDrillsScreen
+import com.eyevoicecoach.feature.privacy.PrivacyScreen
+import com.eyevoicecoach.feature.privacy.PrivacyViewModel
+import com.eyevoicecoach.feature.programs.AchievementsScreen
+import com.eyevoicecoach.feature.programs.AchievementsViewModel
+import com.eyevoicecoach.feature.programs.ProgramDayScreen
+import com.eyevoicecoach.feature.programs.ProgramDetailScreen
+import com.eyevoicecoach.feature.programs.ProgramDetailViewModel
+import com.eyevoicecoach.feature.programs.ProgramsScreen
+import com.eyevoicecoach.feature.programs.ProgramsViewModel
 import com.eyevoicecoach.feature.home.HomeViewModel
 import com.eyevoicecoach.feature.recording.RecordingScreen
 import com.eyevoicecoach.feature.recording.RecordingViewModel
@@ -114,21 +127,21 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
                 onOpenDetail = { navController.navigate("detail/$it") },
                 onRecord = { navController.navigate("recording/$it") },
                 onOpenFavorites = { navController.navigate("favorites") },
-                onReset = viewModel::resetAndRefresh,
-                onRetry = viewModel::refresh,
+                onOpenPrograms = { navController.navigate("programs") },
+                onReset = { viewModel.resetAndRefresh() },
+                onRetry = { viewModel.refresh() },
             )
         }
         composable("training") {
             val viewModel: TrainingViewModel = hiltViewModel()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
-            TrainingScreen(state, viewModel::setCategory, viewModel::setContext) { navController.navigate("detail/$it") }
+            TrainingScreen(state, viewModel::setCategory, viewModel::setContext, onOpen = { navController.navigate("detail/$it") }, onDrills = { navController.navigate("drills") }, onSituations = { navController.navigate("situations") })
         }
-        composable("recordings") {
-            val viewModel: RecordingViewModel = hiltViewModel()
-            val recordings by viewModel.recordings.collectAsStateWithLifecycle()
-            val playback by viewModel.playback.collectAsStateWithLifecycle()
-            val amplitudes by viewModel.amplitudes.collectAsStateWithLifecycle()
-            RecordingScreen(false, recordings, playback, amplitudes, viewModel::startRecording, viewModel::stopRecording, viewModel::cancelRecording, viewModel::togglePlayback, viewModel::seekBy, viewModel::seekTo, viewModel::delete, onBack = null)
+        composable("recordings") { RecordingDestination(canRecord = false, onBack = null) }
+        composable("programs") {
+            val viewModel: ProgramsViewModel = hiltViewModel()
+            val items by viewModel.programs.collectAsStateWithLifecycle()
+            ProgramsScreen(items, onOpen = { navController.navigate("program/$it") }, onAchievements = { navController.navigate("achievements") })
         }
         composable("statistics") {
             val viewModel: StatisticsViewModel = hiltViewModel()
@@ -138,20 +151,50 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
         composable("settings") {
             val viewModel: SettingsViewModel = hiltViewModel()
             val settings by viewModel.settings.collectAsStateWithLifecycle()
-            SettingsScreen(settings, viewModel::selectContext, viewModel::selectTheme, viewModel::setReminder, onAbout = { navController.navigate("about") })
+            SettingsScreen(settings, onContext = { viewModel.selectContext(it) }, onTheme = { viewModel.selectTheme(it) }, onReminder = { enabled, hour, minute -> viewModel.setReminder(enabled, hour, minute) }, onAbout = { navController.navigate("about") }, onPrivacy = { navController.navigate("privacy") })
         }
         composable("detail/{tipId}", arguments = listOf(navArgument("tipId") { type = NavType.IntType })) {
             val viewModel: TipDetailViewModel = hiltViewModel()
             val tip by viewModel.tip.collectAsStateWithLifecycle()
             val favorite by viewModel.isFavorite.collectAsStateWithLifecycle()
-            TipDetailScreen(tip, favorite, viewModel::toggleFavorite, onRecord = { navController.navigate("recording/$it") }, onBack = navController::navigateUp)
+            TipDetailScreen(tip, favorite, onFavorite = { viewModel.toggleFavorite() }, onRecord = { navController.navigate("recording/$it") }, onBack = navController::navigateUp)
         }
         composable("recording/{tipId}", arguments = listOf(navArgument("tipId") { type = NavType.IntType })) {
-            val viewModel: RecordingViewModel = hiltViewModel()
-            val recordings by viewModel.recordings.collectAsStateWithLifecycle()
-            val playback by viewModel.playback.collectAsStateWithLifecycle()
-            val amplitudes by viewModel.amplitudes.collectAsStateWithLifecycle()
-            RecordingScreen(true, recordings, playback, amplitudes, viewModel::startRecording, viewModel::stopRecording, viewModel::cancelRecording, viewModel::togglePlayback, viewModel::seekBy, viewModel::seekTo, viewModel::delete, onBack = navController::navigateUp)
+            RecordingDestination(canRecord = true, onBack = navController::navigateUp)
+        }
+        composable("recording/{tipId}/{programId}/{dayNumber}", arguments = listOf(navArgument("tipId") { type = NavType.IntType }, navArgument("programId") { type = NavType.StringType }, navArgument("dayNumber") { type = NavType.IntType })) {
+            RecordingDestination(canRecord = true, onBack = navController::navigateUp)
+        }
+        composable("program/{programId}", arguments = listOf(navArgument("programId") { type = NavType.StringType })) {
+            val viewModel: ProgramDetailViewModel = hiltViewModel()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            ProgramDetailScreen(state, onStart = { viewModel.start() }, onOpenDay = { day -> navController.navigate("programDay/${state.program.id}/${day.number}") }, onBack = navController::navigateUp)
+        }
+        composable("programDay/{programId}/{dayNumber}", arguments = listOf(navArgument("programId") { type = NavType.StringType }, navArgument("dayNumber") { type = NavType.IntType })) { entry ->
+            val programId = checkNotNull(entry.arguments?.getString("programId"))
+            val dayNumber = entry.arguments?.getInt("dayNumber") ?: 1
+            val day = TrainingCatalog.program(programId)?.days?.firstOrNull { it.number == dayNumber }
+            if (day == null) {
+                EmptyState("⌕", "اليوم غير متاح", "عد إلى البرنامج واختر يوماً متاحاً.")
+            } else {
+                ProgramDayScreen(day, onRecord = { navController.navigate("recording/${day.tipId}/$programId/${day.number}") }, onBack = navController::navigateUp)
+            }
+        }
+        composable("achievements") {
+            val viewModel: AchievementsViewModel = hiltViewModel()
+            val items by viewModel.achievements.collectAsStateWithLifecycle()
+            AchievementsScreen(items, onBack = navController::navigateUp)
+        }
+        composable("drills") { SpecializedDrillsScreen(onRecord = { navController.navigate("recording/$it") }, onBack = navController::navigateUp) }
+        composable("situations") { SituationsScreen(onOpen = { navController.navigate("situation/$it") }, onBack = navController::navigateUp) }
+        composable("situation/{situationId}", arguments = listOf(navArgument("situationId") { type = NavType.StringType })) { entry ->
+            val id = entry.arguments?.getString("situationId")
+            SituationDetailScreen(TrainingCatalog.situations.firstOrNull { it.id == id }, onRecord = { navController.navigate("recording/$it") }, onBack = navController::navigateUp)
+        }
+        composable("privacy") {
+            val viewModel: PrivacyViewModel = hiltViewModel()
+            val message by viewModel.message.collectAsStateWithLifecycle()
+            PrivacyScreen(message, onDeleteRecordings = { viewModel.deleteRecordings() }, onDeleteHistory = { viewModel.deleteHistory() }, onDeleteAssessments = { viewModel.deleteAssessments() }, onResetAll = { viewModel.resetApplication() }, onClearMessage = { viewModel.clearMessage() }, onBack = navController::navigateUp)
         }
         composable("favorites") {
             val viewModel: FavoritesViewModel = hiltViewModel()
@@ -160,6 +203,17 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
         }
         composable("about") { AboutScreen(onBack = navController::navigateUp) }
     }
+}
+
+/** Connects a navigation recording destination to its Hilt-backed session state. */
+@Composable
+private fun RecordingDestination(canRecord: Boolean, onBack: (() -> Unit)?) {
+    val viewModel: RecordingViewModel = hiltViewModel()
+    val recordings by viewModel.recordings.collectAsStateWithLifecycle()
+    val playback by viewModel.playback.collectAsStateWithLifecycle()
+    val amplitudes by viewModel.amplitudes.collectAsStateWithLifecycle()
+    val pending by viewModel.pendingAssessment.collectAsStateWithLifecycle()
+    RecordingScreen(canRecord, recordings, playback, amplitudes, onStart = viewModel::startRecording, onStop = { viewModel.stopRecording() }, onCancel = { viewModel.cancelRecording() }, onTogglePlayback = { viewModel.togglePlayback(it) }, onSeekBy = { viewModel.seekBy(it) }, onSeekTo = { viewModel.seekTo(it) }, onDelete = { viewModel.delete(it) }, pendingAssessment = pending, onSaveAssessment = { clarity, pace, confidence, pauses, tension, note -> viewModel.saveAssessment(clarity, pace, confidence, pauses, tension, note) }, onDismissAssessment = { viewModel.dismissAssessment() }, onBack = onBack)
 }
 
 private fun NavHostController.navigateRoot(route: String) {

@@ -5,10 +5,11 @@ import com.eyevoicecoach.data.local.CoachDatabase
 import com.eyevoicecoach.data.local.RecordingEntity
 import com.eyevoicecoach.domain.model.Recording
 import com.eyevoicecoach.domain.repository.RecordingRepository
-import java.io.File
 import com.eyevoicecoach.domain.usecase.RecordingRetentionPolicy
+import java.io.File
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 /** Room implementation that keeps all audio files in private application storage. */
@@ -19,8 +20,7 @@ class RecordingRepositoryImpl @Inject constructor(
 
     override fun observeRecordings(): Flow<List<Recording>> = recordings.observeAll().map { rows -> rows.map(RecordingEntity::toDomain) }
 
-    override suspend fun addRecording(uri: String, tipId: Int, durationSeconds: Int) {
-        recordings.insert(
+    override suspend fun addRecording(uri: String, tipId: Int, durationSeconds: Int): Long = recordings.insert(
             RecordingEntity(
                 recordingUri = uri,
                 dateRecorded = System.currentTimeMillis(),
@@ -28,7 +28,6 @@ class RecordingRepositoryImpl @Inject constructor(
                 durationSeconds = durationSeconds.coerceAtLeast(0),
             ),
         )
-    }
 
     override suspend fun deleteRecording(recording: Recording) {
         fileForUri(recording.uri)?.delete()
@@ -41,6 +40,11 @@ class RecordingRepositoryImpl @Inject constructor(
             fileForUri(row.recordingUri)?.delete()
             recordings.deleteById(row.id)
         }
+    }
+
+    override suspend fun deleteAllRecordings() {
+        recordings.observeAll().first().forEach { row -> fileForUri(row.recordingUri)?.delete() }
+        recordings.deleteAll()
     }
 
     private fun fileForUri(uri: String): File? = runCatching {

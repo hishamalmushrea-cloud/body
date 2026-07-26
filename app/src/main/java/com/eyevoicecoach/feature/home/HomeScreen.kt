@@ -38,6 +38,7 @@ fun HomeScreen(
     onOpenDetail: (Int) -> Unit,
     onRecord: (Int) -> Unit,
     onOpenFavorites: () -> Unit,
+    onOpenPrograms: () -> Unit,
     onReset: () -> Unit,
     onRetry: () -> Unit,
 ) {
@@ -58,6 +59,7 @@ fun HomeScreen(
                     }
                     IconButton(onClick = onOpenFavorites) { Icon(Icons.Rounded.Favorite, "المفضلة") }
                 }
+                OutlinedButton(onClick = onOpenPrograms, modifier = Modifier.fillMaxWidth()) { Text("البرامج التدريبية الجاهزة") }
                 if (LocalDate.now().dayOfWeek == DayOfWeek.FRIDAY) {
                     CoachCard { Text("🎤 تحدّي الجمعة", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary); Text("سجّل النص التمثيلي بعد إتقان التمرين.", modifier = Modifier.padding(top = 6.dp)) }
                 }

@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
             val state by viewModel.uiState.collectAsStateWithLifecycle()
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                 CoachTheme(state.settings.theme) {
-                    CoachRoot(state = state, onFinishOnboarding = viewModel::finishOnboarding)
+                    CoachRoot(state = state, onFinishOnboarding = { viewModel.finishOnboarding() })
                 }
             }
         }
