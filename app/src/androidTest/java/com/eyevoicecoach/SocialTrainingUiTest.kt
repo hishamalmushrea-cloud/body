@@ -27,16 +27,16 @@ class SocialTrainingUiTest {
 
     @Test
     fun `social card renders the role play prompt and ethical boundary`() {
-        val content = SocialTrainingContent(2001, "social_opening", "عام", "public_micro_interaction", CommunicationStyle.UNKNOWN, "beginner", 3, "start", "بدء حديث محترم", "وصف الموقف", "مثال", "إذا لم يبدُ الطرف الآخر مهتماً، أنهِ الحديث بلطف.", "قل شكراً ثم أنهِ الحديث.", "العين", "الجسد", "الصوت", listOf(TrainingPhrase(PhraseType.OPENING, "عفواً، هل تعرف أين المدخل؟")))
-        composeRule.setContent { CoachTheme(AppTheme.OLED) { SocialTrainingCardScreen(content, CommunicationStyle.UNKNOWN, onRecord = { _, _ -> }, onBack = {}) } }
+        val content = SocialTrainingContent(2001, "social_opening", "social_basics", "عام", "public_micro_interaction", CommunicationStyle.UNKNOWN, "beginner", 3, "start", "بدء حديث محترم", "وصف الموقف", "مثال", "إذا لم يبدُ الطرف الآخر مهتماً، أنهِ الحديث بلطف.", "قل شكراً ثم أنهِ الحديث.", "العين", "الجسد", "الصوت", listOf(TrainingPhrase(PhraseType.OPENING, "عفواً، هل تعرف أين المدخل؟")))
+        composeRule.setContent { CoachTheme(AppTheme.OLED) { SocialTrainingCardScreen(content, null, CommunicationStyle.UNKNOWN, onRecord = { _, _ -> }, onBack = {}) } }
         composeRule.onNodeWithText("تحدي التسجيل").assertIsDisplayed()
         composeRule.onNodeWithText("قاعدة الاحترام").assertIsDisplayed()
     }
 
     @Test
     fun `choosing client scenario displays client content only`() {
-        val client = SocialTrainingContent(2002, "client_communication", "زبون", "client_meeting", null, "beginner", 3, "goal", "جلسة العميل", "النص", "مثال", "حدود", "مطالبة", "عين", "جسد", "صوت", emptyList())
-        val public = SocialTrainingContent(2001, "social_opening", "عام", "public_micro_interaction", null, "beginner", 3, "goal", "جلسة عامة", "النص", "مثال", "حدود", "مطالبة", "عين", "جسد", "صوت", emptyList())
+        val client = SocialTrainingContent(2002, "client_communication", "understanding_needs", "زبون", "client_meeting", null, "beginner", 3, "goal", "جلسة العميل", "النص", "مثال", "حدود", "مطالبة", "عين", "جسد", "صوت", emptyList())
+        val public = SocialTrainingContent(2001, "social_opening", "social_basics", "عام", "public_micro_interaction", null, "beginner", 3, "goal", "جلسة عامة", "النص", "مثال", "حدود", "مطالبة", "عين", "جسد", "صوت", emptyList())
         composeRule.setContent {
             var scenario by remember { mutableStateOf<String?>(null) }
             val visible = listOf(client, public).filter { scenario == null || it.scenarioType == scenario }
@@ -46,7 +46,7 @@ class SocialTrainingUiTest {
                     boost = null,
                     content = visible,
                     selectedStyle = null,
-                    onScenario = { scenario = it }, onGoal = {}, onStyle = {}, onRefreshBoost = {}, onAcknowledgeEthics = {}, onOpenCard = { _, _ -> }, onStyleAssistant = {}, onBack = {},
+                    onScenario = { scenario = it }, onGoal = {}, onStyle = {}, onTrack = {}, onRefreshBoost = {}, onAcknowledgeEthics = {}, onOpenCard = { _, _ -> }, onStyleAssistant = {}, onBack = {},
                 )
             }
         }

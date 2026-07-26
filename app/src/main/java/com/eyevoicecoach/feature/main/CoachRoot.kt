@@ -204,13 +204,14 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
             val boost by viewModel.boost.collectAsStateWithLifecycle()
             val content by viewModel.content.collectAsStateWithLifecycle()
             val selectedStyle by viewModel.selectedStyle.collectAsStateWithLifecycle()
-            SocialTrainingScreen(settings, boost, content, selectedStyle, onScenario = viewModel::selectScenario, onGoal = viewModel::selectGoal, onStyle = viewModel::selectStyle, onRefreshBoost = { viewModel.refreshBoost() }, onAcknowledgeEthics = { viewModel.acknowledgeEthics() }, onOpenCard = { contentId, selectedStyle -> navController.navigate("socialCard/$contentId/${selectedStyle?.code ?: "unknown"}") }, onStyleAssistant = { navController.navigate("communicationStyles") }, onBack = navController::navigateUp)
+            SocialTrainingScreen(settings, boost, content, selectedStyle, onScenario = viewModel::selectScenario, onGoal = viewModel::selectGoal, onStyle = viewModel::selectStyle, onTrack = viewModel::selectTrack, onRefreshBoost = { viewModel.refreshBoost() }, onAcknowledgeEthics = { viewModel.acknowledgeEthics() }, onOpenCard = { contentId, selectedStyle -> navController.navigate("socialCard/$contentId/${selectedStyle?.code ?: "unknown"}") }, onStyleAssistant = { navController.navigate("communicationStyles") }, onBack = navController::navigateUp)
         }
         composable("socialCard/{socialContentId}/{socialStyle}", arguments = listOf(navArgument("socialContentId") { type = NavType.IntType }, navArgument("socialStyle") { type = NavType.StringType })) { entry ->
             val viewModel: SocialCardViewModel = hiltViewModel()
             val content by viewModel.content.collectAsStateWithLifecycle()
+            val choice by viewModel.choice.collectAsStateWithLifecycle()
             val selectedStyle = CommunicationStyle.fromCode(entry.arguments?.getString("socialStyle"))
-            SocialTrainingCardScreen(content, selectedStyle, onRecord = { contentId, style ->
+            SocialTrainingCardScreen(content, choice, selectedStyle, onRecord = { contentId, style ->
                 content?.let { current -> navController.navigate("socialRecording/${((current.id - 2001) % 18) + 1}/$contentId/${style.code}") }
             }, onBack = navController::navigateUp)
         }

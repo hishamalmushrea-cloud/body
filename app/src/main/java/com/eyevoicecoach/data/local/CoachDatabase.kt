@@ -174,7 +174,7 @@ interface ProgramProgressDao {
 }
 
 /** Private Room database; no user data is exported or backed up. */
-@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class, SocialTrainingContentEntity::class, SocialTrainingPhraseEntity::class, SocialSessionEntity::class, SocialSelfAssessmentEntity::class], version = 3, exportSchema = true)
+@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class, SocialTrainingContentEntity::class, SocialTrainingPhraseEntity::class, SocialSessionEntity::class, SocialSelfAssessmentEntity::class], version = 4, exportSchema = true)
 abstract class CoachDatabase : RoomDatabase() {
     /** Provides exercise data access. */
     abstract fun tipDao(): TipDao
@@ -218,6 +218,13 @@ object CoachDatabaseMigrations {
             database.execSQL("CREATE INDEX IF NOT EXISTS index_social_sessions_scenario_type ON social_sessions(scenario_type)")
             database.execSQL("CREATE TABLE IF NOT EXISTS social_self_assessments (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, session_id INTEGER NOT NULL, clarity_score INTEGER NOT NULL, confidence_score INTEGER NOT NULL, respect_score INTEGER NOT NULL, listening_score INTEGER NOT NULL, calmness_score INTEGER NOT NULL, notes TEXT NOT NULL, created_at INTEGER NOT NULL, FOREIGN KEY(session_id) REFERENCES social_sessions(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
             database.execSQL("CREATE INDEX IF NOT EXISTS index_social_self_assessments_session_id ON social_self_assessments(session_id)")
+        }
+    }
+
+    /** Adds explicit فن التعامل tracks without touching retained social sessions. */
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE social_training_content ADD COLUMN social_track TEXT NOT NULL DEFAULT 'social_basics'")
         }
     }
 }

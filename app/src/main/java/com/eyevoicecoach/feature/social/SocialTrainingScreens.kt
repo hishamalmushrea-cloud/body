@@ -38,6 +38,8 @@ import com.eyevoicecoach.domain.model.CommunicationStyle
 import com.eyevoicecoach.domain.model.DailyCommunicationBoost
 import com.eyevoicecoach.domain.model.PhraseType
 import com.eyevoicecoach.domain.model.SocialProgressStats
+import com.eyevoicecoach.domain.model.SocialChoiceExercise
+import com.eyevoicecoach.domain.social.SocialSkillTracks
 import com.eyevoicecoach.domain.model.SocialTrainingContent
 import com.eyevoicecoach.domain.model.UserSettings
 
@@ -54,6 +56,8 @@ private val scenarioOptions = listOf(
     "اعتراض عميل" to "sales_objection",
     "حوار قيادي" to "leadership_conversation",
 )
+
+private val trackOptions = listOf("الكل" to null) + SocialSkillTracks.all.map { it.title to it.id }
 
 private val goalOptions = listOf(
     "الكل" to null,
@@ -75,6 +79,7 @@ fun SocialTrainingScreen(
     onScenario: (String?) -> Unit,
     onGoal: (String?) -> Unit,
     onStyle: (CommunicationStyle?) -> Unit,
+    onTrack: (String?) -> Unit,
     onRefreshBoost: () -> Unit,
     onAcknowledgeEthics: () -> Unit,
     onOpenCard: (Int, CommunicationStyle?) -> Unit,
@@ -83,16 +88,18 @@ fun SocialTrainingScreen(
 ) {
     var selectedScenario by rememberSaveable { mutableStateOf<String?>(null) }
     var selectedGoal by rememberSaveable { mutableStateOf<String?>(null) }
+    var selectedTrack by rememberSaveable { mutableStateOf<String?>(null) }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(13.dp)) {
         item {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onBack) { Icon(Icons.Rounded.ArrowBack, "رجوع") }
                 Column(Modifier.weight(1f)) {
-                    Text("التواصل المؤثر", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-                    Text("تدرّب على الحديث بثقة، الإصغاء بذكاء، والإقناع باحترام.", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("فن التعامل", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
+                    Text("تدريبات يومية لتفهم الناس، تكسب الود، تحفظ احترامك، وتتصرف بذكاء في المواقف الاجتماعية.", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
         }
+        item { CoachCard { Text("كن لطيفًا بلا ضعف، وواثقًا بلا غرور، واجتماعيًا بلا تصنّع.", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold) } }
         item {
             CoachCard {
                 Text("دفعة اليوم", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
@@ -100,6 +107,7 @@ fun SocialTrainingScreen(
                 OutlinedButton(onClick = onRefreshBoost, modifier = Modifier.fillMaxWidth().padding(top = 11.dp)) { Text("دفعة أخرى") }
             }
         }
+        item { FilterSection("مسار فن التعامل", trackOptions, selectedTrack, onSelect = { selectedTrack = it; onTrack(it) }) }
         item { FilterSection("اختر الموقف", scenarioOptions, selectedScenario, onSelect = { selectedScenario = it; onScenario(it) }) }
         item { FilterSection("اختر الهدف", goalOptions, selectedGoal, onSelect = { selectedGoal = it; onGoal(it) }) }
         item {
@@ -124,7 +132,7 @@ fun SocialTrainingScreen(
                 Column(Modifier.padding(16.dp)) {
                     Text(card.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                     Text(card.tipText, modifier = Modifier.padding(top = 6.dp), maxLines = 2, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text("${card.durationMinutes.toString().toEasternDigits()} دقائق · ${moduleLabel(card.moduleCategory)}", modifier = Modifier.padding(top = 8.dp), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+                    Text("${card.durationMinutes.toString().toEasternDigits()} دقائق · ${SocialSkillTracks.title(card.socialTrack)}", modifier = Modifier.padding(top = 8.dp), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                 }
             }
         }
@@ -136,7 +144,7 @@ fun SocialTrainingScreen(
 
 /** Full interactive ethical role-play card. */
 @Composable
-fun SocialTrainingCardScreen(content: SocialTrainingContent?, selectedStyle: CommunicationStyle, onRecord: (Int, CommunicationStyle) -> Unit, onBack: () -> Unit) {
+fun SocialTrainingCardScreen(content: SocialTrainingContent?, choice: SocialChoiceExercise?, selectedStyle: CommunicationStyle, onRecord: (Int, CommunicationStyle) -> Unit, onBack: () -> Unit) {
     if (content == null) {
         EmptyState("⌛", "جارٍ تجهيز البطاقة", "لحظة واحدة من فضلك.", Modifier.fillMaxSize())
         return
@@ -145,7 +153,7 @@ fun SocialTrainingCardScreen(content: SocialTrainingContent?, selectedStyle: Com
         item {
             IconButton(onClick = onBack) { Icon(Icons.Rounded.ArrowBack, "رجوع") }
             Text(content.title, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-            Text("${moduleLabel(content.moduleCategory)} · ${scenarioLabel(content.scenarioType)}", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.primary)
+            Text("${SocialSkillTracks.title(content.socialTrack)} · ${scenarioLabel(content.scenarioType)}", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.primary)
         }
         item { SocialCardSection("الموقف والهدف", content.tipText) }
         item { SocialCardSection("مثال عملي", content.practicalExample) }
@@ -158,6 +166,7 @@ fun SocialTrainingCardScreen(content: SocialTrainingContent?, selectedStyle: Com
             val phrases = content.phrases.filter { it.type == type }
             if (phrases.isNotEmpty()) item { SocialCardSection(type.label, phrases.joinToString("\n") { "• ${it.text}" }) }
         }
+        choice?.let { exercise -> item { SocialChoiceCard(exercise) } }
         item { SocialCardSection("تحدي التسجيل", content.roleplayPrompt) }
         item { Button(onClick = { onRecord(content.id, selectedStyle) }, modifier = Modifier.fillMaxWidth()) { Text("سجّل محاكاتك ثم قيّمها") } }
     }
@@ -210,6 +219,25 @@ fun SocialStatisticsScreen(stats: SocialProgressStats, onBack: () -> Unit) {
         item { SocialCardSection("تدريب التعامل مع الرفض", stats.rejectionPracticeCount.toString().toEasternDigits()) }
         item { SocialCardSection("الأسلوب المختار غالباً", stats.mostSelectedStyle?.label ?: "غير محدد") }
         item { SocialCardSection("سلسلة التدريب الاجتماعي", "${stats.currentStreak.toString().toEasternDigits()} أيام") }
+    }
+}
+
+/** Lets the user compare respectful responses before recording the role-play. */
+@Composable
+private fun SocialChoiceCard(choice: SocialChoiceExercise) {
+    var selectedIndex by rememberSaveable(choice.id) { mutableStateOf<Int?>(null) }
+    CoachCard {
+        Text("اختيار تفاعلي", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+        Text(choice.prompt, modifier = Modifier.padding(top = 7.dp))
+        Column(Modifier.padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            choice.options.forEachIndexed { index, option ->
+                OutlinedButton(onClick = { selectedIndex = index }, modifier = Modifier.fillMaxWidth()) { Text(option) }
+            }
+        }
+        selectedIndex?.let { index ->
+            val result = if (index == choice.preferredIndex) "اختيار متزن ومحترم. ${choice.explanation}" else "هذا الخيار قد لا يحافظ على الهدوء أو الحدود. ${choice.explanation}"
+            Text(result, modifier = Modifier.padding(top = 10.dp), color = if (index == choice.preferredIndex) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error)
+        }
     }
 }
 

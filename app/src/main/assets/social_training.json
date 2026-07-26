@@ -1,5 +1,5 @@
 {
-  "version_code": 1,
+  "version_code": 2,
   "content": [
     {
       "id": 2001,
@@ -41,7 +41,8 @@
           "type": "closing",
           "text": "أتمنى لك يوماً طيباً."
         }
-      ]
+      ],
+      "social_track": "social_basics"
     },
     {
       "id": 2002,
@@ -83,7 +84,8 @@
           "type": "closing",
           "text": "خذوا الوقت المناسب للتفكير، وأنا متاح لأي توضيح."
         }
-      ]
+      ],
+      "social_track": "understanding_needs"
     },
     {
       "id": 2003,
@@ -125,7 +127,8 @@
           "type": "closing",
           "text": "هل ترغب في مراجعة نقطة محددة قبل المتابعة؟"
         }
-      ]
+      ],
+      "social_track": "respect"
     },
     {
       "id": 2004,
@@ -163,7 +166,8 @@
           "type": "closing",
           "text": "شكراً على الحديث، أتمنى لك فعالية مفيدة."
         }
-      ]
+      ],
+      "social_track": "social_basics"
     },
     {
       "id": 2005,
@@ -201,7 +205,8 @@
           "type": "closing",
           "text": "شكراً للتوضيح، سأبني اقتراحي على ما ذكرت."
         }
-      ]
+      ],
+      "social_track": "understanding_needs"
     },
     {
       "id": 2006,
@@ -239,7 +244,8 @@
           "type": "closing",
           "text": "أتمنى لك وقتاً طيباً."
         }
-      ]
+      ],
+      "social_track": "boundaries"
     },
     {
       "id": 2007,
@@ -277,7 +283,8 @@
           "type": "closing",
           "text": "خذوا الوقت الذي تحتاجونه لاتخاذ القرار."
         }
-      ]
+      ],
+      "social_track": "rejection"
     },
     {
       "id": 2008,
@@ -315,7 +322,8 @@
           "type": "closing",
           "text": "يمكننا العودة للنقاش عندما نكون أكثر هدوءاً."
         }
-      ]
+      ],
+      "social_track": "anger"
     },
     {
       "id": 2009,
@@ -353,7 +361,8 @@
           "type": "closing",
           "text": "إذا لم يناسب أي خيار، يمكننا تأجيل القرار."
         }
-      ]
+      ],
+      "social_track": "respect"
     },
     {
       "id": 2010,
@@ -391,7 +400,8 @@
           "type": "closing",
           "text": "أقدّر استعدادك لتجربة خطوة مختلفة."
         }
-      ]
+      ],
+      "social_track": "respect"
     },
     {
       "id": 2011,
@@ -429,7 +439,8 @@
           "type": "closing",
           "text": "سعدت بالحديث معك."
         }
-      ]
+      ],
+      "social_track": "social_basics"
     },
     {
       "id": 2012,
@@ -467,7 +478,8 @@
           "type": "closing",
           "text": "شكراً لمشاركتك، استمتع ببقية المناسبة."
         }
-      ]
+      ],
+      "social_track": "rapport"
     },
     {
       "id": 2013,
@@ -505,7 +517,8 @@
           "type": "closing",
           "text": "شكراً للتوضيح، سألخص الخطوة التالية."
         }
-      ]
+      ],
+      "social_track": "respect"
     },
     {
       "id": 2014,
@@ -543,7 +556,8 @@
           "type": "closing",
           "text": "هل تحتاج نقطة إضافية قبل الاختيار؟"
         }
-      ]
+      ],
+      "social_track": "respect"
     },
     {
       "id": 2015,
@@ -581,7 +595,8 @@
           "type": "closing",
           "text": "يمكننا تحويل الفكرة إلى خطوة واضحة."
         }
-      ]
+      ],
+      "social_track": "rapport"
     },
     {
       "id": 2016,
@@ -619,7 +634,8 @@
           "type": "closing",
           "text": "خذ الوقت المناسب قبل القرار."
         }
-      ]
+      ],
+      "social_track": "understanding_needs"
     },
     {
       "id": 2017,
@@ -657,7 +673,8 @@
           "type": "closing",
           "text": "أشكرك على توضيح وجهة نظرك."
         }
-      ]
+      ],
+      "social_track": "social_basics"
     },
     {
       "id": 2018,
@@ -695,7 +712,8 @@
           "type": "closing",
           "text": "أشكرك على السؤال الدقيق."
         }
-      ]
+      ],
+      "social_track": "rejection"
     },
     {
       "id": 2019,
@@ -733,7 +751,8 @@
           "type": "closing",
           "text": "أتمنى لك يوماً طيباً."
         }
-      ]
+      ],
+      "social_track": "social_signals"
     },
     {
       "id": 2020,
@@ -770,6 +789,787 @@
         {
           "type": "closing",
           "text": "إذا لم يكن مناسباً، فاحترام قراركم مهم."
+        }
+      ],
+      "social_track": "understanding_needs"
+    },
+    {
+      "id": 2021,
+      "module_category": "respect",
+      "social_track": "elders",
+      "context": "مجلس",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "disagree_respectfully",
+      "title": "الاختلاف مع شخص أكبر منك بأدب",
+      "tip_text": "الاحترام لا يعني الخضوع، والثقة لا تعني قلة الأدب. استخدم لقباً مناسباً مثل أستاذ، عم، دكتور، شيخ أو أبو فلان حسب الموقف، ثم عبّر عن رأيك بعد أن ينهي الشخص كلامه.",
+      "practical_example": "قل: أحترم وجهة نظرك، وأرى أن هناك زاوية أخرى يمكن إضافتها.",
+      "boundary_rule": "استخدم لقباً مناسباً حسب الموقف، ولا ترفع صوتك لإثبات رأيك.",
+      "roleplay_prompt": "قل: أحترم رأيك، وأعتقد أن هناك جانباً آخر يمكن النظر إليه. هل تسمح لي أوضح فكرتي؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أحترم وجهة نظرك."
+        },
+        {
+          "type": "do_say",
+          "text": "هل تسمح لي أن أطرح زاوية أخرى؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت ما تفهم."
+        },
+        {
+          "type": "closing",
+          "text": "أقدّر استماعك لفكرتي."
+        }
+      ]
+    },
+    {
+      "id": 2022,
+      "module_category": "active_listening",
+      "social_track": "elders",
+      "context": "مجلس",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "ask_for_advice",
+      "title": "طلب نصيحة من شخص أكبر",
+      "tip_text": "اطلب النصيحة بسؤال محدد، ثم اشكر الشخص حتى لو لم تأخذ بكل الاقتراحات.",
+      "practical_example": "قل: بحكم خبرتك، ما النصيحة التي تراها أهم خطوة الآن؟",
+      "boundary_rule": "لا تستخدم الاحترام كوسيلة للحصول على موافقة أو خدمة.",
+      "roleplay_prompt": "قل: بحكم خبرتك، ما النصيحة التي تراها أهم خطوة الآن؟ ثم استمع حتى ينتهي.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "بحكم خبرتك، ما النصيحة التي تراها؟"
+        },
+        {
+          "type": "do_say",
+          "text": "أقدّر وقتك وخبرتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "قل لي ماذا أفعل فوراً."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لك، سأفكر في هذه النقطة بجدية."
+        }
+      ]
+    },
+    {
+      "id": 2023,
+      "module_category": "rapport",
+      "social_track": "rapport",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "build_warm_connection",
+      "title": "مجاملة محددة وصادقة",
+      "tip_text": "الود الطبيعي يأتي من ملاحظة إيجابية حقيقية ومحددة، لا من مدح عام متكرر.",
+      "practical_example": "قل: أعجبني هدوؤك في طريقة شرحك للموضوع.",
+      "boundary_rule": "لا تبالغ في المجاملة ولا تجعلها مقابلاً لطلب أو توقع.",
+      "roleplay_prompt": "قل: أعجبني هدوؤك في طريقة شرحك للموضوع، فقد جعل الفكرة أوضح.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أعجبني هدوؤك في شرح الفكرة."
+        },
+        {
+          "type": "do_say",
+          "text": "هذه ملاحظة محددة وصادقة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت رائع جداً جداً جداً."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لأنك شاركت الفكرة بهذا الوضوح."
+        }
+      ]
+    },
+    {
+      "id": 2024,
+      "module_category": "boundaries",
+      "social_track": "respect",
+      "context": "عام",
+      "scenario_type": "team_meeting",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "say_no_respectfully",
+      "title": "قول لا باحترام",
+      "tip_text": "الوضوح المهذب يحفظ وقتك ووقت الآخرين. لا تبرر أكثر من اللازم ولا تعد بما لا تستطيع إنجازه.",
+      "practical_example": "قل: أقدّر طلبك، لكن لا أستطيع الالتزام به حالياً. يمكنني مساعدتك بطريقة أخرى.",
+      "boundary_rule": "من حق الطرف الآخر الرفض أيضاً، ولا يلزمك تقديم بديل إذا لم يكن مناسباً.",
+      "roleplay_prompt": "قل: أقدّر طلبك، لكن لا أستطيع الالتزام به حالياً. أتمنى أن أساعدك بطريقة أخرى.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أقدّر طلبك."
+        },
+        {
+          "type": "do_say",
+          "text": "لا أستطيع الالتزام به حالياً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا، ما أقدر وبس."
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى أن أساعدك في وقت آخر مناسب."
+        }
+      ]
+    },
+    {
+      "id": 2025,
+      "module_category": "active_listening",
+      "social_track": "understanding_needs",
+      "context": "صديق",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "understand_need",
+      "title": "هل يريد الشخص حلاً أم إصغاء؟",
+      "tip_text": "لا تفترض أن كل شكوى تحتاج إلى حل. اسأل الشخص إن كان يريد من يسمعه أم يفكر معك في خطوة عملية.",
+      "practical_example": "عندما يقول شخص إن يومه كان صعباً، قل: تحب أسمعك فقط أم تحب نفكر في حل؟",
+      "boundary_rule": "احترم اختياره، ولا تحوّل الحديث إلى نصائح رغم عدم طلبها.",
+      "roleplay_prompt": "قل: يبدو أن اليوم كان صعباً عليك. تحب أسمعك فقط أم تحب نفكر في حل؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يبدو أن اليوم كان صعباً عليك."
+        },
+        {
+          "type": "do_say",
+          "text": "تحب أسمعك أم نفكر في حل؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت غلطان لأنك فعلت كذا."
+        },
+        {
+          "type": "closing",
+          "text": "أنا موجود بالطريقة التي تناسبك."
+        }
+      ]
+    },
+    {
+      "id": 2026,
+      "module_category": "active_listening",
+      "social_track": "understanding_needs",
+      "context": "صديق",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "show_empathy",
+      "title": "تعاطف قبل النصيحة",
+      "tip_text": "سمِّ الشعور الذي ظهر في الكلام من دون ادعاء معرفة ما في قلب الشخص، ثم أعطه مساحة للتوضيح.",
+      "practical_example": "قل: واضح أن الموضوع ضاغط عليك. هل تحب أن تحكي أكثر؟",
+      "boundary_rule": "لا تقلل من التجربة بعبارة أن الموضوع بسيط.",
+      "roleplay_prompt": "قل: واضح أن الموضوع ضاغط عليك. هل تحب أن تحكي أكثر؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "واضح أن الموضوع ضاغط عليك."
+        },
+        {
+          "type": "do_say",
+          "text": "هل تحب أن تحكي أكثر؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا تهتم، الموضوع بسيط."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لأنك شاركتني هذا."
+        }
+      ]
+    },
+    {
+      "id": 2027,
+      "module_category": "boundaries",
+      "social_track": "social_signals",
+      "context": "عام",
+      "scenario_type": "public_micro_interaction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "notice_interest",
+      "title": "ملاحظة إشارات الاهتمام بهدوء",
+      "tip_text": "الاهتمام يظهر غالباً في الأسئلة والمتابعة والراحة، لكنه ليس ضماناً. استخدمه فقط لتحديد ما إذا كان استمرار الحديث مناسباً.",
+      "practical_example": "إذا طرح الشخص سؤالاً تابعياً، أجب باختصار ثم اسأله سؤالاً مناسباً.",
+      "boundary_rule": "لا تفسر إشارة واحدة على أنها موافقة أو اهتمام مؤكد.",
+      "roleplay_prompt": "قل: يسعدني أن نكمل الحديث إن كان الوقت مناسباً لك.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "هل الوقت مناسب للمتابعة؟"
+        },
+        {
+          "type": "do_say",
+          "text": "أقدّر اهتمامك بالسؤال."
+        },
+        {
+          "type": "avoid_say",
+          "text": "واضح أنك مهتم بي جداً."
+        },
+        {
+          "type": "closing",
+          "text": "يمكننا إنهاء الحديث هنا إن كان لديك ارتباط."
+        }
+      ]
+    },
+    {
+      "id": 2028,
+      "module_category": "boundaries",
+      "social_track": "social_signals",
+      "context": "عام",
+      "scenario_type": "public_micro_interaction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "notice_discomfort",
+      "title": "الانسحاب عند عدم الراحة",
+      "tip_text": "الإجابات القصيرة والنظر المتكرر للساعة أو الهاتف قد تعني أن الوقت غير مناسب. الأفضل إنهاء الحديث بأدب من دون طلب تفسير.",
+      "practical_example": "قل: يبدو أن الوقت غير مناسب الآن، سعدت بالحديث معك.",
+      "boundary_rule": "لا تحاول إطالة الحديث بعد إشارة عدم الاهتمام.",
+      "roleplay_prompt": "قل: يبدو أن الوقت غير مناسب الآن، سعدت بالحديث معك.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يبدو أن الوقت غير مناسب الآن."
+        },
+        {
+          "type": "do_say",
+          "text": "سعدت بالحديث معك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لماذا لا تريد أن تكمل؟"
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك وقتاً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2029,
+      "module_category": "conflict_deescalation",
+      "social_track": "anger",
+      "context": "خلاف",
+      "scenario_type": "conflict_resolution",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "deescalate_anger",
+      "title": "التعامل مع شخص غاضب",
+      "tip_text": "خفف السرعة والصوت، واستمع في البداية. اعترف بأن الموقف مزعج من دون تحمل خطأ لم تفعله.",
+      "practical_example": "قل: أفهم أن الموضوع أزعجك. دعنا نحدد ما الذي حدث ونرى كيف نصلحه.",
+      "boundary_rule": "إذا أصبح الحديث مسيئاً أو غير آمن، ضع حداً واطلب تأجيله.",
+      "roleplay_prompt": "قل: أفهم أن الموضوع أزعجك. ما الذي يمكن أن يخفف المشكلة الآن؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أفهم أن الموضوع أزعجك."
+        },
+        {
+          "type": "do_say",
+          "text": "ما الذي يمكن أن يخفف المشكلة الآن؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت مكبر الموضوع."
+        },
+        {
+          "type": "closing",
+          "text": "يمكننا إكمال الحديث عندما يكون الأسلوب أكثر هدوءاً."
+        }
+      ]
+    },
+    {
+      "id": 2030,
+      "module_category": "boundaries",
+      "social_track": "anger",
+      "context": "خلاف",
+      "scenario_type": "conflict_resolution",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "set_boundary_under_provocation",
+      "title": "وضع حد لشخص مستفز",
+      "tip_text": "لا تنافس الاستفزاز بسخرية أو هجوم. استخدم جملة حدود قصيرة ثم اقترح تأجيل الحديث إن لزم.",
+      "practical_example": "قل: أفضل أن يكون الحوار باحترام حتى نصل إلى نتيجة.",
+      "boundary_rule": "الهدوء ليس قبولاً بالإساءة، ومن حقك إنهاء الحوار عند تجاوز الحدود.",
+      "roleplay_prompt": "قل: أفهم وجهة نظرك، لكن أفضل أن يكون الحوار باحترام. إذا استمر الأسلوب هكذا، نكمل لاحقاً.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أفضل أن يكون الحوار باحترام."
+        },
+        {
+          "type": "do_say",
+          "text": "يمكننا إكماله لاحقاً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأثبت لك أني أفضل منك."
+        },
+        {
+          "type": "closing",
+          "text": "سأعود للحوار عندما يكون مناسباً للجميع."
+        }
+      ]
+    },
+    {
+      "id": 2031,
+      "module_category": "social_opening",
+      "social_track": "council_etiquette",
+      "context": "مجلس",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "enter_council",
+      "title": "الدخول إلى مجلس أو لقاء",
+      "tip_text": "ادخل بهدوء، ابدأ بالسلام، واجلس في مكان مناسب، ثم استمع قبل أن تشارك بجملة مرتبطة بالموضوع.",
+      "practical_example": "قل: السلام عليكم، كيف حالكم؟ سعيد بلقائكم.",
+      "boundary_rule": "لا تسيطر على الحديث ولا تغيّر الموضوع فجأة.",
+      "roleplay_prompt": "قل: السلام عليكم، كيف حالكم؟ سعيد بلقائكم. ثم استمع قبل أن تدخل في الحديث.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "السلام عليكم، كيف حالكم؟"
+        },
+        {
+          "type": "do_say",
+          "text": "سعيد بلقائكم."
+        },
+        {
+          "type": "avoid_say",
+          "text": "دعوني أخبركم عني أولاً."
+        },
+        {
+          "type": "closing",
+          "text": "أستأذنكم بالمشاركة في هذه النقطة."
+        }
+      ]
+    },
+    {
+      "id": 2032,
+      "module_category": "boundaries",
+      "social_track": "council_etiquette",
+      "context": "مجلس",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "leave_council_politely",
+      "title": "الخروج من المجلس بأدب",
+      "tip_text": "عند الحاجة للخروج، استأذن بوضوح واشكر الموجودين من دون افتعال أعذار طويلة.",
+      "practical_example": "قل: أستأذنكم، سعدت بالجلوس معكم.",
+      "boundary_rule": "لا تخرج فجأة أثناء حديث شخص إلا لضرورة، ولا تقاطع لتعلن خروجك.",
+      "roleplay_prompt": "قل: أستأذنكم، سعدت بالجلوس معكم، وأتمنى لكم وقتاً طيباً.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أستأذنكم."
+        },
+        {
+          "type": "do_say",
+          "text": "سعدت بالجلوس معكم."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنا ذاهب لأن الحديث ممل."
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لكم وقتاً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2033,
+      "module_category": "boundaries",
+      "social_track": "boundaries",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "avoid_overattachment",
+      "title": "بناء علاقة دون تعلق زائد",
+      "tip_text": "كن لطيفاً من دون متابعة مفرطة أو طلب اهتمام. اترك مساحة متوازنة وتقبل أن بعض العلاقات لا تستمر.",
+      "practical_example": "أرسل رسالة واضحة مرة واحدة، ثم انتظر الرد من دون تكرار.",
+      "boundary_rule": "لا تحوّل اللطف إلى التزام، ولا تتجاوز صمت الطرف الآخر.",
+      "roleplay_prompt": "قل: يسعدني أن نتواصل عندما يكون الوقت مناسباً لك.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يسعدني أن نتواصل عندما يكون الوقت مناسباً لك."
+        },
+        {
+          "type": "do_say",
+          "text": "خذ وقتك في الرد."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأرسل رسائل كثيرة حتى ترد."
+        },
+        {
+          "type": "closing",
+          "text": "أحترم وقتك ومساحتك."
+        }
+      ]
+    },
+    {
+      "id": 2034,
+      "module_category": "rapport",
+      "social_track": "rapport",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "be_liked_authentically",
+      "title": "الود من دون فقدان الشخصية",
+      "tip_text": "لا توافق على كل شيء لتحصل على قبول. عبّر عن اختلافك بلطف وابقَ صادقاً مع حدودك وقيمك.",
+      "practical_example": "قل: أفهم فكرتك، وأنا أميل إلى خيار مختلف للأسباب التالية.",
+      "boundary_rule": "لا تتصنع شخصية ليست شخصيتك أو تبالغ في المزاح للحصول على الانتباه.",
+      "roleplay_prompt": "قل: أفهم فكرتك، وأنا أميل إلى خيار مختلف. يسعدني أن نبحث عن نقطة مشتركة.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أفهم فكرتك."
+        },
+        {
+          "type": "do_say",
+          "text": "أميل إلى خيار مختلف."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأوافق على أي شيء كي تحبني."
+        },
+        {
+          "type": "closing",
+          "text": "يسعدني أن نبحث عن نقطة مشتركة."
+        }
+      ]
+    },
+    {
+      "id": 2035,
+      "module_category": "social_opening",
+      "social_track": "social_basics",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "handle_silence",
+      "title": "التعامل مع الصمت",
+      "tip_text": "الصمت القصير طبيعي ولا يحتاج إلى ملئه فوراً. خذ نفساً ثم اسأل سؤالاً مرتبطاً بالسياق أو اسمح للحوار أن ينتهي بلطف.",
+      "practical_example": "قل: كيف تعرفت على أصحاب المناسبة؟",
+      "boundary_rule": "لا تحوّل القلق من الصمت إلى كلام سريع أو أسئلة متلاحقة.",
+      "roleplay_prompt": "قل: كيف تعرفت على أصحاب المناسبة؟ ثم استمع للإجابة بهدوء.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "كيف تعرفت على أصحاب المناسبة؟"
+        },
+        {
+          "type": "do_say",
+          "text": "ما أكثر شيء أعجبك هنا؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لماذا أنت ساكت؟"
+        },
+        {
+          "type": "closing",
+          "text": "لا بأس، استمتعت بالهدوء أيضاً."
+        }
+      ]
+    },
+    {
+      "id": 2036,
+      "module_category": "social_opening",
+      "social_track": "social_basics",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "join_group",
+      "title": "الدخول إلى مجموعة تتحدث",
+      "tip_text": "اقترب بعد وجود مساحة مناسبة، استمع إلى موضوعهم أولاً، ثم شارك بإضافة قصيرة مرتبطة بما قيل.",
+      "practical_example": "قل: سمعت حديثكم عن الفكرة، وأعجبني جانب كذا.",
+      "boundary_rule": "إذا لم يفتح أحد مجالاً للمشاركة، لا تفرض نفسك على المجموعة.",
+      "roleplay_prompt": "قل: إن كان مناسباً، أود أن أضيف نقطة قصيرة مرتبطة بالموضوع.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "إن كان مناسباً، أود أن أضيف نقطة قصيرة."
+        },
+        {
+          "type": "do_say",
+          "text": "أعجبني الجانب الذي ذكرتموه."
+        },
+        {
+          "type": "avoid_say",
+          "text": "توقفوا، عندي موضوع أهم."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لإتاحة المجال."
+        }
+      ]
+    },
+    {
+      "id": 2037,
+      "module_category": "conflict_deescalation",
+      "social_track": "rejection",
+      "context": "صديق",
+      "scenario_type": "conflict_resolution",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "handle_rejection",
+      "title": "التعامل مع رفض أو اعتذار",
+      "tip_text": "استقبل الرفض بهدوء ولا تحول الأمر إلى نقاش لإقناع الشخص بتبرير قراره.",
+      "practical_example": "قل: أتفهم أن الوقت غير مناسب الآن. شكراً لصراحتك.",
+      "boundary_rule": "الرفض لا يحدد قيمتك، واحترامه يحافظ على كرامة الجميع.",
+      "roleplay_prompt": "قل: أتفهم أن الوقت غير مناسب الآن. شكراً لصراحتك، وأتمنى لك يوماً طيباً.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أتفهم أن الوقت غير مناسب الآن."
+        },
+        {
+          "type": "do_say",
+          "text": "شكراً لصراحتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا بد أن تعطيني سبباً."
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك يوماً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2038,
+      "module_category": "leadership_conversation",
+      "social_track": "respect",
+      "context": "عمل",
+      "scenario_type": "leadership_conversation",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "receive_manager_feedback",
+      "title": "تلقي ملاحظة من المدير",
+      "tip_text": "استمع للملاحظة حتى النهاية، اطلب مثالاً واضحاً، ثم اتفق على خطوة قابلة للقياس بدلاً من الدفاع السريع.",
+      "practical_example": "قل: أشكرك على الملاحظة. هل يمكن أن نحدد مثالاً وخطوة عملية للتحسين؟",
+      "boundary_rule": "احترام المنصب لا يعني قبول كلام غير واضح؛ اطلب التوضيح بهدوء.",
+      "roleplay_prompt": "قل: أشكرك على الملاحظة. هل يمكن أن نحدد مثالاً وخطوة عملية للتحسين؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أشكرك على الملاحظة."
+        },
+        {
+          "type": "do_say",
+          "text": "هل يمكن أن نحدد خطوة عملية؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "هذا غير عادل وأنت لا تفهم."
+        },
+        {
+          "type": "closing",
+          "text": "سأعود إليك بخطة واضحة للتحسين."
+        }
+      ]
+    },
+    {
+      "id": 2039,
+      "module_category": "objection_handling",
+      "social_track": "rejection",
+      "context": "زبون",
+      "scenario_type": "sales_objection",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "respect_client_no",
+      "title": "احترام رفض العميل",
+      "tip_text": "عند رفض العرض، اشكر وضوح العميل، واسأل سؤالاً واحداً فقط إن كان مناسباً للتعلم، ثم أنهِ الحديث بلا إلحاح.",
+      "practical_example": "قل: أشكرك على وضوحك. هل هناك سبب محدد يساعدنا على تحسين العرض مستقبلاً؟",
+      "boundary_rule": "لا تكرر الطلب ولا تجعل العميل يشعر بالذنب بسبب الرفض.",
+      "roleplay_prompt": "قل: أشكرك على وضوحك. إن لم يكن مناسباً الآن فأحترم قراركم تماماً.",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أشكر لكم وضوح القرار."
+        },
+        {
+          "type": "do_say",
+          "text": "أحترم قراركم تماماً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "ستندمون إذا لم توافقوا."
+        },
+        {
+          "type": "closing",
+          "text": "يسعدني أن نلتقي مستقبلاً إن تغير الاحتياج."
+        }
+      ]
+    },
+    {
+      "id": 2040,
+      "module_category": "negotiation",
+      "social_track": "respect",
+      "context": "عمل",
+      "scenario_type": "team_meeting",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "respect_time",
+      "title": "احترام وقت الآخرين",
+      "tip_text": "ابدأ بوضوح، التزم بالوقت المتفق عليه، واطلب الإذن قبل إضافة موضوع جديد أو إطالة اجتماع.",
+      "practical_example": "قل: بقيت لدينا دقيقتان، هل نلخص القرار أم نحدد وقتاً آخر؟",
+      "boundary_rule": "احترام الوقت جزء من الاحترام العملي، وليس مجرد مجاملة.",
+      "roleplay_prompt": "قل: بقيت لدينا دقيقتان، هل نلخص القرار أم نحدد وقتاً آخر؟",
+      "eye_contact_tip": "تواصل بصري هادئ وقصير، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واجعل حركة اليدين بسيطة وغير حادة.",
+      "voice_tip": "استخدم نبرة واضحة وسرعة متوسطة، وخفف الصوت بدلاً من رفعه عند التوتر.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "بقيت لدينا دقيقتان."
+        },
+        {
+          "type": "do_say",
+          "text": "هل نلخص القرار أم نحدد وقتاً آخر؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأكمل مهما تأخرنا."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لاحترامكم للوقت المتفق عليه."
         }
       ]
     }

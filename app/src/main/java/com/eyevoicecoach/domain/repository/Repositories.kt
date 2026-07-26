@@ -12,6 +12,7 @@ import com.eyevoicecoach.domain.model.SocialSelfAssessment
 import com.eyevoicecoach.domain.model.SocialSession
 import com.eyevoicecoach.domain.model.SocialTrainingContent
 import com.eyevoicecoach.domain.model.CommunicationStyle
+import com.eyevoicecoach.domain.model.SocialChoiceExercise
 import kotlinx.coroutines.flow.Flow
 
 /** Contract for exercise content, history and favorites stored locally. */
@@ -104,7 +105,7 @@ interface SocialTrainingRepository {
     suspend fun seedSocialTrainingIfNeeded()
 
     /** Observes content that matches optional scenario, goal and communication style filters. */
-    fun observeContent(scenarioType: String? = null, goal: String? = null, style: CommunicationStyle? = null): Flow<List<SocialTrainingContent>>
+    fun observeContent(scenarioType: String? = null, goal: String? = null, style: CommunicationStyle? = null, track: String? = null): Flow<List<SocialTrainingContent>>
 
     /** Gets one complete card including its safe phrases. */
     suspend fun getContent(id: Int): SocialTrainingContent?
@@ -117,6 +118,12 @@ interface SocialTrainingRepository {
 
     /** Removes social session history and evaluations while retaining bundled content. */
     suspend fun clearSocialTrainingData()
+}
+
+/** Contract for local interactive social choice exercises. */
+interface SocialChoiceRepository {
+    /** Returns the optional choice exercise paired with one social content card. */
+    suspend fun getChoice(contentId: Int): SocialChoiceExercise?
 }
 
 /** Contract for non-repeating daily communication cues. */

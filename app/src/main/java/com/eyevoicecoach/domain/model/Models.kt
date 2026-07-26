@@ -108,6 +108,7 @@ data class Achievement(
 data class SocialTrainingContent(
     val id: Int,
     val moduleCategory: String,
+    val socialTrack: String,
     val context: String,
     val scenarioType: String,
     val personalityStyle: CommunicationStyle?,
@@ -192,4 +193,17 @@ data class SocialProgressStats(
     val rejectionPracticeCount: Int = 0,
     val mostSelectedStyle: CommunicationStyle? = null,
     val currentStreak: Int = 0,
+)
+
+/** One practical path in the فن التعامل library. */
+data class SocialSkillTrack(val id: String, val title: String, val description: String)
+
+/** A short ethical choice exercise that explains why one response fits the situation best. */
+data class SocialChoiceExercise(
+    val id: String,
+    val contentId: Int,
+    val prompt: String,
+    val options: List<String>,
+    val preferredIndex: Int,
+    val explanation: String,
 )

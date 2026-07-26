@@ -54,7 +54,7 @@ private class FakeSocialRepository : SocialTrainingRepository {
     var savedAssessment: SocialSelfAssessment? = null
 
     override suspend fun seedSocialTrainingIfNeeded() = Unit
-    override fun observeContent(scenarioType: String?, goal: String?, style: CommunicationStyle?): Flow<List<SocialTrainingContent>> {
+    override fun observeContent(scenarioType: String?, goal: String?, style: CommunicationStyle?, track: String?): Flow<List<SocialTrainingContent>> {
         this.scenario = scenarioType
         this.goal = goal
         this.style = style
@@ -69,7 +69,7 @@ private class FakeSocialRepository : SocialTrainingRepository {
     override fun observeStats(): Flow<SocialProgressStats> = MutableStateFlow(SocialProgressStats())
     override suspend fun clearSocialTrainingData() = Unit
 
-    private fun sampleContent() = SocialTrainingContent(2001, "rapport", "عام", "networking", null, "beginner", 3, "build_professional_rapport", "عنوان", "نصيحة", "مثال", "قاعدة", "مطالبة", "عين", "جسد", "صوت", listOf(TrainingPhrase(PhraseType.OPENING, "مرحباً")))
+    private fun sampleContent() = SocialTrainingContent(2001, "rapport", "rapport", "عام", "networking", null, "beginner", 3, "build_professional_rapport", "عنوان", "نصيحة", "مثال", "قاعدة", "مطالبة", "عين", "جسد", "صوت", listOf(TrainingPhrase(PhraseType.OPENING, "مرحباً")))
 }
 
 private class FakeBoostRepository : DailyCommunicationBoostRepository {

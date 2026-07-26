@@ -54,6 +54,7 @@ class SocialTrainingRepositoryImpl @Inject constructor(
             contents += SocialTrainingContentEntity(
                 id = contentId,
                 moduleCategory = item.getString("module_category"),
+                socialTrack = item.getString("social_track"),
                 context = item.getString("context"),
                 scenarioType = item.getString("scenario_type"),
                 personalityStyle = item.optString("personality_style").ifBlank { null },
@@ -78,17 +79,19 @@ class SocialTrainingRepositoryImpl @Inject constructor(
         }
         database.withTransaction {
             social.insertContentIgnoringExisting(contents)
+            contents.forEach { content -> social.updateTrack(content.id, content.socialTrack) }
             social.insertPhrasesIgnoringExisting(phrases)
         }
         encryptedStore.putString(CONTENT_VERSION, version.toString())
     }
 
-    override fun observeContent(scenarioType: String?, goal: String?, style: CommunicationStyle?): Flow<List<SocialTrainingContent>> =
+    override fun observeContent(scenarioType: String?, goal: String?, style: CommunicationStyle?, track: String?): Flow<List<SocialTrainingContent>> =
         social.observeAllWithPhrases().map { rows ->
             rows.map(SocialContentWithPhrases::toDomain).filter { content ->
                 (scenarioType.isNullOrBlank() || scenarioType == "الكل" || content.scenarioType == scenarioType) &&
                     (goal.isNullOrBlank() || goal == "الكل" || content.communicationGoal == goal) &&
-                    (style == null || style == CommunicationStyle.UNKNOWN || content.personalityStyle == null || content.personalityStyle == style)
+                    (style == null || style == CommunicationStyle.UNKNOWN || content.personalityStyle == null || content.personalityStyle == style) &&
+                    (track.isNullOrBlank() || track == "الكل" || content.socialTrack == track)
             }
         }
 
@@ -132,6 +135,7 @@ class SocialTrainingRepositoryImpl @Inject constructor(
     private fun SocialContentWithPhrases.toDomain() = SocialTrainingContent(
         id = content.id,
         moduleCategory = content.moduleCategory,
+        socialTrack = content.socialTrack,
         context = content.context,
         scenarioType = content.scenarioType,
         personalityStyle = content.personalityStyle?.let(CommunicationStyle::fromCode),

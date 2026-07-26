@@ -34,6 +34,10 @@ interface SocialTrainingDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertContentIgnoringExisting(content: List<SocialTrainingContentEntity>)
 
+    /** Updates track labels without replacing content or deleting session history. */
+    @Query("UPDATE social_training_content SET social_track = :track WHERE id = :id")
+    suspend fun updateTrack(id: Int, track: String)
+
     /** Inserts phrases for newly bundled cards. */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertPhrasesIgnoringExisting(phrases: List<SocialTrainingPhraseEntity>)

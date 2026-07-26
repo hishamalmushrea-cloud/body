@@ -7,8 +7,10 @@ import com.eyevoicecoach.domain.model.CommunicationStyle
 import com.eyevoicecoach.domain.model.DailyCommunicationBoost
 import com.eyevoicecoach.domain.model.SocialProgressStats
 import com.eyevoicecoach.domain.model.SocialTrainingContent
+import com.eyevoicecoach.domain.model.SocialChoiceExercise
 import com.eyevoicecoach.domain.repository.SettingsRepository
 import com.eyevoicecoach.domain.repository.SocialTrainingRepository
+import com.eyevoicecoach.domain.repository.SocialChoiceRepository
 import com.eyevoicecoach.domain.social.GetDailyCommunicationBoostUseCase
 import com.eyevoicecoach.domain.social.GetScenarioTrainingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,15 +35,16 @@ class SocialTrainingViewModel @Inject constructor(
     private val scenarioType = MutableStateFlow<String?>(null)
     private val goal = MutableStateFlow<String?>(null)
     private val style = MutableStateFlow<CommunicationStyle?>(null)
+    private val track = MutableStateFlow<String?>(null)
     private val _boost = MutableStateFlow<DailyCommunicationBoost?>(null)
 
     /** Explicitly selected communication style, if any. */
     val selectedStyle: StateFlow<CommunicationStyle?> = style
 
     /** Cards matching the selected situation, goal and communication style. */
-    val content: StateFlow<List<SocialTrainingContent>> = combine(scenarioType, goal, style) { scenario, currentGoal, currentStyle ->
-        Triple(scenario, currentGoal, currentStyle)
-    }.flatMapLatest { (scenario, currentGoal, currentStyle) -> scenarios(scenario, currentGoal, currentStyle) }
+    val content: StateFlow<List<SocialTrainingContent>> = combine(scenarioType, goal, style, track) { scenario, currentGoal, currentStyle, currentTrack ->
+        SocialFilter(scenario, currentGoal, currentStyle, currentTrack)
+    }.flatMapLatest { filter -> scenarios(filter.scenario, filter.goal, filter.style, filter.track) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     /** Whether the user has acknowledged ethical, self-recording-only use. */
@@ -62,6 +65,9 @@ class SocialTrainingViewModel @Inject constructor(
     /** Applies an explicitly chosen communication style without diagnosing anyone. */
     fun selectStyle(value: CommunicationStyle?) { style.value = value }
 
+    /** Filters cards by one practical فن التعامل path. */
+    fun selectTrack(value: String?) { track.value = value }
+
     /** Records acknowledgement of the responsible social-training notice. */
     fun acknowledgeEthics() = viewModelScope.launch { settings.setSocialEthicsAcknowledged() }
 
@@ -69,16 +75,28 @@ class SocialTrainingViewModel @Inject constructor(
     fun refreshBoost() = viewModelScope.launch { _boost.value = getBoost() }
 }
 
+private data class SocialFilter(
+    val scenario: String?,
+    val goal: String?,
+    val style: CommunicationStyle?,
+    val track: String?,
+)
+
 /** Loads one complete social training card. */
 @HiltViewModel
 class SocialCardViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     socialTraining: SocialTrainingRepository,
+    choiceRepository: SocialChoiceRepository,
 ) : ViewModel() {
     private val id = checkNotNull(savedStateHandle.get<Int>("socialContentId"))
 
     /** Selected card, including safe phrases and role-play prompt. */
     val content: StateFlow<SocialTrainingContent?> = kotlinx.coroutines.flow.flow { emit(socialTraining.getContent(id)) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
+    /** Optional educational choice exercise for the selected social situation. */
+    val choice: StateFlow<SocialChoiceExercise?> = kotlinx.coroutines.flow.flow { emit(choiceRepository.getChoice(id)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 }
 

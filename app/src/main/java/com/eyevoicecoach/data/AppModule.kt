@@ -13,6 +13,7 @@ import com.eyevoicecoach.data.repository.SettingsRepositoryImpl
 import com.eyevoicecoach.data.repository.TipRepositoryImpl
 import com.eyevoicecoach.data.repository.SocialTrainingRepositoryImpl
 import com.eyevoicecoach.data.repository.DailyCommunicationBoostRepositoryImpl
+import com.eyevoicecoach.data.repository.SocialChoiceRepositoryImpl
 import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.AssessmentRepository
 import com.eyevoicecoach.domain.repository.ProgramProgressRepository
@@ -21,6 +22,7 @@ import com.eyevoicecoach.domain.repository.SettingsRepository
 import com.eyevoicecoach.domain.repository.TipRepository
 import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
+import com.eyevoicecoach.domain.repository.SocialChoiceRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -56,6 +58,9 @@ abstract class RepositoryModule {
 
     /** Binds the non-repeating daily communication boost repository. */
     @Binds @Singleton abstract fun bindDailyCommunicationBoostRepository(implementation: DailyCommunicationBoostRepositoryImpl): DailyCommunicationBoostRepository
+
+    /** Binds interactive ethical response-choice exercises. */
+    @Binds @Singleton abstract fun bindSocialChoiceRepository(implementation: SocialChoiceRepositoryImpl): SocialChoiceRepository
 }
 
 /** Hilt providers for application-scoped local storage. */
@@ -66,7 +71,7 @@ object StorageModule {
     @Provides @Singleton
     fun provideDatabase(@ApplicationContext context: Context): CoachDatabase =
         Room.databaseBuilder(context, CoachDatabase::class.java, "coach.db")
-            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2, CoachDatabaseMigrations.MIGRATION_2_3)
+            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2, CoachDatabaseMigrations.MIGRATION_2_3, CoachDatabaseMigrations.MIGRATION_3_4)
             .build()
 
     /** Creates the keystore-encrypted preferences store. */

@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.first
 /** Retrieves ethical scenario training cards for the chosen situation, goal and optional style. */
 class GetScenarioTrainingUseCase @Inject constructor(private val socialTraining: SocialTrainingRepository) {
     /** Streams appropriate training cards without inferring or diagnosing the other person. */
-    operator fun invoke(scenarioType: String?, goal: String?, style: CommunicationStyle?): Flow<List<SocialTrainingContent>> =
-        socialTraining.observeContent(scenarioType, goal, style)
+    operator fun invoke(scenarioType: String?, goal: String?, style: CommunicationStyle?, track: String? = null): Flow<List<SocialTrainingContent>> =
+        socialTraining.observeContent(scenarioType, goal, style, track)
 }
 
 /** Retrieves one non-repeating daily communication cue. */

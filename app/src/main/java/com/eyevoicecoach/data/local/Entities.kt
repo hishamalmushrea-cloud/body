@@ -97,6 +97,7 @@ data class SelfAssessmentEntity(
 data class SocialTrainingContentEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "module_category") val moduleCategory: String,
+    @ColumnInfo(name = "social_track", defaultValue = "'social_basics'") val socialTrack: String,
     val context: String,
     @ColumnInfo(name = "scenario_type") val scenarioType: String,
     @ColumnInfo(name = "personality_style") val personalityStyle: String?,
