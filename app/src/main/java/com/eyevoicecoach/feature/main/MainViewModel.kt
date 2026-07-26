@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.eyevoicecoach.domain.model.UserSettings
 import com.eyevoicecoach.domain.repository.SettingsRepository
 import com.eyevoicecoach.domain.repository.TipRepository
+import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val tips: TipRepository,
+    private val socialTraining: SocialTrainingRepository,
     private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(MainUiState())
@@ -26,7 +28,10 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            runCatching { tips.seedBundledTipsIfNeeded() }
+            runCatching {
+                tips.seedBundledTipsIfNeeded()
+                socialTraining.seedSocialTrainingIfNeeded()
+            }
                 .onFailure { _uiState.value = _uiState.value.copy(error = "تعذر تجهيز التمارين. أعد فتح التطبيق للمحاولة.") }
             settingsRepository.settings.collectLatest { settings ->
                 _uiState.value = _uiState.value.copy(isLoading = false, settings = settings)

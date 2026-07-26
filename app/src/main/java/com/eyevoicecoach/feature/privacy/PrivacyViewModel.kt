@@ -6,6 +6,8 @@ import com.eyevoicecoach.domain.repository.AssessmentRepository
 import com.eyevoicecoach.domain.repository.ProgramProgressRepository
 import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.SettingsRepository
+import com.eyevoicecoach.domain.repository.SocialTrainingRepository
+import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
 import com.eyevoicecoach.domain.repository.TipRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,6 +24,8 @@ class PrivacyViewModel @Inject constructor(
     private val assessments: AssessmentRepository,
     private val programs: ProgramProgressRepository,
     private val settings: SettingsRepository,
+    private val socialTraining: SocialTrainingRepository,
+    private val socialBoosts: DailyCommunicationBoostRepository,
 ) : ViewModel() {
     private val _message = MutableStateFlow<String?>(null)
 
@@ -37,12 +41,20 @@ class PrivacyViewModel @Inject constructor(
     /** Deletes subjective reviews without affecting the audio files. */
     fun deleteAssessments() = runAction("تم حذف جميع التقييمات الذاتية.") { assessments.deleteAll() }
 
+    /** Deletes social role-play sessions, reviews and their daily boost history. */
+    fun deleteSocialTraining() = runAction("تم حذف جميع بيانات التدريب الاجتماعي.") {
+        socialTraining.clearSocialTrainingData()
+        socialBoosts.clearHistory()
+    }
+
     /** Restores the experience to first-run state and deletes every piece of user-created data. */
     fun resetApplication() = runAction("تمت إعادة التطبيق كبداية جديدة.") {
         recordings.deleteAllRecordings()
         tips.clearUserActivity()
         assessments.deleteAll()
         programs.clearAll()
+        socialTraining.clearSocialTrainingData()
+        socialBoosts.clearHistory()
         settings.clearAll()
     }
 

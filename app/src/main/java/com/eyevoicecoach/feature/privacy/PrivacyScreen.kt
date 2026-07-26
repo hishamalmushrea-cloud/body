@@ -36,6 +36,7 @@ fun PrivacyScreen(
     onDeleteRecordings: () -> Unit,
     onDeleteHistory: () -> Unit,
     onDeleteAssessments: () -> Unit,
+    onDeleteSocialTraining: () -> Unit,
     onResetAll: () -> Unit,
     onClearMessage: () -> Unit,
     onBack: () -> Unit,
@@ -58,9 +59,10 @@ fun PrivacyScreen(
         DataActionCard("حذف التسجيلات", "يحذف كل ملفات الصوت الخاصة وسجلاتها.") { requestedAction = PrivacyAction.RECORDINGS }
         DataActionCard("حذف السجل والمفضلة", "يعيد دورة النصائح ويزيل التمارين المحفوظة.") { requestedAction = PrivacyAction.HISTORY }
         DataActionCard("حذف التقييمات الذاتية", "يحذف درجاتك وملاحظاتك من دون حذف الصوت.") { requestedAction = PrivacyAction.ASSESSMENTS }
+        DataActionCard("حذف بيانات التدريب الاجتماعي", "يحذف جلسات التواصل المؤثر وتقييماتها ودفعاتها المحفوظة.") { requestedAction = PrivacyAction.SOCIAL }
         CoachCard {
             Text("إعادة التطبيق كبداية جديدة", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.error)
-            Text("تحذف التسجيلات والسجل والمفضلة والتقييمات والبرامج والإعدادات. تبقى مكتبة التمارين المدمجة فقط.", modifier = Modifier.padding(top = 6.dp))
+            Text("تحذف التسجيلات والسجل والمفضلة والتقييمات والبرامج وجلسات التواصل والإعدادات. تبقى مكتبة التمارين المدمجة فقط.", modifier = Modifier.padding(top = 6.dp))
             Button(onClick = { requestedAction = PrivacyAction.RESET }, modifier = Modifier.fillMaxWidth().padding(top = 13.dp)) { Icon(Icons.Rounded.DeleteForever, null); Text("  حذف جميع بياناتي") }
         }
     }
@@ -78,6 +80,7 @@ fun PrivacyScreen(
                         PrivacyAction.RECORDINGS -> onDeleteRecordings()
                         PrivacyAction.HISTORY -> onDeleteHistory()
                         PrivacyAction.ASSESSMENTS -> onDeleteAssessments()
+                        PrivacyAction.SOCIAL -> onDeleteSocialTraining()
                         PrivacyAction.RESET -> onResetAll()
                     }
                     requestedAction = null
@@ -104,5 +107,6 @@ private enum class PrivacyAction(val title: String, val confirmation: String) {
     RECORDINGS("حذف التسجيلات", "سيُحذف كل ملف صوتي محفوظ نهائياً من جهازك."),
     HISTORY("حذف السجل والمفضلة", "سيُحذف سجل التمارين والمفضلة، ولا يمكن استعادته."),
     ASSESSMENTS("حذف التقييمات", "سيُحذف تقييم كل تسجيل وملاحظاته الشخصية."),
+    SOCIAL("حذف بيانات التدريب الاجتماعي", "سيُحذف سجل سيناريوهات التواصل وتقييماتها الخاصة."),
     RESET("إعادة التطبيق", "سيُحذف كل ما أنشأته داخل التطبيق ويعود كما كان عند البداية."),
 }

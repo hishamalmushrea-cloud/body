@@ -1,0 +1,777 @@
+{
+  "version_code": 1,
+  "content": [
+    {
+      "id": 2001,
+      "module_category": "social_opening",
+      "context": "عام",
+      "scenario_type": "public_micro_interaction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "start_respectful_conversation",
+      "title": "بدء حديث قصير دون إزعاج",
+      "tip_text": "ابدأ بسؤال واضح يسمح للطرف الآخر بالرد أو عدم الرد. إذا لم يظهر اهتمام، أنهِ الحديث بابتسامة وانسحب بلطف.",
+      "practical_example": "قل: عفواً، هل تعرف أين يقع أقرب مدخل؟ ثم اشكر المساعدة باختصار.",
+      "boundary_rule": "إذا لم يبدُ الطرف الآخر مهتماً، اكتفِ بالشكر وأنهِ الحديث فوراً.",
+      "roleplay_prompt": "قل: عفواً، هل تعرف أين يقع أقرب مدخل؟ ثم اصمت ثانيتين، وبعدها قل: شكراً لك، أقدّر مساعدتك.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "عفواً، هل تعرف أين يقع أقرب مدخل؟"
+        },
+        {
+          "type": "opening",
+          "text": "شكراً لك، أقدّر مساعدتك."
+        },
+        {
+          "type": "do_say",
+          "text": "هل هذا الطريق يؤدي إلى الموقف؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لماذا لا ترد؟"
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك يوماً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2002,
+      "module_category": "client_communication",
+      "context": "زبون",
+      "scenario_type": "client_meeting",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 5,
+      "communication_goal": "understand_need_before_offer",
+      "title": "افهم الاحتياج قبل عرض الحل",
+      "tip_text": "ابدأ بسؤال صادق عن المشكلة، ثم اربط الحل بما قاله العميل من دون استعجال أو وعود مبالغ فيها.",
+      "practical_example": "قل: ما أكثر تحدٍّ يستهلك وقتكم حالياً؟ ثم أعد صياغة الإجابة قبل عرض الفكرة.",
+      "boundary_rule": "لا تستخدم الخوف أو الاستعجال المصطنع لدفع أي قرار.",
+      "roleplay_prompt": "قل: قبل أن أقترح أي حل، ما أكثر تحدٍّ تواجهونه الآن؟ ثم اصمت ثلاث ثوانٍ، وبعدها قل: فهمت، الأولوية هي تقليل الوقت مع الحفاظ على الجودة.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "قبل أن أعرض الحل، أود أن أفهم احتياجكم بدقة."
+        },
+        {
+          "type": "opening",
+          "text": "ما أكثر شيء ترغبون في تحسينه حالياً؟"
+        },
+        {
+          "type": "do_say",
+          "text": "إذا فهمتكم جيداً، الأولوية هي تقليل الوقت مع الحفاظ على الجودة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "هذا أفضل حل في السوق بلا نقاش"
+        },
+        {
+          "type": "closing",
+          "text": "خذوا الوقت المناسب للتفكير، وأنا متاح لأي توضيح."
+        }
+      ]
+    },
+    {
+      "id": 2003,
+      "module_category": "personality_adaptation",
+      "context": "مقابلة عمل",
+      "scenario_type": "job_interview",
+      "personality_style": "C",
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "adapt_to_analytical_style",
+      "title": "التواصل مع الأسلوب التحليلي",
+      "tip_text": "الأسلوب التحليلي يرتاح لأسباب واضحة وخيارات محددة. قدم معلومات قابلة للتحقق وتجنب الحماس الزائد.",
+      "practical_example": "بدلاً من وصف عام، اذكر الخطوات والمدة والنتيجة المتوقعة بوضوح.",
+      "boundary_rule": "كثرة الأسئلة محاولة للفهم وليست رفضاً شخصياً.",
+      "roleplay_prompt": "قل: سأشرح الفكرة في ثلاث نقاط: الوقت، التكلفة، والمخاطر. النقطة الأولى هي الوقت...",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "سأعرض الفكرة في ثلاث نقاط واضحة."
+        },
+        {
+          "type": "opening",
+          "text": "هذه هي البيانات والافتراضات المتاحة."
+        },
+        {
+          "type": "do_say",
+          "text": "يمكنني توضيح التفاصيل خطوة بخطوة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "ثق بي فقط"
+        },
+        {
+          "type": "closing",
+          "text": "هل ترغب في مراجعة نقطة محددة قبل المتابعة؟"
+        }
+      ]
+    },
+    {
+      "id": 2004,
+      "module_category": "rapport",
+      "context": "عمل",
+      "scenario_type": "networking",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "build_professional_rapport",
+      "title": "تعارف مهني باهتمام حقيقي",
+      "tip_text": "ابدأ من سياق مشترك، ثم اسأل سؤالاً مفتوحاً واحداً واستمع إلى الإجابة من دون تحويل الحديث إلى عرض ذاتي.",
+      "practical_example": "في فعالية مهنية قل: ما الفكرة التي لفتت انتباهك في هذه الجلسة؟",
+      "boundary_rule": "لا تجعل التعارف وسيلة لطلب فوري؛ اترك للطرف الآخر حرية استمرار الحوار.",
+      "roleplay_prompt": "قل: يسعدني التعرف إليك. ما الفكرة التي لفتت انتباهك في هذه الجلسة؟ ثم استمع ولا تقاطع.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يسعدني التعرف إليك، ما الفكرة التي لفتت انتباهك؟"
+        },
+        {
+          "type": "do_say",
+          "text": "أهتم بمعرفة وجهة نظرك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "يجب أن نتبادل الأرقام الآن"
+        },
+        {
+          "type": "closing",
+          "text": "شكراً على الحديث، أتمنى لك فعالية مفيدة."
+        }
+      ]
+    },
+    {
+      "id": 2005,
+      "module_category": "active_listening",
+      "context": "زبون",
+      "scenario_type": "client_meeting",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "show_understanding",
+      "title": "إعادة الصياغة قبل الحل",
+      "tip_text": "الإصغاء النشط يعني أن تلخص ما فهمته ثم تسأل إن كان التلخيص دقيقاً قبل أن تقترح خطوة.",
+      "practical_example": "قل: إذا فهمتك جيداً، المشكلة الأساسية هي الوقت، هل هذا صحيح؟",
+      "boundary_rule": "لا تفترض أنك تعرف الاحتياج قبل سماع الشخص كاملاً.",
+      "roleplay_prompt": "قل: إذا فهمتك جيداً، الأولوية هي الوقت. هل هذا التلخيص دقيق؟ ثم انتظر الإجابة.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "إذا فهمتك جيداً، الأولوية هي الوقت."
+        },
+        {
+          "type": "do_say",
+          "text": "هل هذا يلخص ما تقصده؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنا أعرف ما تحتاجه مسبقاً"
+        },
+        {
+          "type": "closing",
+          "text": "شكراً للتوضيح، سأبني اقتراحي على ما ذكرت."
+        }
+      ]
+    },
+    {
+      "id": 2006,
+      "module_category": "boundaries",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "end_conversation_kindly",
+      "title": "إنهاء التعارف الاجتماعي بلطف",
+      "tip_text": "التعارف المحترم قصير وواضح، وينتهي فوراً عندما يبدو الطرف الآخر مشغولاً أو غير راغب في الاستمرار.",
+      "practical_example": "قل: سررت بالتعرف إليك، لا أريد أن آخذ من وقتك، أتمنى لك مساءً طيباً.",
+      "boundary_rule": "الانسحاب اللطيف يحمي راحة الجميع وهو جزء من التواصل الجيد.",
+      "roleplay_prompt": "قل: سررت بالتعرف إليك، يبدو أنك مشغول، أتمنى لك مساءً طيباً.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "سررت بالتعرف إليك."
+        },
+        {
+          "type": "do_say",
+          "text": "لا أريد أن آخذ من وقتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأبقى دقيقة أخرى رغم انشغالك"
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك وقتاً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2007,
+      "module_category": "objection_handling",
+      "context": "زبون",
+      "scenario_type": "sales_objection",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 5,
+      "communication_goal": "respond_to_objection_respectfully",
+      "title": "الرد على اعتراض السعر بهدوء",
+      "tip_text": "اعترف بالاعتراض أولاً، ثم وضّح القيمة والخيارات من دون التقليل من قرار العميل أو الضغط عليه.",
+      "practical_example": "قل: أتفهم أن الميزانية مهمة. هل يناسب أن نراجع الخيارات ونرى ما يتوافق مع أولوياتكم؟",
+      "boundary_rule": "للعميل حق الرفض أو التأجيل، والوضوح أهم من دفع قرار سريع.",
+      "roleplay_prompt": "قل: أتفهم أن الميزانية مهمة. هل يناسب أن نراجع الخيارات ونرى ما يتوافق مع أولوياتكم؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أتفهم أن الميزانية عامل مهم."
+        },
+        {
+          "type": "do_say",
+          "text": "يمكننا مراجعة البدائل بهدوء."
+        },
+        {
+          "type": "avoid_say",
+          "text": "هذا العرض لن يتكرر أبداً"
+        },
+        {
+          "type": "closing",
+          "text": "خذوا الوقت الذي تحتاجونه لاتخاذ القرار."
+        }
+      ]
+    },
+    {
+      "id": 2008,
+      "module_category": "conflict_deescalation",
+      "context": "خلاف",
+      "scenario_type": "conflict_resolution",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "lower_tension",
+      "title": "تهدئة خلاف قبل مناقشة الحل",
+      "tip_text": "عند ارتفاع التوتر، سمِّ الهدف المشترك واستخدم جملة قصيرة خالية من الاتهام قبل شرح وجهة نظرك.",
+      "practical_example": "قل: أريد أن نفهم ما حدث ونصل إلى خطوة عادلة للجميع.",
+      "boundary_rule": "إذا طلب الطرف الآخر التوقف أو وقتاً، احترم ذلك ولا تتابع النقاش في اللحظة نفسها.",
+      "roleplay_prompt": "قل: أريد أن نفهم ما حدث ونصل إلى خطوة عادلة للجميع. يمكننا أخذ وقت قصير ثم العودة للحل.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أريد أن نفهم ما حدث بهدوء."
+        },
+        {
+          "type": "do_say",
+          "text": "ما الخطوة العادلة من وجهة نظرك؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت دائماً سبب المشكلة"
+        },
+        {
+          "type": "closing",
+          "text": "يمكننا العودة للنقاش عندما نكون أكثر هدوءاً."
+        }
+      ]
+    },
+    {
+      "id": 2009,
+      "module_category": "negotiation",
+      "context": "زبون",
+      "scenario_type": "client_meeting",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 5,
+      "communication_goal": "find_fair_options",
+      "title": "التفاوض على خيارات عادلة",
+      "tip_text": "التفاوض الجيد يوضح المصالح والقيود ثم يقدم خيارات حقيقية يمكن للطرف الآخر قبولها أو رفضها.",
+      "practical_example": "قل: لدينا خيار أسرع بتكلفة أعلى، وخيار تدريجي بتكلفة أقل. أيهما أقرب لأولوياتكم؟",
+      "boundary_rule": "لا تقدم وعداً لا تستطيع الوفاء به لأجل إتمام الاتفاق.",
+      "roleplay_prompt": "قل: لدينا خياران واضحان. هل نراجع أثر كل واحد على الوقت والجودة؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "لدينا خياران واضحان يمكن مقارنتهما."
+        },
+        {
+          "type": "do_say",
+          "text": "ما الأولوية الأهم لكم الآن؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "وافق الآن ثم نحل التفاصيل لاحقاً"
+        },
+        {
+          "type": "closing",
+          "text": "إذا لم يناسب أي خيار، يمكننا تأجيل القرار."
+        }
+      ]
+    },
+    {
+      "id": 2010,
+      "module_category": "leadership_conversation",
+      "context": "فريق",
+      "scenario_type": "leadership_conversation",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "give_constructive_feedback",
+      "title": "ملاحظة بناءة لعضو فريق",
+      "tip_text": "اربط الملاحظة بسلوك قابل للملاحظة وأثره، ثم اسأل عن رأي الشخص في الخطوة التالية.",
+      "practical_example": "قل: لاحظت أن التحديث وصل بعد الموعد، وهذا صعّب التخطيط. ما الذي سيساعد على وضوح الموعد القادم؟",
+      "boundary_rule": "الملاحظة ليست تشخيصاً للشخصية ولا يجب أن تكون محرجة أمام الآخرين.",
+      "roleplay_prompt": "قل: لاحظت تأخر التحديث، وأريد أن نفهم ما الذي سيساعد على وضوح الموعد القادم.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أريد أن نركز على السلوك والخطوة التالية."
+        },
+        {
+          "type": "do_say",
+          "text": "ما الدعم الذي تحتاجه؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت غير مسؤول بطبيعتك"
+        },
+        {
+          "type": "closing",
+          "text": "أقدّر استعدادك لتجربة خطوة مختلفة."
+        }
+      ]
+    },
+    {
+      "id": 2011,
+      "module_category": "social_opening",
+      "context": "عمل",
+      "scenario_type": "networking",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "start_professional_conversation",
+      "title": "افتتاح حديث في فعالية مهنية",
+      "tip_text": "استخدم سياق المكان كبداية طبيعية، ثم عرّف بنفسك بجملة واحدة واترك المجال للطرف الآخر.",
+      "practical_example": "قل: هذه الجلسة أثارت فكرة مهمة عندي. أنا أعمل في مجال كذا، ما الذي تعمل عليه حالياً؟",
+      "boundary_rule": "لا تحوّل الدقائق الأولى إلى طلب خدمة أو عرض طويل.",
+      "roleplay_prompt": "قل: هذه الجلسة أثارت فكرة مهمة عندي. أنا أعمل في مجال كذا، ما الذي تعمل عليه حالياً؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "هذه الجلسة أثارت فكرة مهمة عندي."
+        },
+        {
+          "type": "do_say",
+          "text": "ما الذي تعمل عليه حالياً؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "أعطني رقمك كي أشرح لك كل شيء"
+        },
+        {
+          "type": "closing",
+          "text": "سعدت بالحديث معك."
+        }
+      ]
+    },
+    {
+      "id": 2012,
+      "module_category": "rapport",
+      "context": "اجتماعي",
+      "scenario_type": "social_introduction",
+      "personality_style": "I",
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "build_warm_connection",
+      "title": "بناء ألفة دافئة دون تصنّع",
+      "tip_text": "الدفء يأتي من الانتباه والابتسامة الخفيفة والسؤال المناسب، لا من المبالغة في المدح أو القرب السريع.",
+      "practical_example": "اسأل عن نشاط مشترك أو مناسبة حاضرة، ثم شارك إجابة قصيرة متوازنة.",
+      "boundary_rule": "احترم المسافة الشخصية ولا تفترض أن الود يعني رغبة في استمرار الحديث.",
+      "roleplay_prompt": "قل: يبدو أن هذه المناسبة جمعت اهتمامات متنوعة. ما أكثر جزء أعجبك فيها؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "ما أكثر جزء أعجبك في المناسبة؟"
+        },
+        {
+          "type": "do_say",
+          "text": "يسعدني سماع وجهة نظرك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أشعر أننا أصبحنا قريبين جداً بسرعة"
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لمشاركتك، استمتع ببقية المناسبة."
+        }
+      ]
+    },
+    {
+      "id": 2013,
+      "module_category": "client_communication",
+      "context": "فريق",
+      "scenario_type": "team_meeting",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "ask_for_clarification",
+      "title": "طلب توضيح في اجتماع فريق",
+      "tip_text": "اطلب التوضيح بصياغة تركز على العمل لا على الشخص، ثم لخّص ما تتفقون عليه.",
+      "practical_example": "قل: كي أتأكد من التنفيذ الصحيح، هل يمكن توضيح معيار النجاح في هذه الخطوة؟",
+      "boundary_rule": "الهدف من السؤال هو الوضوح، وليس إحراج المتحدث أو تحديه.",
+      "roleplay_prompt": "قل: كي أتأكد من التنفيذ الصحيح، هل يمكن توضيح معيار النجاح في هذه الخطوة؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "كي أتأكد من التنفيذ الصحيح، هل يمكن توضيح المعيار؟"
+        },
+        {
+          "type": "do_say",
+          "text": "أفهم أن الهدف هو كذا، هل هذا صحيح؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "كلامك غير مفهوم إطلاقاً"
+        },
+        {
+          "type": "closing",
+          "text": "شكراً للتوضيح، سألخص الخطوة التالية."
+        }
+      ]
+    },
+    {
+      "id": 2014,
+      "module_category": "personality_adaptation",
+      "context": "عمل",
+      "scenario_type": "team_meeting",
+      "personality_style": "D",
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "adapt_to_direct_style",
+      "title": "التواصل مع الأسلوب الحازم",
+      "tip_text": "مع الأسلوب المباشر، ابدأ بالخلاصة ثم اذكر خياراً أو اثنين. لا تفسر الاختصار على أنه قسوة أو حكم شخصي.",
+      "practical_example": "قل: الخلاصة أننا نحتاج قراراً اليوم بين الخيارين أ وب.",
+      "boundary_rule": "الاختصار لا يلغي حق الجميع في السؤال أو طلب وقت للتفكير.",
+      "roleplay_prompt": "قل: الخلاصة أننا نحتاج قراراً اليوم بين خيارين. الفائدة من الأول كذا، والثاني كذا.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "الخلاصة أننا نحتاج قراراً بين خيارين."
+        },
+        {
+          "type": "do_say",
+          "text": "هذه فائدة كل خيار باختصار."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا يهم رأيك، القرار محسوم"
+        },
+        {
+          "type": "closing",
+          "text": "هل تحتاج نقطة إضافية قبل الاختيار؟"
+        }
+      ]
+    },
+    {
+      "id": 2015,
+      "module_category": "personality_adaptation",
+      "context": "عمل",
+      "scenario_type": "networking",
+      "personality_style": "I",
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "adapt_to_expressive_style",
+      "title": "التواصل مع الأسلوب التعبيري",
+      "tip_text": "استخدم نبرة إنسانية وقصة قصيرة مرتبطة بالموضوع، ثم عد إلى خطوة عملية حتى يبقى الحديث واضحاً.",
+      "practical_example": "قل: مررنا بتجربة مشابهة، وكانت البداية سؤالاً بسيطاً عن احتياج الفريق.",
+      "boundary_rule": "لا تستخدم الحماس لتجاوز الحقائق أو فرض توافق سريع.",
+      "roleplay_prompt": "قل: مررنا بتجربة مشابهة، وكانت البداية سؤالاً بسيطاً. ما التجربة التي مررتم بها؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "مررنا بتجربة مشابهة تعلمنا منها كثيراً."
+        },
+        {
+          "type": "do_say",
+          "text": "ما التجربة التي مررتم بها؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا نحتاج إلى أي تفاصيل عملية"
+        },
+        {
+          "type": "closing",
+          "text": "يمكننا تحويل الفكرة إلى خطوة واضحة."
+        }
+      ]
+    },
+    {
+      "id": 2016,
+      "module_category": "personality_adaptation",
+      "context": "عمل",
+      "scenario_type": "client_meeting",
+      "personality_style": "S",
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "adapt_to_supportive_style",
+      "title": "التواصل مع الأسلوب الداعم",
+      "tip_text": "قدم الخطوات بهدوء، واشرح ما الذي سيتغير وما الذي سيبقى مستقراً، ثم امنح وقتاً للأسئلة.",
+      "practical_example": "قل: يمكننا البدء بخطوة صغيرة، ثم نراجع أثرها معاً قبل الانتقال.",
+      "boundary_rule": "الطمأنة الصادقة تعني ذكر المخاطر أيضاً، لا إخفاءها.",
+      "roleplay_prompt": "قل: يمكننا البدء بخطوة صغيرة، ثم نراجع أثرها معاً قبل الانتقال.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يمكننا البدء بخطوة صغيرة قابلة للمراجعة."
+        },
+        {
+          "type": "do_say",
+          "text": "ما السؤال الذي يساعدك على الاطمئنان؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا وقت للأسئلة"
+        },
+        {
+          "type": "closing",
+          "text": "خذ الوقت المناسب قبل القرار."
+        }
+      ]
+    },
+    {
+      "id": 2017,
+      "module_category": "active_listening",
+      "context": "فريق",
+      "scenario_type": "team_meeting",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "listen_without_interrupting",
+      "title": "الاستماع عند اختلاف الرأي",
+      "tip_text": "دع الشخص يكمل فكرته، ثم أعد صياغة النقطة التي فهمتها قبل عرض رأيك المختلف.",
+      "practical_example": "قل: أفهم أنك ترى أن المخاطرة الأساسية هي الوقت. هل التقطت فكرتك بدقة؟",
+      "boundary_rule": "لا تقاطع لتصحيح تفاصيل صغيرة قبل فهم المعنى الكامل.",
+      "roleplay_prompt": "قل: أفهم أن المخاطرة الأساسية هي الوقت. هل التقطت فكرتك بدقة؟ ثم اعرض رأيك بهدوء.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أفهم أن النقطة الأساسية هي كذا."
+        },
+        {
+          "type": "do_say",
+          "text": "هل التقطت فكرتك بدقة؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "دعني أوقفك لأنك مخطئ"
+        },
+        {
+          "type": "closing",
+          "text": "أشكرك على توضيح وجهة نظرك."
+        }
+      ]
+    },
+    {
+      "id": 2018,
+      "module_category": "ethical_persuasion",
+      "context": "عرض",
+      "scenario_type": "presentation_qna",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "answer_hard_question",
+      "title": "الرد على سؤال صعب بعد عرض",
+      "tip_text": "اعترف بما تعرفه وما يحتاج إلى تحقق، ثم اعرض كيف ستعود بإجابة دقيقة. الصدق يعزز الثقة أكثر من إجابة متسرعة.",
+      "practical_example": "قل: لا أملك الرقم الدقيق الآن، وسأراجعه وأعود إليكم بمصدر واضح.",
+      "boundary_rule": "لا تختلق معلومة أو وعداً لتبدو واثقاً.",
+      "roleplay_prompt": "قل: سؤال مهم. لا أملك الرقم الدقيق الآن، وسأراجعه وأعود إليكم بمصدر واضح.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "سؤال مهم، وسأجيب بما هو مؤكد."
+        },
+        {
+          "type": "do_say",
+          "text": "سأعود إليكم بمصدر واضح."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لست بحاجة إلى معرفة التفاصيل"
+        },
+        {
+          "type": "closing",
+          "text": "أشكرك على السؤال الدقيق."
+        }
+      ]
+    },
+    {
+      "id": 2019,
+      "module_category": "boundaries",
+      "context": "عام",
+      "scenario_type": "public_micro_interaction",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "respect_non_interest",
+      "title": "قراءة عدم الاهتمام باحترام",
+      "tip_text": "راقب الإشارات الواضحة مثل الانشغال أو الإجابات المختصرة، وتوقف من دون طلب تفسير أو محاولة إطالة الحديث.",
+      "practical_example": "قل: يبدو أن الوقت غير مناسب، شكراً لك، وأتمنى لك يوماً طيباً.",
+      "boundary_rule": "الرفض ليس فشلاً؛ إنه إشارة لاحترام الحدود وحرية الاختيار.",
+      "roleplay_prompt": "قل: يبدو أن الوقت غير مناسب، شكراً لك، وأتمنى لك يوماً طيباً.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يبدو أن الوقت غير مناسب."
+        },
+        {
+          "type": "do_say",
+          "text": "أقدّر وقتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأنتظر حتى تتغير إجابتك"
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك يوماً طيباً."
+        }
+      ]
+    },
+    {
+      "id": 2020,
+      "module_category": "client_communication",
+      "context": "زبون",
+      "scenario_type": "sales_objection",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 5,
+      "communication_goal": "clarify_trust_concern",
+      "title": "الاستماع لاعتراض الثقة",
+      "tip_text": "عندما يتردد العميل بسبب الثقة، اسأل ما المعلومة التي يحتاجها، ثم قدم دليلاً قابلاً للتحقق أو اعترف بما لا تعرفه.",
+      "practical_example": "قل: ما المعلومة التي تساعدكم على تقييم الملاءمة بثقة؟",
+      "boundary_rule": "الثقة تبنى بالوضوح، لا بالعبارات المطلقة أو المقارنات غير الدقيقة.",
+      "roleplay_prompt": "قل: ما المعلومة التي تساعدكم على تقييم الملاءمة بثقة؟ ويمكنني مشاركة ما هو موثق فقط.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق.",
+      "body_language_tip": "حافظ على مسافة مناسبة ووقفة مفتوحة، واترك للطرف الآخر مساحة مريحة للحركة.",
+      "voice_tip": "استخدم نبرة هادئة وسرعة متوسطة، واترك وقفة قصيرة بعد السؤال.",
+      "content_version": 1,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "ما المعلومة التي تساعدكم على التقييم بثقة؟"
+        },
+        {
+          "type": "do_say",
+          "text": "يمكنني مشاركة ما هو موثق فقط."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا داعي للشك فينا"
+        },
+        {
+          "type": "closing",
+          "text": "إذا لم يكن مناسباً، فاحترام قراركم مهم."
+        }
+      ]
+    }
+  ]
+}

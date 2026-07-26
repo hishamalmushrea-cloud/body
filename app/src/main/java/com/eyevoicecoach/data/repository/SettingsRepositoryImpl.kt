@@ -19,6 +19,7 @@ class SettingsRepositoryImpl @Inject constructor(
         store.stringFlow(REMINDERS, "false"),
         store.stringFlow(REMINDER_HOUR, "20"),
         store.stringFlow(REMINDER_MINUTE, "0"),
+        store.stringFlow(SOCIAL_ETHICS, "false"),
     ) { values ->
         UserSettings(
             isOnboardingComplete = values[0].toBoolean(),
@@ -27,6 +28,7 @@ class SettingsRepositoryImpl @Inject constructor(
             remindersEnabled = values[3].toBoolean(),
             reminderHour = values[4].toIntOrNull()?.coerceIn(0, 23) ?: 20,
             reminderMinute = values[5].toIntOrNull()?.coerceIn(0, 59) ?: 0,
+            isSocialEthicsAcknowledged = values[6].toBoolean(),
         )
     }
 
@@ -37,6 +39,8 @@ class SettingsRepositoryImpl @Inject constructor(
     override suspend fun setTheme(themeKey: String) = store.putString(THEME, themeKey)
 
     override suspend fun clearAll() = store.clear()
+
+    override suspend fun setSocialEthicsAcknowledged() = store.putString(SOCIAL_ETHICS, "true")
 
     override suspend fun setReminder(enabled: Boolean, hour: Int, minute: Int) {
         store.putString(REMINDERS, enabled.toString())
@@ -51,5 +55,6 @@ class SettingsRepositoryImpl @Inject constructor(
         const val REMINDERS = "reminders_enabled"
         const val REMINDER_HOUR = "reminder_hour"
         const val REMINDER_MINUTE = "reminder_minute"
+        const val SOCIAL_ETHICS = "social_ethics_acknowledged"
     }
 }

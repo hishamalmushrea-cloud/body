@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,7 @@ import com.eyevoicecoach.domain.model.ProgressStats
 
 /** Presents locally calculated, privacy-preserving practice progress. */
 @Composable
-fun StatisticsScreen(stats: ProgressStats) {
+fun StatisticsScreen(stats: ProgressStats, onSocialStats: () -> Unit) {
     val ratio = if (stats.totalTips == 0) 0f else stats.viewedCount.toFloat() / stats.totalTips
     LazyColumn(Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
@@ -41,6 +42,7 @@ fun StatisticsScreen(stats: ProgressStats) {
                 MetricCard("🎙", "التسجيلات", stats.recordingCount, Modifier.weight(1f))
             }
         }
+        item { OutlinedButton(onClick = onSocialStats, modifier = Modifier.fillMaxWidth()) { Text("تقدم التواصل المؤثر") } }
         item { Text("حسب المهارة", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold) }
         if (stats.categoryCounts.isEmpty()) item { CoachCard { Text("ابدأ أول تمرين لتظهر هنا خريطة تقدمك.") } }
         items(stats.categoryCounts.entries.toList(), key = { it.key }) { (category, count) ->

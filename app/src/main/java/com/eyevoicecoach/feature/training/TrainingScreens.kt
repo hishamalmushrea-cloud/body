@@ -42,13 +42,14 @@ private val contexts = listOf("الكل", "عام", "مقابلة عمل", "إل
 
 /** Browsable exercise library with category and situation filters. */
 @Composable
-fun TrainingScreen(state: TrainingUiState, onCategory: (String) -> Unit, onContext: (String) -> Unit, onOpen: (Int) -> Unit, onDrills: () -> Unit, onSituations: () -> Unit) {
+fun TrainingScreen(state: TrainingUiState, onCategory: (String) -> Unit, onContext: (String) -> Unit, onOpen: (Int) -> Unit, onDrills: () -> Unit, onSituations: () -> Unit, onSocial: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(top = 18.dp)) {
         Text("مكتبة التمارين", modifier = Modifier.padding(horizontal = 20.dp), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
         Text("اختر ما يناسب موقفك الحالي", modifier = Modifier.padding(horizontal = 20.dp, vertical = 5.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Row(Modifier.padding(horizontal = 20.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedButton(onClick = onDrills) { Text("تمارين متخصصة") }
-            OutlinedButton(onClick = onSituations) { Text("مواقف واقعية") }
+        LazyRow(contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 20.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            item { OutlinedButton(onClick = onDrills) { Text("تمارين متخصصة") } }
+            item { OutlinedButton(onClick = onSituations) { Text("مواقف واقعية") } }
+            item { OutlinedButton(onClick = onSocial) { Text("التواصل المؤثر") } }
         }
         FilterRow(categories, state.category, onCategory)
         FilterRow(contexts, state.context, onContext)

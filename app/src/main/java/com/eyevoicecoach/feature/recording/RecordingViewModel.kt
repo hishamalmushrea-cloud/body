@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.eyevoicecoach.domain.model.Recording
 import com.eyevoicecoach.domain.model.SelfAssessment
 import com.eyevoicecoach.domain.model.TensionLevel
+import com.eyevoicecoach.domain.model.SocialSelfAssessment
 import com.eyevoicecoach.domain.repository.AssessmentRepository
 import com.eyevoicecoach.domain.repository.ProgramProgressRepository
 import com.eyevoicecoach.domain.repository.RecordingRepository
+import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
@@ -26,10 +28,13 @@ class RecordingViewModel @Inject constructor(
     private val recordingsRepository: RecordingRepository,
     private val assessments: AssessmentRepository,
     private val programs: ProgramProgressRepository,
+    private val socialTraining: SocialTrainingRepository,
 ) : ViewModel() {
     private val tipId: Int = savedStateHandle.get<Int>("tipId") ?: 0
     private val programId: String? = savedStateHandle.get<String>("programId")
     private val programDay: Int? = savedStateHandle.get<Int>("dayNumber")
+    private val socialContentId: Int? = savedStateHandle.get<Int>("socialContentId")
+    private val socialStyle = com.eyevoicecoach.domain.model.CommunicationStyle.fromCode(savedStateHandle.get<String>("socialStyle"))
     private var startedAt = 0L
 
     /** Microphone levels for the recording waveform. */
@@ -42,10 +47,20 @@ class RecordingViewModel @Inject constructor(
     /** Current ExoPlayer state. */
     val playback = player.state
 
+    /** The exact ethical role-play prompt when this recording belongs to a social card. */
+    val socialRoleplayPrompt: StateFlow<String?> = kotlinx.coroutines.flow.flow {
+        emit(socialContentId?.let { socialTraining.getContent(it)?.roleplayPrompt })
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+
     private val _pendingAssessment = kotlinx.coroutines.flow.MutableStateFlow<PendingAssessment?>(null)
 
     /** A newly saved recording awaiting its private self-review. */
     val pendingAssessment: StateFlow<PendingAssessment?> = _pendingAssessment
+
+    private val _socialSummary = kotlinx.coroutines.flow.MutableStateFlow<SocialSessionSummary?>(null)
+
+    /** Summary shown after an ethical social role-play evaluation is saved. */
+    val socialSummary: StateFlow<SocialSessionSummary?> = _socialSummary
 
     /** Whether the screen was opened from a valid exercise and can create a recording. */
     val canRecord: Boolean get() = tipId > 0
@@ -53,6 +68,7 @@ class RecordingViewModel @Inject constructor(
     /** Starts a recording after the UI has verified microphone access. */
     fun startRecording(): Result<Unit> = runCatching {
         recorder.start()
+        _socialSummary.value = null
         startedAt = SystemClock.elapsedRealtime()
     }
 
@@ -62,22 +78,45 @@ class RecordingViewModel @Inject constructor(
         val duration = ((SystemClock.elapsedRealtime() - startedAt) / 1000L).toInt()
         viewModelScope.launch {
             val recordingId = recordingsRepository.addRecording(uri, tipId, duration)
-            _pendingAssessment.value = PendingAssessment(recordingId, programId, programDay)
+            _pendingAssessment.value = PendingAssessment(recordingId, programId, programDay, socialContentId)
         }
     }
 
     /** Saves the user's private recording review and completes the attached program day when applicable. */
-    fun saveAssessment(clarity: Int, pace: Int, confidence: Int, pauses: Int, tension: TensionLevel, note: String) = viewModelScope.launch {
+    fun saveAssessment(
+        clarity: Int,
+        pace: Int,
+        confidence: Int,
+        pauses: Int,
+        tension: TensionLevel,
+        note: String,
+        respect: Int = 3,
+        listening: Int = 3,
+        calmness: Int = 3,
+    ) = viewModelScope.launch {
         val pending = _pendingAssessment.value ?: return@launch
-        assessments.save(SelfAssessment(pending.recordingId, clarity, pace, confidence, pauses, tension, note, System.currentTimeMillis()))
+        val createdAt = System.currentTimeMillis()
+        assessments.save(SelfAssessment(pending.recordingId, clarity, pace, confidence, pauses, tension, note, createdAt))
         if (pending.programId != null && pending.dayNumber != null) {
             programs.completeDay(pending.programId, pending.dayNumber, pending.recordingId)
+        }
+        if (pending.socialContentId != null) {
+            socialTraining.saveSession(
+                pending.socialContentId,
+                pending.recordingId,
+                SocialSelfAssessment(0, clarity, confidence, respect, listening, calmness, note, createdAt),
+                socialStyle,
+            )
+            _socialSummary.value = SocialSessionSummary(clarity, confidence, respect, listening, calmness, note)
         }
         _pendingAssessment.value = null
     }
 
     /** Hides a review card without altering the safely saved recording. */
     fun dismissAssessment() { _pendingAssessment.value = null }
+
+    /** Hides the saved social role-play summary. */
+    fun dismissSocialSummary() { _socialSummary.value = null }
 
     /** Discards the active unfinished recording. */
     fun cancelRecording() = recorder.cancel()
@@ -104,4 +143,7 @@ class RecordingViewModel @Inject constructor(
 }
 
 /** Identifies a freshly saved recording and its optional ready-made program session. */
-data class PendingAssessment(val recordingId: Long, val programId: String?, val dayNumber: Int?)
+data class PendingAssessment(val recordingId: Long, val programId: String?, val dayNumber: Int?, val socialContentId: Int?)
+
+/** Private summary of a just-completed responsible social role-play. */
+data class SocialSessionSummary(val clarity: Int, val confidence: Int, val respect: Int, val listening: Int, val calmness: Int, val note: String)

@@ -60,4 +60,5 @@ private class HomeFakeSettings : SettingsRepository {
     override suspend fun setTheme(themeKey: String) = Unit
     override suspend fun setReminder(enabled: Boolean, hour: Int, minute: Int) = Unit
     override suspend fun clearAll() = Unit
+    override suspend fun setSocialEthicsAcknowledged() = Unit
 }

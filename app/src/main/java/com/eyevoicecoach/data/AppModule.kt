@@ -11,12 +11,16 @@ import com.eyevoicecoach.data.repository.ProgramProgressRepositoryImpl
 import com.eyevoicecoach.data.repository.AchievementRepositoryImpl
 import com.eyevoicecoach.data.repository.SettingsRepositoryImpl
 import com.eyevoicecoach.data.repository.TipRepositoryImpl
+import com.eyevoicecoach.data.repository.SocialTrainingRepositoryImpl
+import com.eyevoicecoach.data.repository.DailyCommunicationBoostRepositoryImpl
 import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.AssessmentRepository
 import com.eyevoicecoach.domain.repository.ProgramProgressRepository
 import com.eyevoicecoach.domain.repository.AchievementRepository
 import com.eyevoicecoach.domain.repository.SettingsRepository
 import com.eyevoicecoach.domain.repository.TipRepository
+import com.eyevoicecoach.domain.repository.SocialTrainingRepository
+import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -46,6 +50,12 @@ abstract class RepositoryModule {
 
     /** Binds derived device-local achievements. */
     @Binds @Singleton abstract fun bindAchievementRepository(implementation: AchievementRepositoryImpl): AchievementRepository
+
+    /** Binds the responsible social-training repository. */
+    @Binds @Singleton abstract fun bindSocialTrainingRepository(implementation: SocialTrainingRepositoryImpl): SocialTrainingRepository
+
+    /** Binds the non-repeating daily communication boost repository. */
+    @Binds @Singleton abstract fun bindDailyCommunicationBoostRepository(implementation: DailyCommunicationBoostRepositoryImpl): DailyCommunicationBoostRepository
 }
 
 /** Hilt providers for application-scoped local storage. */
@@ -56,7 +66,7 @@ object StorageModule {
     @Provides @Singleton
     fun provideDatabase(@ApplicationContext context: Context): CoachDatabase =
         Room.databaseBuilder(context, CoachDatabase::class.java, "coach.db")
-            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2)
+            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2, CoachDatabaseMigrations.MIGRATION_2_3)
             .build()
 
     /** Creates the keystore-encrypted preferences store. */

@@ -91,3 +91,74 @@ data class SelfAssessmentEntity(
     val note: String,
     @ColumnInfo(name = "created_at") val createdAt: Long,
 )
+
+/** Room row containing vetted responsible-social-communication training content. */
+@Entity(tableName = "social_training_content")
+data class SocialTrainingContentEntity(
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "module_category") val moduleCategory: String,
+    val context: String,
+    @ColumnInfo(name = "scenario_type") val scenarioType: String,
+    @ColumnInfo(name = "personality_style") val personalityStyle: String?,
+    val difficulty: String,
+    @ColumnInfo(name = "duration_minutes") val durationMinutes: Int,
+    @ColumnInfo(name = "communication_goal") val communicationGoal: String,
+    val title: String,
+    @ColumnInfo(name = "tip_text") val tipText: String,
+    @ColumnInfo(name = "practical_example") val practicalExample: String,
+    @ColumnInfo(name = "boundary_rule") val boundaryRule: String,
+    @ColumnInfo(name = "roleplay_prompt") val roleplayPrompt: String,
+    @ColumnInfo(name = "eye_contact_tip") val eyeContactTip: String,
+    @ColumnInfo(name = "body_language_tip") val bodyLanguageTip: String,
+    @ColumnInfo(name = "voice_tip") val voiceTip: String,
+    @ColumnInfo(name = "content_version") val contentVersion: Int,
+    @ColumnInfo(name = "content_safety_level") val contentSafetyLevel: String,
+)
+
+/** Room phrase row kept separately to avoid inflating social content records. */
+@Entity(
+    tableName = "social_training_phrases",
+    foreignKeys = [ForeignKey(entity = SocialTrainingContentEntity::class, parentColumns = ["id"], childColumns = ["content_id"], onDelete = ForeignKey.CASCADE)],
+    indices = [Index("content_id"), Index(value = ["content_id", "phrase_type", "text"], unique = true)],
+)
+data class SocialTrainingPhraseEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @ColumnInfo(name = "content_id") val contentId: Int,
+    @ColumnInfo(name = "phrase_type") val phraseType: String,
+    val text: String,
+)
+
+/** Room row marking one privately completed social role-play session. */
+@Entity(
+    tableName = "social_sessions",
+    foreignKeys = [ForeignKey(entity = SocialTrainingContentEntity::class, parentColumns = ["id"], childColumns = ["content_id"], onDelete = ForeignKey.CASCADE)],
+    indices = [Index("content_id"), Index("date_completed"), Index("scenario_type")],
+)
+data class SocialSessionEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @ColumnInfo(name = "content_id") val contentId: Int,
+    @ColumnInfo(name = "session_mode") val sessionMode: String,
+    @ColumnInfo(name = "scenario_type") val scenarioType: String,
+    @ColumnInfo(name = "personality_style") val personalityStyle: String,
+    @ColumnInfo(name = "communication_goal") val communicationGoal: String,
+    @ColumnInfo(name = "date_completed") val dateCompleted: Long,
+    @ColumnInfo(name = "recording_id") val recordingId: Long?,
+)
+
+/** Room row containing a private social-session self-review. */
+@Entity(
+    tableName = "social_self_assessments",
+    foreignKeys = [ForeignKey(entity = SocialSessionEntity::class, parentColumns = ["id"], childColumns = ["session_id"], onDelete = ForeignKey.CASCADE)],
+    indices = [Index("session_id")],
+)
+data class SocialSelfAssessmentEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @ColumnInfo(name = "session_id") val sessionId: Long,
+    @ColumnInfo(name = "clarity_score") val clarityScore: Int,
+    @ColumnInfo(name = "confidence_score") val confidenceScore: Int,
+    @ColumnInfo(name = "respect_score") val respectScore: Int,
+    @ColumnInfo(name = "listening_score") val listeningScore: Int,
+    @ColumnInfo(name = "calmness_score") val calmnessScore: Int,
+    val notes: String,
+    @ColumnInfo(name = "created_at") val createdAt: Long,
+)

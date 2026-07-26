@@ -174,7 +174,7 @@ interface ProgramProgressDao {
 }
 
 /** Private Room database; no user data is exported or backed up. */
-@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class], version = 2, exportSchema = true)
+@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class, SocialTrainingContentEntity::class, SocialTrainingPhraseEntity::class, SocialSessionEntity::class, SocialSelfAssessmentEntity::class], version = 3, exportSchema = true)
 abstract class CoachDatabase : RoomDatabase() {
     /** Provides exercise data access. */
     abstract fun tipDao(): TipDao
@@ -187,6 +187,9 @@ abstract class CoachDatabase : RoomDatabase() {
 
     /** Provides ready-made program progress data access. */
     abstract fun programProgressDao(): ProgramProgressDao
+
+    /** Provides responsible social-training data access. */
+    abstract fun socialTrainingDao(): SocialTrainingDao
 }
 
 /** Explicit non-destructive database migrations for locally retained user data. */
@@ -199,6 +202,22 @@ object CoachDatabaseMigrations {
             database.execSQL("CREATE INDEX IF NOT EXISTS index_program_day_completions_recording_id ON program_day_completions(recording_id)")
             database.execSQL("CREATE TABLE IF NOT EXISTS self_assessments (recording_id INTEGER NOT NULL, clarity INTEGER NOT NULL, pace INTEGER NOT NULL, confidence INTEGER NOT NULL, pauses INTEGER NOT NULL, tension TEXT NOT NULL, note TEXT NOT NULL, created_at INTEGER NOT NULL, PRIMARY KEY(recording_id), FOREIGN KEY(recording_id) REFERENCES recordings(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
             database.execSQL("CREATE INDEX IF NOT EXISTS index_self_assessments_recording_id ON self_assessments(recording_id)")
+        }
+    }
+
+    /** Adds responsible-social-training content, session history and private reviews. */
+    val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS social_training_content (id INTEGER NOT NULL, module_category TEXT NOT NULL, context TEXT NOT NULL, scenario_type TEXT NOT NULL, personality_style TEXT, difficulty TEXT NOT NULL, duration_minutes INTEGER NOT NULL, communication_goal TEXT NOT NULL, title TEXT NOT NULL, tip_text TEXT NOT NULL, practical_example TEXT NOT NULL, boundary_rule TEXT NOT NULL, roleplay_prompt TEXT NOT NULL, eye_contact_tip TEXT NOT NULL, body_language_tip TEXT NOT NULL, voice_tip TEXT NOT NULL, content_version INTEGER NOT NULL, content_safety_level TEXT NOT NULL, PRIMARY KEY(id))")
+            database.execSQL("CREATE TABLE IF NOT EXISTS social_training_phrases (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, content_id INTEGER NOT NULL, phrase_type TEXT NOT NULL, text TEXT NOT NULL, FOREIGN KEY(content_id) REFERENCES social_training_content(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_social_training_phrases_content_id ON social_training_phrases(content_id)")
+            database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_social_training_phrases_content_id_phrase_type_text ON social_training_phrases(content_id, phrase_type, text)")
+            database.execSQL("CREATE TABLE IF NOT EXISTS social_sessions (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, content_id INTEGER NOT NULL, session_mode TEXT NOT NULL, scenario_type TEXT NOT NULL, personality_style TEXT NOT NULL, communication_goal TEXT NOT NULL, date_completed INTEGER NOT NULL, recording_id INTEGER, FOREIGN KEY(content_id) REFERENCES social_training_content(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_social_sessions_content_id ON social_sessions(content_id)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_social_sessions_date_completed ON social_sessions(date_completed)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_social_sessions_scenario_type ON social_sessions(scenario_type)")
+            database.execSQL("CREATE TABLE IF NOT EXISTS social_self_assessments (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, session_id INTEGER NOT NULL, clarity_score INTEGER NOT NULL, confidence_score INTEGER NOT NULL, respect_score INTEGER NOT NULL, listening_score INTEGER NOT NULL, calmness_score INTEGER NOT NULL, notes TEXT NOT NULL, created_at INTEGER NOT NULL, FOREIGN KEY(session_id) REFERENCES social_sessions(id) ON UPDATE NO ACTION ON DELETE CASCADE)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_social_self_assessments_session_id ON social_self_assessments(session_id)")
         }
     }
 }

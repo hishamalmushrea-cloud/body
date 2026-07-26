@@ -52,6 +52,7 @@ data class UserSettings(
     val remindersEnabled: Boolean = false,
     val reminderHour: Int = 20,
     val reminderMinute: Int = 0,
+    val isSocialEthicsAcknowledged: Boolean = false,
 )
 
 /** A structured self-review saved privately after a voice recording. */
@@ -101,4 +102,94 @@ data class Achievement(
     val isUnlocked: Boolean,
     val progress: Int,
     val target: Int,
+)
+
+/** Private social-communication training content designed around consent and respect. */
+data class SocialTrainingContent(
+    val id: Int,
+    val moduleCategory: String,
+    val context: String,
+    val scenarioType: String,
+    val personalityStyle: CommunicationStyle?,
+    val difficulty: String,
+    val durationMinutes: Int,
+    val communicationGoal: String,
+    val title: String,
+    val tipText: String,
+    val practicalExample: String,
+    val boundaryRule: String,
+    val roleplayPrompt: String,
+    val eyeContactTip: String,
+    val bodyLanguageTip: String,
+    val voiceTip: String,
+    val phrases: List<TrainingPhrase>,
+)
+
+/** A safe phrase associated with a social communication training card. */
+data class TrainingPhrase(val type: PhraseType, val text: String)
+
+/** Supported phrase purposes on a social training card. */
+enum class PhraseType(val key: String, val label: String) {
+    OPENING("opening", "افتتاحية مقترحة"),
+    DO_SAY("do_say", "عبارة مناسبة"),
+    AVOID_SAY("avoid_say", "ما لا تقله"),
+    CLOSING("closing", "خاتمة محترمة");
+
+    companion object {
+        /** Restores a phrase type from persisted storage. */
+        fun fromKey(key: String): PhraseType = entries.firstOrNull { it.key == key } ?: OPENING
+    }
+}
+
+/** A communication style selection used only to adapt wording, never to diagnose a person. */
+enum class CommunicationStyle(val code: String, val label: String, val guidance: String) {
+    DIRECT("D", "الحازم / الموجّه للنتائج", "ابدأ بالخلاصة، اذكر الفائدة، ولا تكثر التفاصيل."),
+    EXPRESSIVE("I", "التعبيري / الاجتماعي", "استخدم نبرة دافئة وقصة قصيرة قبل التفاصيل."),
+    SUPPORTIVE("S", "الداعم / الهادئ", "تحدث بهدوء، امنح وقتاً، واشرح الخطوات بوضوح."),
+    ANALYTICAL("C", "التحليلي / الدقيق", "قدم بيانات وأمثلة وشروطاً دقيقة، وتجنب المبالغة."),
+    UNKNOWN("unknown", "غير معروف", "ابدأ بسؤال مفتوح واستمع قبل أن تعدّل أسلوبك.");
+
+    companion object {
+        /** Restores a style code without ادعاء معرفة نمط الطرف الآخر. */
+        fun fromCode(code: String?): CommunicationStyle = entries.firstOrNull { it.code == code } ?: UNKNOWN
+    }
+}
+
+/** Summary of one completed private social training attempt. */
+data class SocialSession(
+    val id: Long,
+    val contentId: Int,
+    val scenarioType: String,
+    val personalityStyle: CommunicationStyle,
+    val communicationGoal: String,
+    val completedAt: Long,
+    val recordingId: Long?,
+)
+
+/** A subjective, private social communication review saved after role-play. */
+data class SocialSelfAssessment(
+    val sessionId: Long,
+    val clarityScore: Int,
+    val confidenceScore: Int,
+    val respectScore: Int,
+    val listeningScore: Int,
+    val calmnessScore: Int,
+    val notes: String,
+    val createdAt: Long,
+)
+
+/** One concise daily communication practice cue. */
+data class DailyCommunicationBoost(val id: Int, val text: String)
+
+/** Aggregated local-only social practice progress. */
+data class SocialProgressStats(
+    val completedSessions: Int = 0,
+    val mostPracticedScenario: String? = null,
+    val strongestModule: String? = null,
+    val averageConfidence: Float = 0f,
+    val averageRespect: Float = 0f,
+    val averageCalmness: Float = 0f,
+    val rejectionPracticeCount: Int = 0,
+    val mostSelectedStyle: CommunicationStyle? = null,
+    val currentStreak: Int = 0,
 )

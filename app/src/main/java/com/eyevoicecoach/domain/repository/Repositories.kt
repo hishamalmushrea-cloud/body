@@ -6,6 +6,12 @@ import com.eyevoicecoach.domain.model.SelfAssessment
 import com.eyevoicecoach.domain.model.ProgramProgress
 import com.eyevoicecoach.domain.model.Tip
 import com.eyevoicecoach.domain.model.UserSettings
+import com.eyevoicecoach.domain.model.DailyCommunicationBoost
+import com.eyevoicecoach.domain.model.SocialProgressStats
+import com.eyevoicecoach.domain.model.SocialSelfAssessment
+import com.eyevoicecoach.domain.model.SocialSession
+import com.eyevoicecoach.domain.model.SocialTrainingContent
+import com.eyevoicecoach.domain.model.CommunicationStyle
 import kotlinx.coroutines.flow.Flow
 
 /** Contract for exercise content, history and favorites stored locally. */
@@ -92,6 +98,36 @@ interface AchievementRepository {
     fun observeAchievements(): Flow<List<com.eyevoicecoach.domain.model.Achievement>>
 }
 
+/** Contract for ethical social communication training content and private session history. */
+interface SocialTrainingRepository {
+    /** Imports bundled ethical social content only when the content version is newer. */
+    suspend fun seedSocialTrainingIfNeeded()
+
+    /** Observes content that matches optional scenario, goal and communication style filters. */
+    fun observeContent(scenarioType: String? = null, goal: String? = null, style: CommunicationStyle? = null): Flow<List<SocialTrainingContent>>
+
+    /** Gets one complete card including its safe phrases. */
+    suspend fun getContent(id: Int): SocialTrainingContent?
+
+    /** Stores a completed role-play session and its private social review. */
+    suspend fun saveSession(contentId: Int, recordingId: Long?, assessment: SocialSelfAssessment, selectedStyle: CommunicationStyle = CommunicationStyle.UNKNOWN): Long
+
+    /** Streams local social-practice metrics. */
+    fun observeStats(): Flow<SocialProgressStats>
+
+    /** Removes social session history and evaluations while retaining bundled content. */
+    suspend fun clearSocialTrainingData()
+}
+
+/** Contract for non-repeating daily communication cues. */
+interface DailyCommunicationBoostRepository {
+    /** Returns and records one unseen daily communication cue. */
+    suspend fun getAndMarkNextBoost(): DailyCommunicationBoost?
+
+    /** Clears seen boost history during a privacy reset. */
+    suspend fun clearHistory()
+}
+
 /** Contract for encrypted application preferences. */
 interface SettingsRepository {
     /** Streams all current settings. */
@@ -111,4 +147,7 @@ interface SettingsRepository {
 
     /** Clears encrypted user settings to restore first-run defaults. */
     suspend fun clearAll()
+
+    /** Records acceptance of the responsible social training notice. */
+    suspend fun setSocialEthicsAcknowledged()
 }

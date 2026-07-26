@@ -47,6 +47,7 @@ import com.eyevoicecoach.core.ui.LiveWaveform
 import com.eyevoicecoach.core.util.toArabicDate
 import com.eyevoicecoach.core.util.toArabicDuration
 import com.eyevoicecoach.core.util.toArabicPlaybackDuration
+import com.eyevoicecoach.core.util.toEasternDigits
 import com.eyevoicecoach.domain.model.Recording
 import com.eyevoicecoach.domain.model.TensionLevel
 
@@ -57,6 +58,7 @@ fun RecordingScreen(
     recordings: List<Recording>,
     playback: PlaybackState,
     amplitudes: List<Float>,
+    socialRoleplayPrompt: String?,
     onStart: () -> Result<Unit>,
     onStop: () -> Unit,
     onCancel: () -> Unit,
@@ -65,7 +67,9 @@ fun RecordingScreen(
     onSeekTo: (Long) -> Unit,
     onDelete: (Recording) -> Unit,
     pendingAssessment: PendingAssessment?,
-    onSaveAssessment: (Int, Int, Int, Int, TensionLevel, String) -> Unit,
+    socialSummary: SocialSessionSummary?,
+    onDismissSocialSummary: () -> Unit,
+    onSaveAssessment: (Int, Int, Int, Int, TensionLevel, String, Int, Int, Int) -> Unit,
     onDismissAssessment: () -> Unit,
     onBack: (() -> Unit)?,
 ) {
@@ -88,7 +92,13 @@ fun RecordingScreen(
                 androidx.compose.foundation.layout.Spacer(Modifier.padding(20.dp))
             }
         }
+        socialSummary?.let { summary ->
+            item { SocialSummaryCard(summary, onDismissSocialSummary) }
+        }
         if (canRecord) {
+            socialRoleplayPrompt?.let { prompt ->
+                item { CoachCard { Text("مطالبة التدريب", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold); Text(prompt, modifier = Modifier.padding(top = 7.dp)) } }
+            }
             item {
                 CoachCard {
                     Text(if (isRecording) "التسجيل جارٍ الآن" else "طبّق التمرين بصوتك", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
@@ -174,7 +184,7 @@ private fun RecordingCard(
 @Composable
 private fun SelfAssessmentDialog(
     pending: PendingAssessment,
-    onSave: (Int, Int, Int, Int, TensionLevel, String) -> Unit,
+    onSave: (Int, Int, Int, Int, TensionLevel, String, Int, Int, Int) -> Unit,
     onDismiss: () -> Unit,
 ) {
     var clarity by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
@@ -182,6 +192,9 @@ private fun SelfAssessmentDialog(
     var confidence by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
     var pauses by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
     var tension by rememberSaveable(pending.recordingId) { mutableStateOf(TensionLevel.MEDIUM) }
+    var respect by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var listening by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
+    var calmness by rememberSaveable(pending.recordingId) { mutableStateOf(3) }
     var note by rememberSaveable(pending.recordingId) { mutableStateOf("") }
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -193,6 +206,11 @@ private fun SelfAssessmentDialog(
                 RatingRow("سرعة الكلام", pace) { pace = it }
                 RatingRow("الثقة", confidence) { confidence = it }
                 RatingRow("استخدام الوقفات", pauses) { pauses = it }
+                if (pending.socialContentId != null) {
+                    RatingRow("الاحترام", respect) { respect = it }
+                    RatingRow("الإصغاء", listening) { listening = it }
+                    RatingRow("الهدوء", calmness) { calmness = it }
+                }
                 Text("التوتر", style = MaterialTheme.typography.labelLarge)
                 Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                     TensionLevel.entries.forEach { level -> FilterChip(selected = tension == level, onClick = { tension = level }, label = { Text(level.label) }) }
@@ -200,7 +218,7 @@ private fun SelfAssessmentDialog(
                 OutlinedTextField(value = note, onValueChange = { note = it }, label = { Text("ما الذي أريد تحسينه غداً؟") }, modifier = Modifier.fillMaxWidth(), minLines = 2)
             }
         },
-        confirmButton = { Button(onClick = { onSave(clarity, pace, confidence, pauses, tension, note) }) { Text("حفظ التقييم") } },
+        confirmButton = { Button(onClick = { onSave(clarity, pace, confidence, pauses, tension, note, respect, listening, calmness) }) { Text("حفظ التقييم") } },
         dismissButton = { OutlinedButton(onClick = onDismiss) { Text("لاحقاً") } },
     )
 }
@@ -214,4 +232,14 @@ private fun RatingRow(label: String, selected: Int, onSelect: (Int) -> Unit) {
             (1..5).forEach { value -> FilterChip(selected = selected == value, onClick = { onSelect(value) }, label = { Text(value.toString().replace('1', '١').replace('2', '٢').replace('3', '٣').replace('4', '٤').replace('5', '٥')) }) }
         }
     }
+}
+
+
+/** Shows that an ethical social role-play and its private review were saved successfully. */
+@Composable
+private fun SocialSummaryCard(summary: SocialSessionSummary, onDismiss: () -> Unit) = CoachCard {
+    Text("تم حفظ جلسة التواصل", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+    Text("الثقة ${summary.confidence.toString().toEasternDigits()} / ٥ · الاحترام ${summary.respect.toString().toEasternDigits()} / ٥ · الإصغاء ${summary.listening.toString().toEasternDigits()} / ٥ · الهدوء ${summary.calmness.toString().toEasternDigits()} / ٥", modifier = Modifier.padding(top = 7.dp))
+    if (summary.note.isNotBlank()) Text("ملاحظة الغد: ${summary.note}", modifier = Modifier.padding(top = 6.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+    OutlinedButton(onClick = onDismiss, modifier = Modifier.fillMaxWidth().padding(top = 10.dp)) { Text("إخفاء الملخص") }
 }
