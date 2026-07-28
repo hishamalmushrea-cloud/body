@@ -16,6 +16,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Streams the six ready-made programs with their local completion state. */
 @HiltViewModel

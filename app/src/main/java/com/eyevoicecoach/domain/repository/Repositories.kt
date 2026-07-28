@@ -14,6 +14,10 @@ import com.eyevoicecoach.domain.model.SocialTrainingContent
 import com.eyevoicecoach.domain.model.CommunicationStyle
 import com.eyevoicecoach.domain.model.SocialChoiceExercise
 import kotlinx.coroutines.flow.Flow
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Contract for exercise content, history and favorites stored locally. */
 interface TipRepository {

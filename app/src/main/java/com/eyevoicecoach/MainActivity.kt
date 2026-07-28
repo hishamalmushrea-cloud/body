@@ -14,6 +14,10 @@ import com.eyevoicecoach.core.ui.CoachTheme
 import com.eyevoicecoach.feature.main.CoachRoot
 import com.eyevoicecoach.feature.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Single Compose activity for the entirely offline coaching experience. */
 @AndroidEntryPoint

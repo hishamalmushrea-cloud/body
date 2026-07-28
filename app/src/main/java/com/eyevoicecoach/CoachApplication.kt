@@ -7,6 +7,10 @@ import com.eyevoicecoach.core.notification.CleanupScheduler
 import com.eyevoicecoach.core.notification.ReminderScheduler
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Application entry point that configures Hilt-managed background cleanup and notifications. */
 @HiltAndroidApp

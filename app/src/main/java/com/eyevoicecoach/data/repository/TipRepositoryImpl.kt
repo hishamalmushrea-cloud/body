@@ -18,6 +18,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import org.json.JSONObject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Room-backed repository that preserves user history while importing bundled exercise updates. */
 class TipRepositoryImpl @Inject constructor(
@@ -66,9 +70,9 @@ class TipRepositoryImpl @Inject constructor(
 
     override fun observeTips(context: String?): Flow<List<Tip>> =
         (if (context.isNullOrBlank() || context == "الكل") tips.observeAll() else tips.observeByContext(context))
-            .map { entities -> entities.map(TipEntity::toDomain) }
+            .map { entities -> entities.map { it.toDomain() } }
 
-    override fun observeFavorites(): Flow<List<Tip>> = tips.observeFavorites().map { entities -> entities.map(TipEntity::toDomain) }
+    override fun observeFavorites(): Flow<List<Tip>> = tips.observeFavorites().map { entities -> entities.map { it.toDomain() } }
 
     override suspend fun getTip(id: Int): Tip? = tips.findById(id)?.toDomain()
 

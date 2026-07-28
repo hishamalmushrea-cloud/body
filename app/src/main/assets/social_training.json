@@ -2586,6 +2586,123 @@
           "text": "إذا احتجت وقتاً للمقارنة، خذه براحتك."
         }
       ]
+    },
+    {
+      "id": 2067,
+      "module_category": "family_communication",
+      "context": "عائلة",
+      "scenario_type": "emotional_support",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 5,
+      "communication_goal": "listen_to_child_emotions",
+      "title": "احتواء مشاعر الأبناء المراهقين",
+      "tip_text": "عندما يغضب المراهق أو يحزن، تجنب تقديم الحلول الفورية أو تصغير مشكلته. استمع أولاً وسمّ المشاعر لتشعره بالاحتواء.",
+      "practical_example": "قل: يبدو أن هذا الموقف أزعجك جداً، أنا هنا لأسمعك.",
+      "boundary_rule": "الاستماع لا يعني الموافقة على السلوك الخاطئ، لكنه يهدئ الانفعال أولاً.",
+      "roleplay_prompt": "قل: أرى أنك محبط جداً مما حدث اليوم، هل تود التحدث عن ذلك؟",
+      "eye_contact_tip": "تواصل بصري دافئ ومتعاطف، مع مستوى نظر موازٍ.",
+      "body_language_tip": "جلسة متجهة نحوهم مع فتح الذراعين، دون إجبارهم على الحديث.",
+      "voice_tip": "نبرة هادئة وحنونة، وخفض سرعة الكلام.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أرى أنك محبط جداً مما حدث."
+        },
+        {
+          "type": "do_say",
+          "text": "أنا هنا لأسمعك متى كنت مستعداً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "هذه مشكلة تافهة ولا تستحق البكاء."
+        },
+        {
+          "type": "closing",
+          "text": "خذ وقتك، وأنا بجانبك."
+        }
+      ],
+      "social_track": "family"
+    },
+    {
+      "id": 2068,
+      "module_category": "boundaries",
+      "context": "أصدقاء",
+      "scenario_type": "declining_invitation",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "say_no_respectfully",
+      "title": "الاعتذار عن دعوة صديق بلطف",
+      "tip_text": "الاعتذار الصادق لا يحتاج إلى اختلاق أعذار طويلة. اشكر الصديق، واعتذر بوضوح، واقترح بديلاً إن أمكن.",
+      "practical_example": "قل: شكراً جداً لدعوتك، لكنني أحتاج للراحة اليوم. ما رأيك أن نلتقي الأسبوع القادم؟",
+      "boundary_rule": "من حقك رفض الدعوة للحفاظ على طاقتك، والصداقة الحقيقية تتفهم ذلك.",
+      "roleplay_prompt": "قل: أسعدتني دعوتك، لكن لن أتمكن من الحضور هذه المرة. لننسق لقاءً قريباً.",
+      "eye_contact_tip": "تواصل بصري مريح وابتسامة خفيفة.",
+      "body_language_tip": "لغة جسد مسترخية غير دفاعية.",
+      "voice_tip": "نبرة ودودة وواثقة دون تردد.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أسعدتني دعوتك جداً."
+        },
+        {
+          "type": "do_say",
+          "text": "لن أتمكن من الحضور هذه المرة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنا مشغول بأشياء أهم من هذا اللقاء."
+        },
+        {
+          "type": "closing",
+          "text": "لننسق لقاءً في وقت قريب يناسبنا."
+        }
+      ],
+      "social_track": "friends"
+    },
+    {
+      "id": 2069,
+      "module_category": "conflict_resolution",
+      "context": "شريك حياة",
+      "scenario_type": "sensitive_discussion",
+      "personality_style": null,
+      "difficulty": "advanced",
+      "duration_minutes": 6,
+      "communication_goal": "discuss_without_escalation",
+      "title": "مناقشة موضوع حساس دون تصعيد",
+      "tip_text": "استخدم صيغة \"أنا\" بدلاً من \"أنت\" للتعبير عن احتياجك دون توجيه اتهام، وابدأ بنية إيجابية.",
+      "practical_example": "بدل أن تقول 'أنت دائماً تتجاهل رأيي'، قل 'أنا أشعر بالتجاهل عندما نتخذ هذا القرار دون نقاش'.",
+      "boundary_rule": "لا تستخدم أخطاء الماضي سلاحاً في نقاش المشكلة الحالية.",
+      "roleplay_prompt": "قل: يهمني جداً أن نصل لحل يرضينا معاً. أنا أشعر بالقلق من هذه الخطوة وأحتاج لمناقشتها.",
+      "eye_contact_tip": "تواصل بصري مستمر يبدي الاهتمام، وتجنب الالتفات بعيداً.",
+      "body_language_tip": "الجلوس بالقرب دون حواجز مادية، وتجنب مكتفة الأيدي.",
+      "voice_tip": "صوت هادئ ومنخفض، وخالٍ من نبرة اللوم أو السخرية.",
+      "content_version": 2,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يهمني جداً أن نصل لحل يرضينا معاً."
+        },
+        {
+          "type": "do_say",
+          "text": "أنا أشعر بالقلق عندما يحدث كذا، وأحتاج لمشاركتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت دائماً تفعل ذلك ولن تتغير."
+        },
+        {
+          "type": "closing",
+          "text": "أقدر استماعك ومحاولتنا لفهم بعضنا."
+        }
+      ],
+      "social_track": "relationships"
     }
   ]
 }

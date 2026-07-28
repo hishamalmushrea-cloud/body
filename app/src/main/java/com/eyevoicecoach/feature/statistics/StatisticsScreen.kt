@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.dp
 import com.eyevoicecoach.core.ui.CoachCard
 import com.eyevoicecoach.core.util.toEasternDigits
 import com.eyevoicecoach.domain.model.ProgressStats
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 /** Presents locally calculated, privacy-preserving practice progress. */
 @Composable

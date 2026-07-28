@@ -5,6 +5,10 @@ import com.eyevoicecoach.domain.model.SocialChoiceExercise
 import com.eyevoicecoach.domain.repository.SocialChoiceRepository
 import javax.inject.Inject
 import org.json.JSONObject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Asset-backed repository for short ethical response-choice exercises. */
 class SocialChoiceRepositoryImpl @Inject constructor(private val context: Context) : SocialChoiceRepository {

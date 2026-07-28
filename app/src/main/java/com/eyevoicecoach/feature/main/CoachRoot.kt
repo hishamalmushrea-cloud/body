@@ -1,6 +1,7 @@
 package com.eyevoicecoach.feature.main
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -77,6 +78,10 @@ import com.eyevoicecoach.feature.training.TipDetailScreen
 import com.eyevoicecoach.feature.training.TipDetailViewModel
 import com.eyevoicecoach.feature.training.TrainingScreen
 import com.eyevoicecoach.feature.training.TrainingViewModel
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 private data class BottomDestination(val route: String, val label: String, val icon: androidx.compose.ui.graphics.vector.ImageVector)
 
@@ -91,7 +96,11 @@ private val destinations = listOf(
 /** Decides between the private introduction, a progress screen and the main navigation graph. */
 @Composable
 fun CoachRoot(state: MainUiState, onFinishOnboarding: () -> Unit) {
-    AnimatedContent(targetState = state.isLoading to state.settings.isOnboardingComplete, label = "root") { (loading, onboarded) ->
+    AnimatedContent(
+        targetState = state.isLoading to state.settings.isOnboardingComplete,
+        label = "root",
+        modifier = Modifier.background(MaterialTheme.colorScheme.background)
+    ) { (loading, onboarded) ->
         when {
             loading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
             !onboarded -> OnboardingScreen(onContinue = onFinishOnboarding)
@@ -109,18 +118,30 @@ private fun MainNavigation(error: String?) {
     Scaffold(
         bottomBar = {
             if (route in destinations.map(BottomDestination::route)) {
-                NavigationBar {
+                NavigationBar(
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    tonalElevation = 0.dp
+                ) {
                     destinations.forEach { destination ->
                         NavigationBarItem(
                             selected = route == destination.route,
                             onClick = { navController.navigateRoot(destination.route) },
                             icon = { Icon(destination.icon, contentDescription = destination.label) },
                             label = { Text(destination.label) },
+                            colors = androidx.compose.material3.NavigationBarItemDefaults.colors(
+                                indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                                selectedIconColor = MaterialTheme.colorScheme.primary,
+                                unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                selectedTextColor = MaterialTheme.colorScheme.primary,
+                                unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         )
                     }
                 }
             }
         },
+        containerColor = MaterialTheme.colorScheme.background,
     ) { padding ->
         if (error != null) {
             EmptyState("⚠️", "حدثت مشكلة في التجهيز", error, Modifier.padding(padding))

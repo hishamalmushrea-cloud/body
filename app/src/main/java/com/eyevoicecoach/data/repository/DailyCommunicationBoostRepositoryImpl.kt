@@ -7,6 +7,10 @@ import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import org.json.JSONObject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Encrypted-preferences repository for a locally rotating daily communication cue. */
 class DailyCommunicationBoostRepositoryImpl @Inject constructor(

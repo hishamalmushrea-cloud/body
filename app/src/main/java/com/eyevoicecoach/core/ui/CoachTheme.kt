@@ -1,24 +1,56 @@
 package com.eyevoicecoach.core.ui
 
+import android.app.Activity
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import com.eyevoicecoach.domain.model.AppTheme
 
-/** Applies one of the six calm, high-contrast themes used by the coaching experience. */
+private val DarkAcademyColorScheme = darkColorScheme(
+    primary = Color(0xFFE5E5E5), // Off-white
+    onPrimary = Color(0xFF0F0F0F),
+    primaryContainer = Color(0xFF2A2A2A),
+    onPrimaryContainer = Color(0xFFFFFFFF),
+    secondary = Color(0xFFB0B0B0), // Soft gray
+    onSecondary = Color(0xFF0F0F0F),
+    secondaryContainer = Color(0xFF1F1F1F),
+    onSecondaryContainer = Color(0xFFE5E5E5),
+    background = Color(0xFF0F0F0F), // True deep black/dark gray
+    onBackground = Color(0xFFE5E5E5),
+    surface = Color(0xFF141414), // Slightly elevated black for cards
+    onSurface = Color(0xFFE5E5E5),
+    surfaceVariant = Color(0xFF1F1F1F),
+    onSurfaceVariant = Color(0xFFB0B0B0),
+    error = Color(0xFFCF6679),
+    onError = Color(0xFF000000)
+)
+
 @Composable
 fun CoachTheme(theme: AppTheme, content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = colorsFor(theme), content = content)
-}
+    val colorScheme = DarkAcademyColorScheme
 
-private fun colorsFor(theme: AppTheme): ColorScheme = when (theme) {
-    AppTheme.OLED -> darkColorScheme(primary = Color(0xFFC9A227), secondary = Color(0xFFE6CF7C), background = Color.Black, surface = Color(0xFF121212), onPrimary = Color.Black)
-    AppTheme.CLASSIC -> lightColorScheme(primary = Color(0xFF735C00), secondary = Color(0xFF715C2A), background = Color(0xFFFFFBFF), surface = Color(0xFFFFFBFF))
-    AppTheme.NAVY -> darkColorScheme(primary = Color(0xFF9CCAFF), secondary = Color(0xFFB6C8E6), background = Color(0xFF071A33), surface = Color(0xFF102743))
-    AppTheme.EMERALD -> darkColorScheme(primary = Color(0xFF8ADEB2), secondary = Color(0xFFB4E8CD), background = Color(0xFF061F17), surface = Color(0xFF0D3025))
-    AppTheme.BURGUNDY -> darkColorScheme(primary = Color(0xFFFFB1B6), secondary = Color(0xFFEAC0C3), background = Color(0xFF26080F), surface = Color(0xFF42151E))
-    AppTheme.IMPERIAL -> darkColorScheme(primary = Color(0xFFDCC0FF), secondary = Color(0xFFE6D7FF), background = Color(0xFF1B102D), surface = Color(0xFF302044))
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.background.toArgb()
+            window.navigationBarColor = colorScheme.background.toArgb()
+            WindowCompat.getInsetsController(window, view).apply {
+                isAppearanceLightStatusBars = false
+                isAppearanceLightNavigationBars = false
+            }
+        }
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = CoachTypography,
+        content = content
+    )
 }

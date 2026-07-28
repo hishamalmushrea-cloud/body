@@ -10,6 +10,10 @@ import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Retrieves ethical scenario training cards for the chosen situation, goal and optional style. */
 class GetScenarioTrainingUseCase @Inject constructor(private val socialTraining: SocialTrainingRepository) {

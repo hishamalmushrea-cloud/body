@@ -3,6 +3,10 @@ package com.eyevoicecoach.core.util
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Converts western digits in this string to Arabic-Indic digits for the Arabic interface. */
 fun String.toEasternDigits(): String = buildString {

@@ -36,6 +36,9 @@ import com.eyevoicecoach.core.ui.EmptyState
 import com.eyevoicecoach.domain.model.Tip
 import java.time.DayOfWeek
 import java.time.LocalDate
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 private val categories = listOf("الكل", "العين", "الجسد", "الصوت")
 private val contexts = listOf("الكل", "عام", "مقابلة عمل", "إلقاء كلمة", "اجتماع")

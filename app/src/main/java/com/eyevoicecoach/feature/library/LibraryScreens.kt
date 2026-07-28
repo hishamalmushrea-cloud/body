@@ -22,7 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +31,9 @@ import com.eyevoicecoach.core.ui.EmptyState
 import com.eyevoicecoach.domain.catalog.RealWorldSituation
 import com.eyevoicecoach.domain.catalog.SpecializedDrill
 import com.eyevoicecoach.domain.catalog.TrainingCatalog
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 /** Lists real-world speaking scenarios for private rehearsal. */
 @Composable

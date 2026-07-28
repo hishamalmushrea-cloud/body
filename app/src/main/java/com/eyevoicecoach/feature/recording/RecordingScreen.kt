@@ -50,6 +50,8 @@ import com.eyevoicecoach.core.util.toArabicPlaybackDuration
 import com.eyevoicecoach.core.util.toEasternDigits
 import com.eyevoicecoach.domain.model.Recording
 import com.eyevoicecoach.domain.model.TensionLevel
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.foundation.layout.ColumnScope
 
 /** Provides microphone permission, live waveform recording and complete local playback controls. */
 @Composable

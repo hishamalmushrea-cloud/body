@@ -30,6 +30,9 @@ import com.eyevoicecoach.core.ui.CoachCard
 import com.eyevoicecoach.core.ui.EmptyState
 import java.time.DayOfWeek
 import java.time.LocalDate
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 /** Shows the no-repeat exercise of the day and direct paths to practice it. */
 @Composable

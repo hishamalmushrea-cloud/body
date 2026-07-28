@@ -8,6 +8,10 @@ import androidx.room.Query
 import androidx.room.Relation
 import androidx.room.Transaction
 import kotlinx.coroutines.flow.Flow
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Content row and its separate phrase rows, materialized by Room. */
 data class SocialContentWithPhrases(

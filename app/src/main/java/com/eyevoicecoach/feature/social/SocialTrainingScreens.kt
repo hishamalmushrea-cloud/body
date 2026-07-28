@@ -25,7 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +41,9 @@ import com.eyevoicecoach.domain.model.SocialChoiceExercise
 import com.eyevoicecoach.domain.social.SocialSkillTracks
 import com.eyevoicecoach.domain.model.SocialTrainingContent
 import com.eyevoicecoach.domain.model.UserSettings
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 private val scenarioOptions = listOf(
     "الكل" to null,

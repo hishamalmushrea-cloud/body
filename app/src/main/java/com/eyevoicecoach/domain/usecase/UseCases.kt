@@ -5,6 +5,10 @@ import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.TipRepository
 import java.util.Calendar
 import javax.inject.Inject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Selects a never-viewed daily exercise, with Friday-specific content support. */
 class GetDailyTipUseCase @Inject constructor(private val tips: TipRepository) {

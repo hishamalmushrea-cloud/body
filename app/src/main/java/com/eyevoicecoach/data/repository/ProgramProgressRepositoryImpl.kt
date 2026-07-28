@@ -10,6 +10,10 @@ import com.eyevoicecoach.domain.repository.ProgramProgressRepository
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Room repository that keeps program completion entirely on the device. */
 class ProgramProgressRepositoryImpl @Inject constructor(

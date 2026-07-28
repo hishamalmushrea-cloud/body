@@ -39,6 +39,9 @@ import com.eyevoicecoach.core.ui.CoachCard
 import com.eyevoicecoach.core.util.toEasternDigits
 import com.eyevoicecoach.domain.model.AppTheme
 import com.eyevoicecoach.domain.model.UserSettings
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 private val contextOptions = listOf("عام", "مقابلة عمل", "إلقاء كلمة", "اجتماع")
 

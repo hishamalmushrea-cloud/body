@@ -1,6 +1,10 @@
 package com.eyevoicecoach.domain.social
 
 import com.eyevoicecoach.domain.model.SocialSkillTrack
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Curated Arabic and Gulf-appropriate paths for practical social conduct. */
 object SocialSkillTracks {

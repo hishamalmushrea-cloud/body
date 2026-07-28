@@ -11,6 +11,10 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Room implementation that keeps all audio files in private application storage. */
 class RecordingRepositoryImpl @Inject constructor(
@@ -18,7 +22,7 @@ class RecordingRepositoryImpl @Inject constructor(
 ) : RecordingRepository {
     private val recordings = database.recordingDao()
 
-    override fun observeRecordings(): Flow<List<Recording>> = recordings.observeAll().map { rows -> rows.map(RecordingEntity::toDomain) }
+    override fun observeRecordings(): Flow<List<Recording>> = recordings.observeAll().map { rows -> rows.map { it.toDomain() } }
 
     override suspend fun addRecording(uri: String, tipId: Int, durationSeconds: Int): Long = recordings.insert(
             RecordingEntity(

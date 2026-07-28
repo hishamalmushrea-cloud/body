@@ -25,6 +25,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import org.json.JSONObject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Room-backed ethical social-training repository with local content safety validation. */
 class SocialTrainingRepositoryImpl @Inject constructor(
@@ -87,7 +91,7 @@ class SocialTrainingRepositoryImpl @Inject constructor(
 
     override fun observeContent(scenarioType: String?, goal: String?, style: CommunicationStyle?, track: String?): Flow<List<SocialTrainingContent>> =
         social.observeAllWithPhrases().map { rows ->
-            rows.map(SocialContentWithPhrases::toDomain).filter { content ->
+            rows.map { it.toDomain() }.filter { content ->
                 (scenarioType.isNullOrBlank() || scenarioType == "الكل" || content.scenarioType == scenarioType) &&
                     (goal.isNullOrBlank() || goal == "الكل" || content.communicationGoal == goal) &&
                     (style == null || style == CommunicationStyle.UNKNOWN || content.personalityStyle == null || content.personalityStyle == style) &&

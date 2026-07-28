@@ -6,6 +6,10 @@ import com.eyevoicecoach.domain.model.SelfAssessment
 import com.eyevoicecoach.domain.model.TensionLevel
 import com.eyevoicecoach.domain.repository.AssessmentRepository
 import javax.inject.Inject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Room repository for private post-recording self-assessments. */
 class AssessmentRepositoryImpl @Inject constructor(database: CoachDatabase) : AssessmentRepository {

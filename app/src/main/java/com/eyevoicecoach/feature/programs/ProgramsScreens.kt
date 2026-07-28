@@ -31,6 +31,9 @@ import com.eyevoicecoach.core.ui.EmptyState
 import com.eyevoicecoach.core.util.toEasternDigits
 import com.eyevoicecoach.domain.catalog.ProgramDay
 import com.eyevoicecoach.domain.model.Achievement
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
 
 /** Lists the six structured offline programs and their progress. */
 @Composable

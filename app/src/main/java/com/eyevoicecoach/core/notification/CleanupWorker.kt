@@ -7,6 +7,10 @@ import androidx.work.WorkerParameters
 import com.eyevoicecoach.domain.repository.RecordingRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Column
 
 /** Performs the mandatory seven-day audio cleanup in a battery-friendly background job. */
 @HiltWorker
