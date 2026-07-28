@@ -41,6 +41,12 @@ import com.eyevoicecoach.domain.model.CommunicationStyle
 import com.eyevoicecoach.feature.library.SituationDetailScreen
 import com.eyevoicecoach.feature.library.SituationsScreen
 import com.eyevoicecoach.feature.library.SpecializedDrillsScreen
+import com.eyevoicecoach.feature.lifeskills.LifeLessonScreen
+import com.eyevoicecoach.feature.lifeskills.LifeLessonViewModel
+import com.eyevoicecoach.feature.lifeskills.LifeSkillsScreen
+import com.eyevoicecoach.feature.lifeskills.LifeSkillsTrackScreen
+import com.eyevoicecoach.feature.lifeskills.LifeSkillsTrackViewModel
+import com.eyevoicecoach.feature.lifeskills.LifeSkillsViewModel
 import com.eyevoicecoach.feature.privacy.PrivacyScreen
 import com.eyevoicecoach.feature.privacy.PrivacyViewModel
 import com.eyevoicecoach.feature.programs.AchievementsScreen
@@ -144,7 +150,7 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
         composable("training") {
             val viewModel: TrainingViewModel = hiltViewModel()
             val state by viewModel.uiState.collectAsStateWithLifecycle()
-            TrainingScreen(state, viewModel::setCategory, viewModel::setContext, onOpen = { navController.navigate("detail/$it") }, onDrills = { navController.navigate("drills") }, onSituations = { navController.navigate("situations") }, onSocial = { navController.navigate("socialTraining") })
+            TrainingScreen(state, viewModel::setCategory, viewModel::setContext, onOpen = { navController.navigate("detail/$it") }, onDrills = { navController.navigate("drills") }, onSituations = { navController.navigate("situations") }, onSocial = { navController.navigate("socialTraining") }, onLifeSkills = { navController.navigate("lifeSkills") })
         }
         composable("recordings") { RecordingDestination(canRecord = false, onBack = null) }
         composable("programs") {
@@ -155,7 +161,7 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
         composable("statistics") {
             val viewModel: StatisticsViewModel = hiltViewModel()
             val stats by viewModel.stats.collectAsStateWithLifecycle()
-            StatisticsScreen(stats, onSocialStats = { navController.navigate("socialStats") })
+            StatisticsScreen(stats, onSocialStats = { navController.navigate("socialStats") }, onLifeSkills = { navController.navigate("lifeSkills") })
         }
         composable("settings") {
             val viewModel: SettingsViewModel = hiltViewModel()
@@ -193,6 +199,21 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
             val viewModel: AchievementsViewModel = hiltViewModel()
             val items by viewModel.achievements.collectAsStateWithLifecycle()
             AchievementsScreen(items, onBack = navController::navigateUp)
+        }
+        composable("lifeSkills") {
+            val viewModel: LifeSkillsViewModel = hiltViewModel()
+            val progress by viewModel.progress.collectAsStateWithLifecycle()
+            LifeSkillsScreen(viewModel.tracks, progress, onOpenTrack = { navController.navigate("lifeTrack/$it") }, onBack = navController::navigateUp)
+        }
+        composable("lifeTrack/{lifeTrackId}", arguments = listOf(navArgument("lifeTrackId") { type = NavType.StringType })) {
+            val viewModel: LifeSkillsTrackViewModel = hiltViewModel()
+            val progress by viewModel.progress.collectAsStateWithLifecycle()
+            LifeSkillsTrackScreen(viewModel.track, progress, onOpenLesson = { navController.navigate("lifeLesson/$it") }, onBack = navController::navigateUp)
+        }
+        composable("lifeLesson/{lifeLessonId}", arguments = listOf(navArgument("lifeLessonId") { type = NavType.StringType })) {
+            val viewModel: LifeLessonViewModel = hiltViewModel()
+            val progress by viewModel.progress.collectAsStateWithLifecycle()
+            LifeLessonScreen(viewModel.track, viewModel.lesson, progress, onComplete = { reflection, option -> viewModel.complete(reflection, option) }, onBack = navController::navigateUp)
         }
         composable("socialTraining") { entry ->
             val viewModel: SocialTrainingViewModel = hiltViewModel()
@@ -233,7 +254,7 @@ private fun CoachNavHost(navController: NavHostController, modifier: Modifier) {
         composable("privacy") {
             val viewModel: PrivacyViewModel = hiltViewModel()
             val message by viewModel.message.collectAsStateWithLifecycle()
-            PrivacyScreen(message, onDeleteRecordings = { viewModel.deleteRecordings() }, onDeleteHistory = { viewModel.deleteHistory() }, onDeleteAssessments = { viewModel.deleteAssessments() }, onDeleteSocialTraining = { viewModel.deleteSocialTraining() }, onResetAll = { viewModel.resetApplication() }, onClearMessage = { viewModel.clearMessage() }, onBack = navController::navigateUp)
+            PrivacyScreen(message, onDeleteRecordings = { viewModel.deleteRecordings() }, onDeleteHistory = { viewModel.deleteHistory() }, onDeleteAssessments = { viewModel.deleteAssessments() }, onDeleteSocialTraining = { viewModel.deleteSocialTraining() }, onDeleteLifeSkills = { viewModel.deleteLifeSkillsData() }, onResetAll = { viewModel.resetApplication() }, onClearMessage = { viewModel.clearMessage() }, onBack = navController::navigateUp)
         }
         composable("favorites") {
             val viewModel: FavoritesViewModel = hiltViewModel()

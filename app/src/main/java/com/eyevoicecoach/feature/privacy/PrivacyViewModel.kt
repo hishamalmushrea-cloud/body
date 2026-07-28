@@ -8,6 +8,7 @@ import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.SettingsRepository
 import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
+import com.eyevoicecoach.domain.repository.LifeSkillsRepository
 import com.eyevoicecoach.domain.repository.TipRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -26,6 +27,7 @@ class PrivacyViewModel @Inject constructor(
     private val settings: SettingsRepository,
     private val socialTraining: SocialTrainingRepository,
     private val socialBoosts: DailyCommunicationBoostRepository,
+    private val lifeSkills: LifeSkillsRepository,
 ) : ViewModel() {
     private val _message = MutableStateFlow<String?>(null)
 
@@ -47,6 +49,9 @@ class PrivacyViewModel @Inject constructor(
         socialBoosts.clearHistory()
     }
 
+    /** Deletes private completions and reflections from all life-skills learning paths. */
+    fun deleteLifeSkillsData() = runAction("تم حذف تقدم ومسودات مسارات الحياة.") { lifeSkills.clearAll() }
+
     /** Restores the experience to first-run state and deletes every piece of user-created data. */
     fun resetApplication() = runAction("تمت إعادة التطبيق كبداية جديدة.") {
         recordings.deleteAllRecordings()
@@ -55,6 +60,7 @@ class PrivacyViewModel @Inject constructor(
         programs.clearAll()
         socialTraining.clearSocialTrainingData()
         socialBoosts.clearHistory()
+        lifeSkills.clearAll()
         settings.clearAll()
     }
 

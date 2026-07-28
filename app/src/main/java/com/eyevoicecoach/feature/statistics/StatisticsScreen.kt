@@ -22,7 +22,7 @@ import com.eyevoicecoach.domain.model.ProgressStats
 
 /** Presents locally calculated, privacy-preserving practice progress. */
 @Composable
-fun StatisticsScreen(stats: ProgressStats, onSocialStats: () -> Unit) {
+fun StatisticsScreen(stats: ProgressStats, onSocialStats: () -> Unit, onLifeSkills: () -> Unit) {
     val ratio = if (stats.totalTips == 0) 0f else stats.viewedCount.toFloat() / stats.totalTips
     LazyColumn(Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
@@ -42,7 +42,8 @@ fun StatisticsScreen(stats: ProgressStats, onSocialStats: () -> Unit) {
                 MetricCard("🎙", "التسجيلات", stats.recordingCount, Modifier.weight(1f))
             }
         }
-        item { OutlinedButton(onClick = onSocialStats, modifier = Modifier.fillMaxWidth()) { Text("تقدم التواصل المؤثر") } }
+        item { OutlinedButton(onClick = onSocialStats, modifier = Modifier.fillMaxWidth()) { Text("تقدم الذكاء الاجتماعي") } }
+        item { OutlinedButton(onClick = onLifeSkills, modifier = Modifier.fillMaxWidth()) { Text("تقدم مسارات الحياة والمهارات") } }
         item { Text("حسب المهارة", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold) }
         if (stats.categoryCounts.isEmpty()) item { CoachCard { Text("ابدأ أول تمرين لتظهر هنا خريطة تقدمك.") } }
         items(stats.categoryCounts.entries.toList(), key = { it.key }) { (category, count) ->

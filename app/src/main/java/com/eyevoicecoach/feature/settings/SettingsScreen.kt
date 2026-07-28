@@ -139,7 +139,7 @@ fun AboutScreen(onBack: () -> Unit) {
         Text("حول التطبيق", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
         CoachCard {
             Text("مدرب العين والجسد والصوت", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-            Text("إصدار ١.٣.٠", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("إصدار ١.٤.٠", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text("أداة تدريب شخصية عربية تعمل دون اتصال لمساعدتك على بناء حضور هادئ وواثق.", modifier = Modifier.padding(top = 16.dp))
         }
         CoachCard {

@@ -158,3 +158,15 @@ interface SettingsRepository {
     /** Records acceptance of the responsible social training notice. */
     suspend fun setSocialEthicsAcknowledged()
 }
+
+/** Contract for private completion and reflection data in life-skills learning tracks. */
+interface LifeSkillsRepository {
+    /** Streams all locally completed educational lessons and their reflections. */
+    fun observeProgress(): Flow<com.eyevoicecoach.domain.model.LifeSkillsProgress>
+
+    /** Marks a lesson complete and saves its optional private reflection and selected response. */
+    suspend fun completeLesson(lessonId: String, trackId: String, reflection: String, chosenOption: Int?)
+
+    /** Deletes life-skills completion history and reflections during a privacy reset. */
+    suspend fun clearAll()
+}

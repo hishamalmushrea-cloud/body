@@ -14,6 +14,7 @@ import com.eyevoicecoach.data.repository.TipRepositoryImpl
 import com.eyevoicecoach.data.repository.SocialTrainingRepositoryImpl
 import com.eyevoicecoach.data.repository.DailyCommunicationBoostRepositoryImpl
 import com.eyevoicecoach.data.repository.SocialChoiceRepositoryImpl
+import com.eyevoicecoach.data.repository.LifeSkillsRepositoryImpl
 import com.eyevoicecoach.domain.repository.RecordingRepository
 import com.eyevoicecoach.domain.repository.AssessmentRepository
 import com.eyevoicecoach.domain.repository.ProgramProgressRepository
@@ -23,6 +24,7 @@ import com.eyevoicecoach.domain.repository.TipRepository
 import com.eyevoicecoach.domain.repository.SocialTrainingRepository
 import com.eyevoicecoach.domain.repository.DailyCommunicationBoostRepository
 import com.eyevoicecoach.domain.repository.SocialChoiceRepository
+import com.eyevoicecoach.domain.repository.LifeSkillsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -61,6 +63,9 @@ abstract class RepositoryModule {
 
     /** Binds interactive ethical response-choice exercises. */
     @Binds @Singleton abstract fun bindSocialChoiceRepository(implementation: SocialChoiceRepositoryImpl): SocialChoiceRepository
+
+    /** Binds private life-skills lesson progress storage. */
+    @Binds @Singleton abstract fun bindLifeSkillsRepository(implementation: LifeSkillsRepositoryImpl): LifeSkillsRepository
 }
 
 /** Hilt providers for application-scoped local storage. */
@@ -71,7 +76,7 @@ object StorageModule {
     @Provides @Singleton
     fun provideDatabase(@ApplicationContext context: Context): CoachDatabase =
         Room.databaseBuilder(context, CoachDatabase::class.java, "coach.db")
-            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2, CoachDatabaseMigrations.MIGRATION_2_3, CoachDatabaseMigrations.MIGRATION_3_4)
+            .addMigrations(CoachDatabaseMigrations.MIGRATION_1_2, CoachDatabaseMigrations.MIGRATION_2_3, CoachDatabaseMigrations.MIGRATION_3_4, CoachDatabaseMigrations.MIGRATION_4_5)
             .build()
 
     /** Creates the keystore-encrypted preferences store. */

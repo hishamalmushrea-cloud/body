@@ -174,7 +174,7 @@ interface ProgramProgressDao {
 }
 
 /** Private Room database; no user data is exported or backed up. */
-@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class, SocialTrainingContentEntity::class, SocialTrainingPhraseEntity::class, SocialSessionEntity::class, SocialSelfAssessmentEntity::class], version = 4, exportSchema = true)
+@Database(entities = [TipEntity::class, HistoryEntity::class, FavoriteEntity::class, RecordingEntity::class, ProgramProgressEntity::class, ProgramDayCompletionEntity::class, SelfAssessmentEntity::class, SocialTrainingContentEntity::class, SocialTrainingPhraseEntity::class, SocialSessionEntity::class, SocialSelfAssessmentEntity::class, LifeLessonCompletionEntity::class], version = 5, exportSchema = true)
 abstract class CoachDatabase : RoomDatabase() {
     /** Provides exercise data access. */
     abstract fun tipDao(): TipDao
@@ -190,6 +190,9 @@ abstract class CoachDatabase : RoomDatabase() {
 
     /** Provides responsible social-training data access. */
     abstract fun socialTrainingDao(): SocialTrainingDao
+
+    /** Provides life-skills lesson progress data access. */
+    abstract fun lifeSkillsDao(): LifeSkillsDao
 }
 
 /** Explicit non-destructive database migrations for locally retained user data. */
@@ -225,6 +228,15 @@ object CoachDatabaseMigrations {
     val MIGRATION_3_4 = object : Migration(3, 4) {
         override fun migrate(database: SupportSQLiteDatabase) {
             database.execSQL("ALTER TABLE social_training_content ADD COLUMN social_track TEXT NOT NULL DEFAULT 'social_basics'")
+        }
+    }
+
+    /** Adds private completion and reflection data for the educational life-skills tracks. */
+    val MIGRATION_4_5 = object : Migration(4, 5) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS life_lesson_completions (lesson_id TEXT NOT NULL, track_id TEXT NOT NULL, completed_at INTEGER NOT NULL, reflection TEXT NOT NULL, chosen_option INTEGER, PRIMARY KEY(lesson_id))")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_life_lesson_completions_track_id ON life_lesson_completions(track_id)")
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_life_lesson_completions_completed_at ON life_lesson_completions(completed_at)")
         }
     }
 }

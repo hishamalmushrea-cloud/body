@@ -207,3 +207,22 @@ data class SocialChoiceExercise(
     val preferredIndex: Int,
     val explanation: String,
 )
+
+/** A private completion record for one life-skills lesson. */
+data class LifeLessonCompletion(
+    val lessonId: String,
+    val trackId: String,
+    val completedAt: Long,
+    val reflection: String,
+    val chosenOption: Int?,
+)
+
+/** Aggregated private progress across the educational life-skills tracks. */
+data class LifeSkillsProgress(
+    val completedLessonIds: Set<String> = emptySet(),
+    val reflections: Map<String, String> = emptyMap(),
+) {
+    /** Returns completion percentage for [totalLessons] without exceeding 100. */
+    fun percentage(totalLessons: Int): Int =
+        if (totalLessons <= 0) 0 else (completedLessonIds.size * 100 / totalLessons).coerceAtMost(100)
+}

@@ -163,3 +163,13 @@ data class SocialSelfAssessmentEntity(
     val notes: String,
     @ColumnInfo(name = "created_at") val createdAt: Long,
 )
+
+/** Room row storing a user's private reflection and completion for an educational life-skills lesson. */
+@Entity(tableName = "life_lesson_completions", indices = [Index("track_id"), Index("completed_at")])
+data class LifeLessonCompletionEntity(
+    @PrimaryKey @ColumnInfo(name = "lesson_id") val lessonId: String,
+    @ColumnInfo(name = "track_id") val trackId: String,
+    @ColumnInfo(name = "completed_at") val completedAt: Long,
+    val reflection: String,
+    @ColumnInfo(name = "chosen_option") val chosenOption: Int?,
+)
