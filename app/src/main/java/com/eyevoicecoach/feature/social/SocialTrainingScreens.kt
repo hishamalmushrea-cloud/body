@@ -55,6 +55,9 @@ private val scenarioOptions = listOf(
     "اعتراض أو خلاف" to "conflict_resolution",
     "اعتراض عميل" to "sales_objection",
     "حوار قيادي" to "leadership_conversation",
+    "السوق وخدمة الزبائن" to "market_service",
+    "تعامل يومي" to "neighborhood_daily",
+    "مزاح خفيف مع الأصدقاء" to "friend_banter",
 )
 
 private val trackOptions = listOf("الكل" to null) + SocialSkillTracks.all.map { it.title to it.id }
@@ -67,6 +70,12 @@ private val goalOptions = listOf(
     "الرد على اعتراض" to "respond_to_objection_respectfully",
     "إنهاء الحديث بلطف" to "end_conversation_kindly",
     "طلب توضيح" to "ask_for_clarification",
+    "ترحيب عميل" to "welcome_customer",
+    "شرح سعر" to "explain_price",
+    "تفاوض عادل" to "negotiate_fairly",
+    "تحية ودّية" to "friendly_greeting",
+    "عرض مساعدة" to "offer_simple_help",
+    "مزاح خفيف" to "light_joke_about_saving",
 )
 
 /** Scenario chooser for responsible social influence and communication practice. */

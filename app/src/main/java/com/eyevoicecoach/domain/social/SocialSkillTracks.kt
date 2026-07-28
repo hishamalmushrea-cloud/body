@@ -16,6 +16,8 @@ object SocialSkillTracks {
         SocialSkillTrack("rejection", "التعامل مع الرفض", "قبول الرفض بهدوء واحترام حرية الطرف الآخر."),
         SocialSkillTrack("council_etiquette", "آداب المجالس", "الدخول، الجلوس، المشاركة والخروج بأدب."),
         SocialSkillTrack("boundaries", "الحدود الشخصية", "لطف بلا تعلق زائد، ومساحة مريحة للجميع."),
+        SocialSkillTrack("customer_care", "خدمة الزبائن الودّية", "ترحيب، شرح سعر، تفاوض عادل، شكوى، ومتابعة بإذن."),
+        SocialSkillTrack("daily_friendliness", "الودّ والمزاح الخفيف", "تحية يومية، دعوات بلا إلزام، مزاح متبادل وحدود مريحة."),
     )
 
     /** Finds a path title by identifier. */

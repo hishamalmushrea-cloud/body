@@ -1,5 +1,5 @@
 {
-  "version_code": 2,
+  "version_code": 4,
   "content": [
     {
       "id": 2001,
@@ -1570,6 +1570,1020 @@
         {
           "type": "closing",
           "text": "شكراً لاحترامكم للوقت المتفق عليه."
+        }
+      ]
+    },
+    {
+      "id": 2041,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "welcome_customer",
+      "title": "ترحيب ودّي في السوق",
+      "tip_text": "الترحيب الجيد يفتح الباب من دون إلزام. دع العميل يشعر أن له حرية النظر والسؤال أو المغادرة.",
+      "practical_example": "قل: يا هلا، تفضل وشوف على راحتك. إذا احتجت أي توضيح أنا حاضر.",
+      "boundary_rule": "لا تمنع الطريق ولا تلاحق العميل إذا لم يرغب في الحديث.",
+      "roleplay_prompt": "قل: يا هلا، تفضل وشوف على راحتك. إذا احتجت شيئاً أنا حاضر.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يا هلا، تفضل."
+        },
+        {
+          "type": "do_say",
+          "text": "شوف على راحتك، وأنا حاضر لأي سؤال."
+        },
+        {
+          "type": "avoid_say",
+          "text": "تعال لازم تشتري اليوم."
+        },
+        {
+          "type": "closing",
+          "text": "خذ وقتك، وسعدت بزيارتك."
+        }
+      ]
+    },
+    {
+      "id": 2042,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "invite_to_browse",
+      "title": "الدعوة للمشاهدة بلا ضغط",
+      "tip_text": "يمكنك دعوة شخص لتفقد المنتجات بلطف، مع توضيح أن المشاهدة والسؤال عاديان ولا يترتب عليهما التزام.",
+      "practical_example": "قل: تفضل شوف أولاً، ما في أي التزام.",
+      "boundary_rule": "لا تستخدم المزاح لإحراج الشخص أو منعه من الانسحاب.",
+      "roleplay_prompt": "قل: تفضل شوف أولاً، وإذا ما ناسبك شيء عادي تماماً.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "تفضل شوف أولاً."
+        },
+        {
+          "type": "do_say",
+          "text": "المشاهدة والسؤال على راحتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا تسأل كثير، خذ مباشرة."
+        },
+        {
+          "type": "closing",
+          "text": "إن ما ناسبك، أهلاً وسهلاً في أي وقت."
+        }
+      ]
+    },
+    {
+      "id": 2043,
+      "module_category": "ethical_persuasion",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "explain_offer_transparently",
+      "title": "شرح تخفيض حقيقي بوضوح",
+      "tip_text": "العرض الجيد يذكر السعر السابق والحالي ومدة العرض وشروطه إذا وجدت. الوضوح أهم من كلمة تخفيض وحدها.",
+      "practical_example": "قل: اليوم السعر أصبح كذا بدلاً من كذا حتى نهاية العرض المعلن، وهذه التفاصيل مكتوبة هنا.",
+      "boundary_rule": "لا تعلن تخفيضاً غير حقيقي ولا تخفِ الرسوم أو الشروط.",
+      "roleplay_prompt": "قل: اليوم لدينا عرض واضح؛ هذا السعر الحالي وهذه الشروط، وخذ وقتك في المقارنة.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "اليوم لدينا عرض واضح على هذا المنتج."
+        },
+        {
+          "type": "do_say",
+          "text": "هذا السعر الحالي وهذه الشروط مكتوبة بوضوح."
+        },
+        {
+          "type": "avoid_say",
+          "text": "اليوم تخفيضات كبيرة ولا تسأل عن التفاصيل."
+        },
+        {
+          "type": "closing",
+          "text": "إن احتجت مقارنة، تفضل وخذ المعلومات معك."
+        }
+      ]
+    },
+    {
+      "id": 2044,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "explain_price",
+      "title": "شرح السعر بلا دفاعية",
+      "tip_text": "عندما يقول العميل إن السعر مرتفع، لا تفسر ذلك كإهانة. اسأل عن الميزانية أو الأولوية ثم قدم خياراً صادقاً إن توفر.",
+      "practical_example": "قل: أتفهم أن السعر مهم. ما النطاق المناسب لك كي أرى إن كان لدينا خيار ملائم؟",
+      "boundary_rule": "لا تصف العميل بالبخل ولا تجعله يشعر بالذنب بسبب السؤال عن السعر.",
+      "roleplay_prompt": "قل: أتفهم أن السعر مهم. ما النطاق الذي يناسبك لنقارن الخيارات؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أتفهم أن السعر مهم."
+        },
+        {
+          "type": "do_say",
+          "text": "خلنا نشوف خياراً يناسب الميزانية."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت بخيل جداً 😄"
+        },
+        {
+          "type": "closing",
+          "text": "إذا لم يناسبك، أشكرك على وقتك."
+        }
+      ]
+    },
+    {
+      "id": 2045,
+      "module_category": "negotiation",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "negotiate_fairly",
+      "title": "التفاوض الودّي على السعر",
+      "tip_text": "التفاوض المحترم يركز على المتاح فعلاً: سعر معلن، خصم مصرح، كمية أو بديل. المزاح هنا يكون عن الموقف لا عن كرامة الشخص.",
+      "practical_example": "قل: تفاوضك مرتب 😄 خلنا نشوف الخيار الذي يناسب ميزانيتك ضمن الأسعار المتاحة.",
+      "boundary_rule": "لا تختلق سعر صديق أو خصماً غير مصرح به لإجبار قرار.",
+      "roleplay_prompt": "قل: تفاوضك مرتب 😄 خلنا نراجع الخيارات المتاحة بوضوح.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "تفاوضك مرتب 😄"
+        },
+        {
+          "type": "do_say",
+          "text": "خلنا نراجع ما المتاح ضمن الميزانية."
+        },
+        {
+          "type": "avoid_say",
+          "text": "تعال أعطيك سعر الصديق حتى لو لم يكن موجوداً."
+        },
+        {
+          "type": "closing",
+          "text": "هذا أفضل ما أستطيع تقديمه بوضوح."
+        }
+      ]
+    },
+    {
+      "id": 2046,
+      "module_category": "active_listening",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "clarify_product_need",
+      "title": "اسأل عن الحاجة قبل الاقتراح",
+      "tip_text": "العميل قد يريد متانة أو سعرًا أو مواصفة محددة. سؤال واحد جيد يمنع عرض أشياء لا تناسبه.",
+      "practical_example": "قل: ما أهم شيء تبحث عنه: السعر، الجودة، أم استخدام محدد؟",
+      "boundary_rule": "لا تفترض أن الأغلى هو الأفضل لكل شخص.",
+      "roleplay_prompt": "قل: ما أهم شيء تبحث عنه كي أريك ما يناسبك؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "ما أهم شيء تبحث عنه؟"
+        },
+        {
+          "type": "do_say",
+          "text": "هل الأولوية للسعر أم للمواصفة؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "خذ الأغلى، هذا الأفضل للجميع."
+        },
+        {
+          "type": "closing",
+          "text": "إذا لم أملك المناسب، سأقول لك بوضوح."
+        }
+      ]
+    },
+    {
+      "id": 2047,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "compare_options",
+      "title": "مقارنة خيارين بصدق",
+      "tip_text": "المقارنة المفيدة تذكر الفرق في السعر والمواصفة والحدود، ثم تترك القرار للعميل.",
+      "practical_example": "قل: هذا أقل سعراً، وهذا يضيف ميزة كذا. أيهما أقرب لاستخدامك؟",
+      "boundary_rule": "لا تخفِ عيباً أو قيداً في الخيار الذي تفضله.",
+      "roleplay_prompt": "قل: هذا الفرق بين الخيارين، والقرار لك حسب ما يناسبك.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "لدينا خياران واضحان."
+        },
+        {
+          "type": "do_say",
+          "text": "هذا الفرق في السعر والمواصفة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا داعي أن تعرف العيب."
+        },
+        {
+          "type": "closing",
+          "text": "اختر ما يناسبك، ولا يوجد استعجال."
+        }
+      ]
+    },
+    {
+      "id": 2048,
+      "module_category": "boundaries",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "give_customer_space",
+      "title": "العميل ما زال يفكر",
+      "tip_text": "التردد طبيعي. امنح الشخص مساحة ومعلومة واضحة بدلاً من تكرار السؤال أو خلق توتر.",
+      "practical_example": "قل: خذها بسهولة يا صديقي، فكر براحتك، وأنا موجود إذا احتجت معلومة.",
+      "boundary_rule": "لا تكرر: ما زلت تفكر؟ بنبرة ضاغطة ولا تتبع العميل داخل المكان.",
+      "roleplay_prompt": "قل: خذ وقتك، وإذا احتجت أي تفصيل أنا قريب.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "خذ وقتك وفكر براحتك."
+        },
+        {
+          "type": "do_say",
+          "text": "أنا موجود إذا احتجت معلومة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "ما زلت تفكر؟ خذها الآن."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لزيارتك، أهلاً بك في أي وقت."
+        }
+      ]
+    },
+    {
+      "id": 2049,
+      "module_category": "conflict_deescalation",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "respond_to_price_complaint",
+      "title": "تهدئة اعتراض على السعر",
+      "tip_text": "إذا قال العميل لا ترفع السعر كثيراً، استقبل العبارة بهدوء وارجع إلى السعر المعلن والمواصفات أو البدائل.",
+      "practical_example": "قل: أفهم حرصك على السعر. هذا السعر المعلن، ويمكننا رؤية بديل أقل إن كان متاحاً.",
+      "boundary_rule": "لا ترد بسخرية ولا تتهم العميل بعدم الفهم.",
+      "roleplay_prompt": "قل: أفهم حرصك على السعر، خلنا نرى الخيارات بهدوء.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أفهم حرصك على السعر."
+        },
+        {
+          "type": "do_say",
+          "text": "يمكننا البحث عن بديل إن توفر."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا تتدخل في تسعيري."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لأنك أوضحت ميزانيتك."
+        }
+      ]
+    },
+    {
+      "id": 2050,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "handle_unavailable_item",
+      "title": "عند عدم توفر المنتج",
+      "tip_text": "الصدق عند عدم توفر المنتج يبني ثقة أطول من وعد غير واقعي. اذكر بديلًا فقط إن كان مناسباً ووضح الفرق.",
+      "practical_example": "قل: هذا المنتج غير متوفر الآن. لدي بديل قريب وهذه الفروقات، أو يمكنك العودة في الموعد المتوقع.",
+      "boundary_rule": "لا تعد بموعد أو مواصفة لا تستطيع تأكيدها.",
+      "roleplay_prompt": "قل: المتوفر حالياً هو كذا، والاختيار لك بلا أي ضغط.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "هذا المنتج غير متوفر الآن."
+        },
+        {
+          "type": "do_say",
+          "text": "لدي بديل وأوضح لك الفرق."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أكيد يصل غداً وأنا غير متأكد."
+        },
+        {
+          "type": "closing",
+          "text": "إن لم يناسبك البديل، أتفهم تماماً."
+        }
+      ]
+    },
+    {
+      "id": 2051,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "close_sale_clearly",
+      "title": "إتمام البيع بوضوح",
+      "tip_text": "قبل الإتمام، راجع المنتج والسعر والكمية وأي ضمان أو شرط بشكل هادئ. الوضوح خدمة وليس تعقيداً.",
+      "practical_example": "قل: نتأكد معاً: هذا المنتج، وهذه الكمية، وهذا السعر. هل كل شيء واضح قبل الإتمام؟",
+      "boundary_rule": "لا تفترض الموافقة ولا تخفِ أي شرط بعد الدفع.",
+      "roleplay_prompt": "قل: هل كل التفاصيل واضحة قبل الإتمام؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "نتأكد معاً من المنتج والسعر."
+        },
+        {
+          "type": "do_say",
+          "text": "هل كل التفاصيل واضحة قبل الإتمام؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا حاجة للفاتورة أو الشروط."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لاختيارك، وهذه تفاصيلك بوضوح."
+        }
+      ]
+    },
+    {
+      "id": 2052,
+      "module_category": "rapport",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "follow_up_with_permission",
+      "title": "متابعة بعد البيع بإذن",
+      "tip_text": "المتابعة قد تكون مفيدة إذا وافق العميل عليها. اسأل عن القناة والتوقيت ولا تحول التواصل إلى رسائل متكررة.",
+      "practical_example": "قل: هل ترغب أن أرسل لك تحديثاً عند وصول المقاس؟ إن لم ترغب فلا مشكلة.",
+      "boundary_rule": "لا تستخدم رقم العميل لأغراض غير متفق عليها.",
+      "roleplay_prompt": "قل: هل يناسبك تلقي تحديث واحد عند توفر المنتج؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "هل ترغب في تحديث عند توفره؟"
+        },
+        {
+          "type": "do_say",
+          "text": "يمكنك اختيار عدم تلقي أي رسائل."
+        },
+        {
+          "type": "avoid_say",
+          "text": "سأرسل لك عروضاً دائماً من دون سؤال."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لتوضيح تفضيلك."
+        }
+      ]
+    },
+    {
+      "id": 2053,
+      "module_category": "social_opening",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "friendly_greeting",
+      "title": "تحية يومية ودّية",
+      "tip_text": "التحية القصيرة الطبيعية تصنع ودّاً بلا إطالة. اخترها بحسب معرفة الشخص والوقت والمكان.",
+      "practical_example": "قل: يا هلا، كيف يومك؟ أو: صباح الخير، عساك بخير.",
+      "boundary_rule": "لا تفرض حديثاً طويلاً على شخص يبدو مستعجلاً.",
+      "roleplay_prompt": "قل: يا هلا، كيف يومك؟ إن كنت مشغولاً نكمل لاحقاً.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يا هلا، كيف يومك؟"
+        },
+        {
+          "type": "do_say",
+          "text": "عساك بخير."
+        },
+        {
+          "type": "avoid_say",
+          "text": "إلى أين ذاهب؟ لازم تجاوبني."
+        },
+        {
+          "type": "closing",
+          "text": "أشوفك على خير."
+        }
+      ]
+    },
+    {
+      "id": 2054,
+      "module_category": "active_listening",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "offer_simple_help",
+      "title": "عرض مساعدة بسيطة",
+      "tip_text": "عند رؤية شخص يبحث عن مكان أو يحمل شيئاً، اعرض المساعدة باختيار واضح وابقَ على مسافة مريحة.",
+      "practical_example": "قل: إذا احتجت توجيهاً للمكان، أقدر أوضح لك.",
+      "boundary_rule": "لا تلمس أغراض الشخص أو تتبعه بحجة المساعدة من دون إذن.",
+      "roleplay_prompt": "قل: إذا احتجت مساعدة، أنا موجود، وإذا لا فكل شيء تمام.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "إذا احتجت توجيهاً، أقدر أوضح لك."
+        },
+        {
+          "type": "do_say",
+          "text": "إذا لا تحتاج، كل شيء تمام."
+        },
+        {
+          "type": "avoid_say",
+          "text": "تعال معي، أعرف أفضل منك."
+        },
+        {
+          "type": "closing",
+          "text": "أتمنى لك طريقاً سهلاً."
+        }
+      ]
+    },
+    {
+      "id": 2055,
+      "module_category": "boundaries",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "handle_waiting",
+      "title": "الانتظار بلا توتر",
+      "tip_text": "عندما يتأخر شخص قليلاً، اسأل بهدوء عن الوقت المتوقع وحدد ما يناسبك بدل التذمر أو السخرية.",
+      "practical_example": "قل: خذ وقتك، أنا أنتظر عشر دقائق، وبعدها ننسق وقتاً آخر إن احتجت.",
+      "boundary_rule": "لا تستخدم المزاح كعقوبة مثل كسول فعلاً إذا لم تعرف السبب أو لم تكن العلاقة تسمح.",
+      "roleplay_prompt": "قل: انتظر قليلًا، خلنا نحدد وقتاً مناسباً لنا.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "خذ وقتك."
+        },
+        {
+          "type": "do_say",
+          "text": "خلنا نحدد وقتاً يناسبنا."
+        },
+        {
+          "type": "avoid_say",
+          "text": "كسول فعلاً!"
+        },
+        {
+          "type": "closing",
+          "text": "إذا تأخرت أكثر، ننسق موعداً آخر."
+        }
+      ]
+    },
+    {
+      "id": 2056,
+      "module_category": "rapport",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "small_talk_kindly",
+      "title": "حديث خفيف بلا تطفل",
+      "tip_text": "ابدأ من سياق مشترك مثل المكان أو اليوم، ولا تسأل عن أمور شخصية أو مالية ما لم يفتحها الطرف الآخر بنفسه.",
+      "practical_example": "قل: الجو اليوم لطيف، هل كان طريقك هادئاً؟",
+      "boundary_rule": "لا تحول السؤال الودّي إلى تحقيق أو فضول شخصي.",
+      "roleplay_prompt": "قل: كيف كان يومك؟ وإذا لم يناسب الحديث فلا بأس.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "كيف كان يومك؟"
+        },
+        {
+          "type": "do_say",
+          "text": "هل كان طريقك هادئاً؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "كم راتبك ولماذا تأخرت؟"
+        },
+        {
+          "type": "closing",
+          "text": "سعدت بالسلام عليك."
+        }
+      ]
+    },
+    {
+      "id": 2057,
+      "module_category": "rapport",
+      "social_track": "daily_friendliness",
+      "context": "أصدقاء",
+      "scenario_type": "friend_banter",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "light_joke_about_saving",
+      "title": "مزاح خفيف عن التوفير بين أصدقاء",
+      "tip_text": "المزاح عن التوفير يصلح فقط بين أصدقاء يعرفون أن هذا الأسلوب مريح ومتبادل. اجعل المزاح عن الموقف لا عن قيمة الشخص.",
+      "practical_example": "قل لصديق قريب بعد أن يختار عرضاً: عينك على التوفير اليوم 😄",
+      "boundary_rule": "إذا لم يضحك الشخص أو بدا منزعجاً، اعتذر وانتقل فوراً. لا تستخدم كلمة بخيل مع عميل أو غريب.",
+      "roleplay_prompt": "قل: عينك على التوفير اليوم 😄 هذا عرض مرتب.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "عينك على التوفير اليوم 😄"
+        },
+        {
+          "type": "do_say",
+          "text": "اختيارك ذكي في العروض."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت بخيل جداً 😄"
+        },
+        {
+          "type": "closing",
+          "text": "المهم أن الخيار ناسبك."
+        }
+      ]
+    },
+    {
+      "id": 2058,
+      "module_category": "rapport",
+      "social_track": "daily_friendliness",
+      "context": "أصدقاء",
+      "scenario_type": "friend_banter",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "friendly_delay_joke",
+      "title": "مزاح خفيف عند التأخر",
+      "tip_text": "يمكن المزاح عن التأخر مع صديق قريب إذا كان متبادلاً ولا يغطي انزعاجاً حقيقياً أو التزاماً مهماً.",
+      "practical_example": "قل: يبدو أن ساعتك تمشي على توقيت خاص اليوم 😄 هل أنت بخير؟",
+      "boundary_rule": "لا تقلل من أثر التأخر أو تستخدم المزاح عند وجود مشكلة حقيقية.",
+      "roleplay_prompt": "قل: يبدو أن ساعتك على توقيت خاص اليوم 😄 هل أنت بخير؟",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "ساعتك على توقيت خاص اليوم 😄"
+        },
+        {
+          "type": "do_say",
+          "text": "هل أنت بخير؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "كسول فعلًا!"
+        },
+        {
+          "type": "closing",
+          "text": "نرتب وقتاً أفضل للمرة الجاية."
+        }
+      ]
+    },
+    {
+      "id": 2059,
+      "module_category": "boundaries",
+      "social_track": "daily_friendliness",
+      "context": "أصدقاء",
+      "scenario_type": "friend_banter",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "respond_to_teasing",
+      "title": "الرد على مزاح غير مريح",
+      "tip_text": "إذا لم يناسبك المزاح، لا تحتاج إلى ضحك مصطنع أو هجوم. وضح الحد بهدوء واطلب تغيير الأسلوب.",
+      "practical_example": "قل: أعرف أنك تمزح، لكن هذه العبارة لا تناسبني. خلنا نغير الموضوع.",
+      "boundary_rule": "لا ترد بإهانة أو تجمع مواقف قديمة لإحراج الشخص.",
+      "roleplay_prompt": "قل: خذها بسهولة يا صديقي، لكن هذا المزاح لا يريحني.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "أعرف أنك تمزح."
+        },
+        {
+          "type": "do_say",
+          "text": "هذا المزاح لا يريحني."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا تكذب! تتظاهر أنك غني؟ 😄"
+        },
+        {
+          "type": "closing",
+          "text": "خلنا نغير الموضوع."
+        }
+      ]
+    },
+    {
+      "id": 2060,
+      "module_category": "active_listening",
+      "social_track": "daily_friendliness",
+      "context": "أصدقاء",
+      "scenario_type": "friend_banter",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "support_without_dismissing",
+      "title": "دعم صديق من دون تقليل",
+      "tip_text": "عندما ينزعج صديق، لا تقل له لا تزعل بسرعة. اعترف بالشعور ثم اسأله ماذا يحتاج.",
+      "practical_example": "قل: واضح أن العبارة ضايقتك. تحب تحكي أم نترك الموضوع؟",
+      "boundary_rule": "لا تستخدم عادي أو مبالغ فيه لإسكات شعور الشخص.",
+      "roleplay_prompt": "قل: واضح أن العبارة ضايقتك، وأنا أسمعك.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "واضح أن العبارة ضايقتك."
+        },
+        {
+          "type": "do_say",
+          "text": "تحب تحكي أم نترك الموضوع؟"
+        },
+        {
+          "type": "avoid_say",
+          "text": "عادي، لا تزعل بسرعة."
+        },
+        {
+          "type": "closing",
+          "text": "شكراً لأنك وضحت لي."
+        }
+      ]
+    },
+    {
+      "id": 2061,
+      "module_category": "rapport",
+      "social_track": "daily_friendliness",
+      "context": "أصدقاء",
+      "scenario_type": "friend_banter",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 4,
+      "communication_goal": "friend_price_joke",
+      "title": "سعر الصديق الحقيقي",
+      "tip_text": "عبارة سعر الصديق تكون لطيفة حين تكون صادقة: خصم مسموح أو مشاركة حقيقية، لا وعداً وهمياً أو ضغطاً للشراء.",
+      "practical_example": "قل: إن كان هذا ضمن الخصم المتاح، أقدر أعطيك سعر العرض يا صديقي.",
+      "boundary_rule": "لا تستخدم صداقة الشخص لتطلب منه شراء ما لا يحتاجه.",
+      "roleplay_prompt": "قل: هذا السعر المتاح للجميع اليوم، ويسعدني أن أوضحه لك يا صديقي.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "يسعدني أوضح لك السعر المتاح."
+        },
+        {
+          "type": "do_say",
+          "text": "هذا العرض معلن وواضح."
+        },
+        {
+          "type": "avoid_say",
+          "text": "تعال أعطيك سعر الصديق وهو غير حقيقي."
+        },
+        {
+          "type": "closing",
+          "text": "اختر ما يناسبك بلا إحراج."
+        }
+      ]
+    },
+    {
+      "id": 2062,
+      "module_category": "social_opening",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 3,
+      "communication_goal": "invite_without_pressure",
+      "title": "دعوة ودّية بلا إلزام",
+      "tip_text": "يمكنك قول هيا نذهب أو تفضل، لكن اترك مجالاً لاعتذار الطرف الآخر أو اقتراح وقت آخر من دون تعليق سلبي.",
+      "practical_example": "قل: هيا نذهب إذا كان الوقت مناسباً لك، وإلا نرتبها لاحقاً.",
+      "boundary_rule": "لا تجعل الاعتذار دليلاً على قلة الود أو الولاء.",
+      "roleplay_prompt": "قل: إذا يناسبك نذهب الآن، وإذا لا عادي نرتبها لاحقاً.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "إذا يناسبك نذهب الآن."
+        },
+        {
+          "type": "do_say",
+          "text": "وإذا لا عادي نرتبها لاحقاً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "هيا نذهب! لا تعتذر."
+        },
+        {
+          "type": "closing",
+          "text": "على راحتك، نلتقي في وقت أفضل."
+        }
+      ]
+    },
+    {
+      "id": 2063,
+      "module_category": "social_opening",
+      "social_track": "daily_friendliness",
+      "context": "تعامل يومي",
+      "scenario_type": "neighborhood_daily",
+      "personality_style": null,
+      "difficulty": "beginner",
+      "duration_minutes": 3,
+      "communication_goal": "warm_thanks",
+      "title": "شكر وعفو بطابع ودّي",
+      "tip_text": "الشكر القصير والرد الودّي يتركان أثراً جيداً من دون مبالغة أو طلب مقابل.",
+      "practical_example": "قل: شكراً، ما قصرت. الرد: العفو، هذا واجب بسيط.",
+      "boundary_rule": "لا تستخدم اللطف لتفتح طلباً لا علاقة له بالمساعدة.",
+      "roleplay_prompt": "قل: شكراً، ما قصرت. العفو، يسعدني المساعدة.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "شكراً، ما قصرت."
+        },
+        {
+          "type": "do_say",
+          "text": "العفو، يسعدني المساعدة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "الآن عليك خدمة مقابلة."
+        },
+        {
+          "type": "closing",
+          "text": "يومك سعيد."
+        }
+      ]
+    },
+    {
+      "id": 2064,
+      "module_category": "negotiation",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "friendly_bundle_offer",
+      "title": "عرض كمية بلا ضغط",
+      "tip_text": "يمكن اقتراح شراء أكثر فقط إذا كانت الفائدة حقيقية وواضحة، مع ذكر السعر الإجمالي وترك الحرية للعميل.",
+      "practical_example": "قل: إذا كنت تحتاج قطعتين فعلاً، هذا العرض يوفر كذا بوضوح. وإن لا، خذ ما تحتاجه فقط.",
+      "boundary_rule": "لا تقل خذ اثنين لأنك بخيل أو لأنك ستندم؛ هذا ضغط وليس خدمة.",
+      "roleplay_prompt": "قل: إذا تحتاج قطعتين، هذا سعرهما الواضح. وإذا قطعة واحدة تكفي فخذها براحتك.",
+      "eye_contact_tip": "تواصل بصري قصير ومريح، ثم انقل النظر بصورة طبيعية من دون تحديق أو مراقبة.",
+      "body_language_tip": "اترك مسافة مريحة، ولا تعيق حركة الشخص أو تتبعه داخل المكان.",
+      "voice_tip": "اجعل نبرتك ودّية وواضحة؛ اخفض السرعة عند الشرح ولا تستخدم سخرية على حساب الشخص.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "إذا تحتاج قطعتين، هذا العرض واضح."
+        },
+        {
+          "type": "do_say",
+          "text": "وإذا قطعة واحدة تكفي فخذها براحتك."
+        },
+        {
+          "type": "avoid_say",
+          "text": "خذ اثنين عشان توفر أو لأنك بخيل 😄"
+        },
+        {
+          "type": "closing",
+          "text": "الأهم أن تأخذ ما تحتاجه فقط."
+        }
+      ]
+    },
+    {
+      "id": 2065,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "handle_after_sale_issue",
+      "title": "شكوى بعد الشراء",
+      "tip_text": "الشكوى فرصة لفهم المشكلة وتوضيح الخطوات المتاحة، وليست هجوماً شخصياً. ابدأ بالشكر ثم راجع المعلومات بوضوح.",
+      "practical_example": "قل: شكراً لأنك أخبرتنا. خلنا نراجع الفاتورة والحالة ونوضح لك الخطوة المتاحة.",
+      "boundary_rule": "لا تلُم العميل تلقائياً ولا تعد بحل لا تسمح به السياسة أو الضمان.",
+      "roleplay_prompt": "قل: شكراً لأنك أخبرتنا. خلنا نراجع التفاصيل ونوضح لك الخطوة المتاحة بوضوح.",
+      "eye_contact_tip": "تواصل بصري هادئ ومريح، وركز على فهم المشكلة لا على الدفاع عن نفسك.",
+      "body_language_tip": "قف أو اجلس بمسافة مريحة، واجعل يديك ظاهرتين وإشاراتك بطيئة.",
+      "voice_tip": "تحدث ببطء ونبرة استشارية، ولا ترفع الصوت عند الشكوى أو كثرة الأسئلة.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "شكراً لأنك أخبرتنا."
+        },
+        {
+          "type": "do_say",
+          "text": "خلنا نراجع الفاتورة والحالة معاً."
+        },
+        {
+          "type": "avoid_say",
+          "text": "أنت استخدمت المنتج خطأ بالتأكيد."
+        },
+        {
+          "type": "closing",
+          "text": "سأوضح لك ما يمكننا فعله والخطوة التالية."
+        }
+      ]
+    },
+    {
+      "id": 2066,
+      "module_category": "client_communication",
+      "social_track": "customer_care",
+      "context": "سوق",
+      "scenario_type": "market_service",
+      "personality_style": null,
+      "difficulty": "intermediate",
+      "duration_minutes": 4,
+      "communication_goal": "answer_customer_questions",
+      "title": "أسئلة العميل حق وليست إزعاجاً",
+      "tip_text": "الأسئلة تساعد العميل على قرار واعٍ. إذا لم تعرف إجابة، قل ذلك وتحقق بدلاً من التخمين أو الاستعجال.",
+      "practical_example": "قل: سؤالك مهم، خلنا نأخذ نقطة نقطة. وإن لم أتأكد من معلومة سأتحقق لك.",
+      "boundary_rule": "لا تقل لا تسأل كثير أو خذ مباشرة؛ للعميل حق الفهم قبل الشراء.",
+      "roleplay_prompt": "قل: سؤالك مهم، خلنا نأخذ نقطة نقطة، وأوضح لك ما أعرفه بدقة.",
+      "eye_contact_tip": "تواصل بصري هادئ ومريح، وركز على فهم المشكلة لا على الدفاع عن نفسك.",
+      "body_language_tip": "قف أو اجلس بمسافة مريحة، واجعل يديك ظاهرتين وإشاراتك بطيئة.",
+      "voice_tip": "تحدث ببطء ونبرة استشارية، ولا ترفع الصوت عند الشكوى أو كثرة الأسئلة.",
+      "content_version": 4,
+      "content_safety_level": "responsible",
+      "phrases": [
+        {
+          "type": "opening",
+          "text": "سؤالك مهم."
+        },
+        {
+          "type": "do_say",
+          "text": "خلنا نأخذ نقطة نقطة."
+        },
+        {
+          "type": "avoid_say",
+          "text": "لا تسأل كثير، خذ مباشرة."
+        },
+        {
+          "type": "closing",
+          "text": "إذا احتجت وقتاً للمقارنة، خذه براحتك."
         }
       ]
     }
