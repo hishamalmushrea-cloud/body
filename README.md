@@ -1,3 +1,14 @@
+# body
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/hishamalmushrea-cloud/body?style=social)](https://github.com/hishamalmushrea-cloud/body)
+[![GitHub](https://img.shields.io/github/license/hishamalmushrea-cloud/body)](https://github.com/hishamalmushrea-cloud/body/blob/main/LICENSE)
+[![Trendshift](https://trendshift.io/api/badge/repositories/4119)](https://trendshift.io/)
+[![Docs Website](https://img.shields.io/badge/Docs-Website-blue?style=for-the-badge&logo=readthedocs)](https://github.com/hishamalmushrea-cloud/body)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/hishamalmushrea-cloud?style=social)](https://x.com/hishamalmushrea-cloud)
+
+---
+
 # مدرب العين والجسد والصوت
 
 تطبيق أندرويد عربي يعمل دون اتصال لتدريب الحضور البصري ولغة الجسد والصوت. بُني بـ **Kotlin** و**Jetpack Compose / Material 3** مع بنية طبقية نظيفة وMVVM وHilt وRoom وDataStore مشفر محلياً.
